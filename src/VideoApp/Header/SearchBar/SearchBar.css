@@ -1,0 +1,7 @@
+.search__form {
+  flex: 1;
+}
+.search__input {
+  border: none;
+  width: 100%;
+}

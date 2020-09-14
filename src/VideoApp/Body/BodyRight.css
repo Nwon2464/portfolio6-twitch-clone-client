@@ -1,0 +1,371 @@
+.body__right {
+  width: 85%;
+  height: 100%;
+  flex: 0.87 1;
+  background-color: #f9f9f9;
+  padding: 25px 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.body__right > h2 {
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+
+.render__create {
+  position: absolute;
+  background: black;
+  color: white;
+  left: 430px;
+  top: 35px;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.render__create a {
+  color: white;
+}
+
+/* ------------------------------ */
+.app__tower__gutter {
+  margin-left: -0.5rem !important;
+  margin-right: -0.5rem !important;
+}
+.app__tower__padding__gutter {
+  padding: 0 0.2rem !important;
+}
+.app__padding {
+  padding: 0 0.5rem !important;
+}
+.app__margin__bottom {
+  margin-bottom: 0.3rem !important;
+}
+.app__flex__tower {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  min-width: 100%;
+}
+.app__flex__nowrap {
+  flex-wrap: nowrap !important;
+}
+.app__relative {
+  position: relative !important;
+}
+.app__absolute {
+  position: absolute !important;
+}
+.app__left__0 {
+  left: 0 !important;
+}
+.app__top__0 {
+  top: 0 !important;
+}
+.app__bottom__0 {
+  bottom: 0 !important;
+}
+.app__right__0 {
+  right: 0 !important;
+}
+.app__flex__column {
+  flex-direction: column !important;
+}
+.app__flex {
+  display: flex !important;
+}
+.app__tower__120 {
+  flex: 1 0 auto;
+  max-width: 15%;
+  width: 10rem;
+}
+.app__tower__300 {
+  flex: 1 0 auto;
+  width: 30rem;
+  max-width: 25%;
+}
+.app__card__height {
+  height: 100% !important;
+}
+.app__margin__top {
+  margin-top: 0.3rem !important;
+}
+.app__flex__shrink__1 {
+  flex-shrink: 1 !important;
+}
+.app__flex__grow__1 {
+  flex-grow: 1 !important;
+}
+.app__ellipsis {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-size: 1.1rem !important;
+}
+.app__order__1 {
+  order: 1 !important;
+}
+.app__order__2 {
+  order: 2 !important;
+}
+.app__order__3 {
+  order: 3 !important;
+}
+.app__width {
+  width: 100% !important;
+}
+.app__margin {
+  margin: 0.5rem !important;
+}
+/* app__margin__top app__flex__shrink__1 app__flex__grow__1 app__ellipsis*/
+.app__live__indicator {
+  background-color: #e91916 !important;
+  color: #fff !important;
+}
+.app__view__indicator {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  color: #fff !important;
+}
+.app__color {
+  color: #1f1f23;
+}
+.app__border__radius {
+  border-radius: 25px !important;
+}
+.app__font__weight {
+  font-weight: bold !important;
+}
+.app__uppercase {
+  text-transform: uppercase !important;
+}
+.card__maxWidth__margin {
+  /* border: 3px solid red; */
+  max-width: 200rem;
+}
+img {
+  max-width: 100%;
+}
+.videos {
+  /* display: flex;
+  margin-left: -0.5rem;
+  min-width: 100%;
+  flex-wrap: nowrap; */
+}
+
+.card__display__flex__wrap {
+  display: flex;
+  min-width: 100%;
+  flex-wrap: wrap;
+}
+.card__display__padding__width {
+  flex: 1 0 auto;
+  width: 23rem;
+
+  max-width: 50%;
+}
+.card__display__height {
+  height: 100%;
+  border: 1px solid black;
+}
+
+.card__display__flex__info__1__nowrap {
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.app__card__padding_bottom {
+  /* border: 1px solid red; */
+  padding-bottom: 2rem;
+}
+.card__display__flex__direction {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.card__display__flex__direction__margin {
+  margin: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.card__display__info__2__order__1 {
+  order: 1;
+}
+
+.app__min__width__0 {
+  min-width: 0;
+}
+
+.card__display__flex__info__1__2__order__title {
+  margin-bottom: 0.3rem;
+}
+.card__display__flex__info__1__2__order__title__font {
+  color: #1f1f23;
+}
+.app__flex__start {
+  display: flex;
+  align-items: flex-start;
+}
+.channel__font_1 {
+  display: flex;
+  align-items: flex-start;
+}
+.app__flex__start {
+  display: flex;
+  align-items: flex-start;
+}
+.channel__font__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.channel__user {
+  margin-bottom: 0.3rem;
+}
+.channel__user__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #53535f;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+}
+.app__font__7__color {
+  color: #53535f !important;
+  font-size: 0.7rem !important;
+}
+
+.channel__name {
+  position: relative;
+  bottom: 2.5em;
+}
+
+.channel__tag {
+  flex-shrink: 1;
+  flex-grow: 1;
+  width: 100%;
+}
+.channel__tag__1 {
+  margin-top: 0.3rem;
+}
+
+.channel__tag__2 {
+  width: 100%;
+  display: inline-block;
+}
+.channel__tag__3 {
+  vertical-align: middle;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.channel__tag__anchor {
+  background-color: lightgrey;
+  width: fit-content;
+  display: inline-block;
+  padding: 0 0.65rem;
+  border-radius: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+.channel__tag__anchor__2 {
+  background-color: lightgrey;
+
+  width: fit-content;
+  padding: 0.2rem 0.65rem;
+  border-radius: 25px;
+  text-align: center;
+}
+.channel__icon {
+  order: 1;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.channel__icon__1 {
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+}
+.channel__down {
+  order: 3;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.custom {
+  width: 100%;
+  text-align: center;
+  line-height: 0.1em;
+  margin: 0px 0 20px;
+  border-bottom: 1px solid rgba(191, 191, 191, 1);
+}
+.custom > span {
+  background: #f9f9f9;
+  padding: 0 10px;
+}
+
+.showMore__button {
+  position: relative;
+  top: 5px;
+
+  color: #00b5ad;
+}
+.down__icon {
+  position: relative !important;
+  top: 5px !important;
+}
+.showMore {
+  cursor: pointer;
+  color: #00b5ad;
+}
+.showMore:hover {
+  color: black;
+}
+
+.loading {
+  position: absolute;
+  height: 100%;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+  background-color: #e6e6ea;
+
+  width: 700px;
+  z-index: 1;
+}
+/* .app__img__transition:hover {
+  transform: translateX(3px) translateY(-5px);
+} */
+.app__cursor {
+  cursor: pointer;
+}
+
+.app__font__size {
+  font-size: 1rem;
+}
+.app__font__size__0_8 {
+  font-size: 0.8rem;
+}
+.app__cursor:hover {
+  color: #00b5ad !important;
+}
+
+.app__color__grey {
+  color: rgba(120, 120, 120) !important;
+}
+.channel__tag__anchor:hover {
+  color: #53535f !important;
+}
+
+.game__card {
+  max-width: 200rem;
+  margin: 0px auto;
+}
+.game__category {
+  max-width: 200rem;
+  margin: 0px auto;
+}

@@ -1,0 +1,96 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+.modal-backdrop {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  background-color: #000000d9;
+}
+
+.modal-box {
+  border-radius: 5px;
+  position: absolute;
+  left: 40%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  top: 10rem;
+  width: 26.9rem;
+  background-color: white;
+  box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.25);
+  padding: 2rem 1rem;
+}
+#google__log {
+  padding: 0.95rem;
+  border-radius: 0.5rem;
+}
+.window__icon {
+  position: absolute;
+  top: -0.25rem;
+  right: -1.9rem;
+  cursor: pointer;
+}
+.clear__btn {
+  position: absolute;
+  top: 0;
+  right: -30px;
+  color: white;
+  cursor: pointer;
+}
+.clear__btn:hover {
+}
+.clear__icon:hover {
+  font-size: 2rem;
+  border-radius: 5px;
+  background-color: hsla(0, 0%, 100%, 0.15);
+}
+
+.app__join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: -1rem;
+}
+
+.app__flex__figure {
+  display: flex !important;
+}
+.app__margin__0 {
+  margin: 0 !important;
+}
+.app__marginLeft__0_5 {
+  margin-left: 0.5rem !important;
+}
+.app__fontWeight__b {
+  font-weight: 600 !important;
+}
+.app__fontSize__1_7 {
+  font-size: 1.7rem !important;
+}
+
+.app__input {
+  height: 2.143rem !important;
+  padding: 0.5rem !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border: 2px solid transparent !important;
+  border-radius: 5px !important;
+}
+.app__input:focus {
+  border: 2px solid #00b5ad !important;
+  background-color: #fff !important;
+}
+.app__select {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  padding: 0.315rem !important;
+  border-radius: 5px !important;
+  border: 2px solid transparent !important;
+}

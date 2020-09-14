@@ -1,0 +1,23 @@
+.icon__image {
+  width: 25px;
+  vertical-align: middle;
+}
+.icon__container {
+  list-style-type: none;
+  display:flex;
+}
+
+.menu .links .icon__anchor {
+  height: auto;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin: 0;
+}
+.icon-image__span {
+  padding-left: 1rem;
+  vertical-align: middle;
+}
+
+.icon__all {
+    display:flex;
+}

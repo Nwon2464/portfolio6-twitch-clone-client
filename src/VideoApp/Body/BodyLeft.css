@@ -1,0 +1,14 @@
+.body__left {
+  /* border:2px solid black; */
+  flex: 0.13 1;
+  height: 100%;
+  width: 15%;
+  min-width: 11rem;
+}
+.body__left > hr {
+  height: 1px;
+  border: 0;
+  background-color: lightgray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

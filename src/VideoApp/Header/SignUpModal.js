@@ -1,0 +1,38 @@
+import React, { useState, forwardRef, useImperativeHandle } from "react";
+import ReactDOM from "react-dom";
+import { Field, reduxForm } from "redux-form";
+import { SubmissionError } from "redux-form";
+
+const SignUpModal = forwardRef((props, ref) => {
+  const [display, setDisplay] = useState(false);
+  useImperativeHandle(ref, () => {
+    return {
+      openModal: () => open(),
+      close: () => close(),
+    };
+  });
+  const open = () => {
+    setDisplay(true);
+  };
+  const close = () => {
+    setDisplay(false);
+  };
+  if (display) {
+    return ReactDOM.createPortal(
+      <div className="modal-wrapper">
+        <div onClick={close} className="modal-backdrop">
+          <div
+            style={{ top: "1rem" }}
+            onClick={(e) => e.stopPropagation()}
+            className="modal-box"
+          >
+            {props.children}
+          </div>
+        </div>
+      </div>,
+      document.querySelector("#modal4")
+    );
+  }
+  return null;
+});
+export default SignUpModal;

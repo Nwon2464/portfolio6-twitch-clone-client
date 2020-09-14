@@ -1,0 +1,51 @@
+.video__card {
+  width: 270px;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+.video__card__img {
+  height: 140px;
+  width: 100%;
+}
+
+.video__card__info {
+  display: flex;
+  margin-top: 10px;
+  padding-right: 30px;
+}
+.video__card__text > h4 {
+  margin: 0;
+  font-size: 14px;
+  height: 40px;
+}
+
+.video__card__text > p {
+  font-size: 14px;
+  color: gray;
+}
+.video__card__text {
+  margin-left: 15px;
+}
+
+.video__card__avatar {
+  height: 30px !important;
+  width: 30px !important;
+}
+
+.user__admin {
+  /* bottom: auto; */
+  /* top: 295px; */
+  position: relative;
+}
+#user__admin__delete {
+  padding: 8px !important;
+  position: absolute;
+  bottom: 10px;
+  left: 162px;
+}
+#user__admin__edit {
+  padding: 8px !important;
+  position: absolute;
+  left: 120px;
+  bottom: 10px;
+}

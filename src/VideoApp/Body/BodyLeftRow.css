@@ -1,0 +1,32 @@
+.body__left__row {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+.body__left__row:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.body__left__row.selected {
+  background-color: lightgray;
+}
+
+.body__left__row:hover > .body__left__row__icon {
+  color: #00b5ad;
+}
+
+.body__left__row:hover > .body__left__row__h2 {
+  font-weight: bold;
+}
+.body__left__row__icon {
+  color: #606060;
+  font-size: large !important;
+}
+.body__left__row__h2 {
+  margin: 0;
+  margin-left: 20px;
+  flex: 1;
+  font-size: 12px;
+  font-weight: 500;
+}

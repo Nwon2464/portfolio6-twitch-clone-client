@@ -1,0 +1,48 @@
+.view__left {
+  flex: 0.7;
+  background-color: #f9f9f9;
+  padding: 25px 20px;
+  padding-bottom: 0;
+  margin-left: 15px !important;
+}
+
+.view__left__anchor > span {
+  margin-left: 5px;
+}
+
+.view__left__All {
+  margin: 15px auto;
+}
+#view__left__h1 {
+  background-color: #f9f9f9 !important;
+  margin-top: 0 !important;
+}
+.view__left__info {
+  display: flex;
+}
+
+.view__left__view {
+  flex: 0.5;
+}
+.view__left__LDSS__info {
+  flex: 0.5;
+}
+.view__left__LDSS__info > a {
+  color: black;
+}
+
+.view__left__LDSS__all {
+  display: flex;
+}
+.view__left__LDSS__all > div {
+  display: flex;
+  padding: 0 8px;
+}
+
+.view__left__LDSS__all > div > h5 {
+  margin-top: auto;
+  margin-left: 5px;
+}
+
+
+

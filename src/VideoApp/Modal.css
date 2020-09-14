@@ -1,0 +1,19 @@
+.modal__show {
+}
+
+#modal__h4 {
+  text-align: center !important;
+  border-bottom: none !important;
+}
+#modal__p {
+  text-align: center !important;
+  margin-top: 5px !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+
+#modal__action{
+    display: flex;
+    justify-content: space-between;
+}

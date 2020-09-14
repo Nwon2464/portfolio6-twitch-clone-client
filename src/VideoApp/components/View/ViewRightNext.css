@@ -1,0 +1,24 @@
+.view__right__next__info {
+  display: flex;
+  margin-bottom: 5px;
+  max-width: 550px;
+}
+.view__right__next__info > img {
+  object-fit: contain;
+  width: 250px;
+  height: 138px;
+}
+
+.view__right__next__all {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+.view__right__next__channel {
+  font-size: 12px;
+  color: #606060;
+}
+.view__right__view__description {
+  font-size: 12px;
+  color: #606060;
+  /* margin-top:5px; */
+}
