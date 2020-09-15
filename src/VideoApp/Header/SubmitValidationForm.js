@@ -4,174 +4,181 @@ import { Link } from "react-router-dom";
 import renderField from "./RenderField";
 import { connect } from "react-redux";
 import { signUpCreate } from "../actions";
+import SignupLoading from "./SignupLoading";
 import { ReactComponent as TwitchIcon } from "./twitch-seeklogo.com.svg";
+import ErrorMessage from "./ErrorMessage";
 const SubmitValidationForm = (props) => {
   const { error, handleSubmit, pristine, reset, submitting } = props;
   const onSubmit = (formValue) => {
     props.signUpCreate(formValue);
   };
-  console.log(props.loading);
+  //   console.log(props);
   return (
     <>
-      <form
-        className="ui large form"
-        style={{ padding: "1rem" }}
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        {props.loading.loading && (
-          <div style={{ color: "red" }}>LOADING......</div>
-        )}
+      {props.loading.loading ? (
+        <SignupLoading />
+      ) : (
+        <>
+          {props.errorFromRedux && (
+            <ErrorMessage error={props.errorFromRedux} />
+          )}
 
-        {!props.loading.loading && props.errorFromRedux && (
-          <div style={{ color: "red" }}>
-            {props.errorFromRedux.errorMessage}
-          </div>
-        )}
-        <div className="app__join">
-          <figure className="app__flex__figure app__margin__0">
-            <TwitchIcon />
-          </figure>
-          <div className="app__marginLeft__0_5">
-            <h4 className="app__fontSize__1_7 app__fontWeight__b">
-              Join Today
-            </h4>
-          </div>
-        </div>
-        <div className="field">
-          <Field
-            validate={[required, maxLength30]}
-            name="username"
-            label="Username"
-            type="text"
-            component={renderField}
-            placeholder="Username"
-            autoFocus
-          />
-        </div>
-        <div className="field">
-          <Field
-            label="Password"
-            name="password"
-            type="password"
-            component={renderField}
-            placeholder="Password"
-            validate={[password, required]}
-          />
-        </div>
-
-        <div className="field">
-          <Field
-            label="Confirm Password"
-            name="confirmPassword"
-            type="password"
-            component={renderField}
-            placeholder="Confirm Password"
-            validate={[password, required]}
-          />
-        </div>
-
-        <div className="field">
-          <Field
-            validate={[email, required]}
-            label="Email"
-            name="email"
-            type="email"
-            component={renderField}
-            placeholder="Email"
-          />
-        </div>
-        <div className="field">
-          <label>Date of Birth</label>
-          <Field className="app__select" name="dateofbirth" component="select">
-            <option value="">Select</option>
-            <option value="january">January</option>
-            <option value="february">February</option>
-            <option value="march">March</option>
-            <option value="april">April</option>
-            <option value="may">May</option>
-            <option value="june">June</option>
-            <option value="july">July</option>
-            <option value="august">August</option>
-            <option value="september">September</option>
-            <option value="october">October</option>
-            <option value="november">November</option>
-            <option value="december">December</option>
-          </Field>
-        </div>
-        <div className="ui equal width form">
-          <div className="fields">
+          <form
+            className="ui large form"
+            style={{ padding: "1rem" }}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="app__join">
+              <figure className="app__flex app__margin__0">
+                <TwitchIcon />
+              </figure>
+              <div className="app__marginLeft__0_5">
+                <h4 className="app__fontSize__1_7 app__fontWeight__b">
+                  Join Today
+                </h4>
+              </div>
+            </div>
             <div className="field">
               <Field
-                validate={[minValue0, maxValue13, number]}
-                label="Month"
-                name="month"
+                validate={[usernameValidate, required, maxLength30]}
+                name="username"
+                label="Username"
                 type="text"
                 component={renderField}
-                placeholder="Month"
+                placeholder="Username"
+                // autoFocus="true"
               />
             </div>
             <div className="field">
               <Field
-                validate={[number, yearMinValue1930, yearMaxValue2020]}
-                label="Year"
-                name="year"
-                type="text"
+                label="Password"
+                name="password"
+                type="password"
                 component={renderField}
-                placeholder="Year"
+                placeholder="Password"
+                validate={[password, required]}
               />
             </div>
-          </div>
-        </div>
-        {/* {error && <strong>{error}</strong>} */}
 
-        <div className="inline field">
-          <label
-            style={{
-              fontSize: "small",
-            }}
-          >
-            By Clicking Sign Up, you are indicating that you have read and
-            acknowledge the{" "}
-            <Link to="#" style={{ color: "#00b5ad" }}>
-              Terms of Service
-            </Link>{" "}
-            and{" "}
-            <Link style={{ color: "#00b5ad" }} to="#">
-              {" "}
-              Privacy Notice
-            </Link>
-          </label>
-        </div>
+            <div className="field">
+              <Field
+                label="Confirm Password"
+                name="confirmPassword"
+                type="password"
+                component={renderField}
+                placeholder="Confirm Password"
+                validate={[password, required]}
+              />
+            </div>
 
-        <div
-          style={{
-            position: "relative",
-            top: "11px",
-          }}
-        >
-          <button
-            style={{
-              position: "relative",
-              bottom: "3px",
-              color: "white",
-              backgroundColor: "#00b5ad",
-            }}
-            className="ui fluid medium button"
-            type="submit"
-            disabled={submitting}
-          >
-            Sign Up{" "}
-          </button>
-          <button
-            className="ui fluid medium button"
-            type="button"
-            disabled={pristine || submitting}
-            onClick={reset}
-          >
-            Clear Values
-          </button>
-        </div>
-      </form>
+            <div className="field">
+              <Field
+                validate={[email, required]}
+                label="Email"
+                name="email"
+                type="email"
+                component={renderField}
+                placeholder="Email"
+              />
+            </div>
+            <div className="field">
+              <label>Date of Birth</label>
+              <Field
+                className="app__select"
+                name="dateofbirth"
+                component="select"
+              >
+                <option value="">Select</option>
+                <option value="january">January</option>
+                <option value="february">February</option>
+                <option value="march">March</option>
+                <option value="april">April</option>
+                <option value="may">May</option>
+                <option value="june">June</option>
+                <option value="july">July</option>
+                <option value="august">August</option>
+                <option value="september">September</option>
+                <option value="october">October</option>
+                <option value="november">November</option>
+                <option value="december">December</option>
+              </Field>
+            </div>
+            <div className="ui equal width form">
+              <div className="fields">
+                <div className="field">
+                  <Field
+                    validate={[minValue0, maxValue13, number]}
+                    label="Month"
+                    name="month"
+                    type="text"
+                    component={renderField}
+                    placeholder="Month"
+                  />
+                </div>
+                <div className="field">
+                  <Field
+                    validate={[number, yearMinValue1930, yearMaxValue2020]}
+                    label="Year"
+                    name="year"
+                    type="text"
+                    component={renderField}
+                    placeholder="Year"
+                  />
+                </div>
+              </div>
+            </div>
+            {/* {error && <strong>{error}</strong>} */}
+
+            <div className="inline field">
+              <label
+                style={{
+                  fontSize: "small",
+                }}
+              >
+                By Clicking Sign Up, you are indicating that you have read and
+                acknowledge the{" "}
+                <Link to="#" style={{ color: "#00b5ad" }}>
+                  Terms of Service
+                </Link>{" "}
+                and{" "}
+                <Link style={{ color: "#00b5ad" }} to="#">
+                  {" "}
+                  Privacy Notice
+                </Link>
+              </label>
+            </div>
+
+            <div
+              style={{
+                position: "relative",
+                top: "11px",
+              }}
+            >
+              <button
+                style={{
+                  position: "relative",
+                  bottom: "3px",
+                  color: "white",
+                  backgroundColor: "#00b5ad",
+                }}
+                className="ui fluid medium button"
+                type="submit"
+                disabled={submitting}
+              >
+                Sign Up{" "}
+              </button>
+              <button
+                className="ui fluid medium button"
+                type="button"
+                disabled={pristine || submitting}
+                onClick={reset}
+              >
+                Clear Values
+              </button>
+            </div>
+          </form>
+        </>
+      )}
     </>
   );
 };
@@ -182,6 +189,11 @@ const maxLength = (max) => (value) =>
     ? `Must be ${max} characters or less😒`
     : undefined;
 const maxLength30 = maxLength(30);
+const usernameValidate = (value) =>
+  value &&
+  !/^(?=.{4,30}$)(?:[a-zA-Z\d]+(?:(?:\.|-|_)[a-zA-Z\d])*)+$/i.test(value)
+    ? "Invalid Username😒"
+    : undefined;
 
 const password = (value, allValues) => {
   if (value && !/^[a-zA-Z0-9]{3,30}$/i.test(value)) return "Invalid password😒";
@@ -219,7 +231,7 @@ const email = (value) =>
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    errorFromRedux: state.error,
+    errorFromRedux: state.error.errorMessage,
     loading: state.loading,
   };
 };

@@ -15,6 +15,7 @@ export default (state = null, action) => {
       return false;
     case SIGNUP_CREATE:
       return action.payload;
+
     default:
       return state;
   }

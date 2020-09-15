@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-
 const RenderField = (props) => {
   const anchorRef = useRef();
   const inputRef = useRef();
@@ -7,10 +6,16 @@ const RenderField = (props) => {
   useEffect(() => {
     const offSetWidth = anchorRef.current.offsetWidth;
     setAnchorHeight(offSetWidth);
+  }, []);
+  useEffect(() => {
     if (inputRef.current.name === "username") {
       inputRef.current.focus();
     }
   }, []);
+  const className = `app__input ${
+    props.meta.touched && props.meta.error ? "app__danger" : "app__good"
+  }`;
+  console.log(props);
   return (
     <div className="field" style={{ position: "relative" }}>
       <label>
@@ -21,12 +26,12 @@ const RenderField = (props) => {
       <div>
         <input
           ref={inputRef}
-          className="app__input"
+          className={className}
+          //   className="app__input"
           {...props.input}
           type={props.type}
           autoComplete="off"
         />
-        {/* {props.meta.error} */}
         {props.meta.touched && props.meta.error && (
           <span
             style={{
@@ -45,5 +50,4 @@ const RenderField = (props) => {
     </div>
   );
 };
-
 export default RenderField;

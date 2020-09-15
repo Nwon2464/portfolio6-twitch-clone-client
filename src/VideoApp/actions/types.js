@@ -16,6 +16,7 @@ export const MOVE_RIGHT = "MOVE_RIGHT";
 export const MOVE_LEFT = "MOVE_LEFT";
 export const SIGNUP_ERROR = "SIGNUP_ERROR";
 export const LOADING_SPINNER = "LOADING_SPINNER";
+export const SIGNUP_ERROR_CLOSE = "SIGNUP_ERROR_CLOSE";
 //right after const ctrl + D * 4
 //right shift twice
 //ctrl + shift + right shitft

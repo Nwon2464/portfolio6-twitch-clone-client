@@ -13,16 +13,18 @@
   left: 0;
   position: fixed;
   background-color: #000000d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-box {
   border-radius: 5px;
   position: absolute;
-  left: 40%;
   flex-direction: column;
   display: flex;
   justify-content: center;
-  top: 10rem;
+  align-items: center;
   width: 26.9rem;
   background-color: white;
   box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.25);
@@ -61,7 +63,7 @@
   top: -1rem;
 }
 
-.app__flex__figure {
+.app__flex {
   display: flex !important;
 }
 .app__margin__0 {
@@ -84,8 +86,13 @@
   border: 2px solid transparent !important;
   border-radius: 5px !important;
 }
-.app__input:focus {
+.app__good:focus {
   border: 2px solid #00b5ad !important;
+  background-color: #fff !important;
+}
+
+.app__danger:focus {
+  border: 2px solid red !important;
   background-color: #fff !important;
 }
 .app__select {
@@ -93,4 +100,39 @@
   padding: 0.315rem !important;
   border-radius: 5px !important;
   border: 2px solid transparent !important;
+}
+
+.app__pd_x_2 {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+.app__pd_y_3 {
+  padding-bottom: 3rem !important;
+  padding-top: 3rem !important;
+}
+.app__flex_column {
+  flex-direction: column;
+}
+.app__justify {
+  justify-content: center !important;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.app__align {
+  align-items: center !important;
+}
+.error {
+  justify-content: center;
+  border-radius: 5px;
+  padding: 0.2rem 1.5rem;
+  align-items: center;
+  color: red;
+  position: absolute;
+  /* position: relative; */
+  top: 0;
+  /* left: 2.5rem; */
+  background-color: #f0b2b3;
+}
+.error__icon {
+  fill: #f65f20 !important;
 }

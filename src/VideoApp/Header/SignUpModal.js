@@ -1,8 +1,7 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import ReactDOM from "react-dom";
-import { Field, reduxForm } from "redux-form";
-import { SubmissionError } from "redux-form";
-
+import { signUpErrorClose } from "../actions";
+import { connect } from "react-redux";
 const SignUpModal = forwardRef((props, ref) => {
   const [display, setDisplay] = useState(false);
   useImperativeHandle(ref, () => {
@@ -16,6 +15,8 @@ const SignUpModal = forwardRef((props, ref) => {
   };
   const close = () => {
     setDisplay(false);
+    //to get rid of Error message that is being receieved from server
+    props.signUpErrorClose();
   };
   if (display) {
     return ReactDOM.createPortal(
@@ -35,4 +36,6 @@ const SignUpModal = forwardRef((props, ref) => {
   }
   return null;
 });
-export default SignUpModal;
+export default connect(null, { signUpErrorClose }, null, { forwardRef: true })(
+  SignUpModal
+);

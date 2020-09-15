@@ -20,6 +20,7 @@ import {
   FETCH_AUTH,
   SIGNUP_CREATE,
   SIGNUP_ERROR,
+  SIGNUP_ERROR_CLOSE,
   LOADING_SPINNER,
 } from "./types";
 const BASE_URL = "http://localhost:5000";
@@ -32,19 +33,27 @@ export const signUpCreate = (formValues) => (dispatch, getState) => {
       ...formValues,
     })
     .then((res) => {
-      dispatch({
-        type: SIGNUP_CREATE,
-        payload: res.data,
-      });
-      dispatch({ type: LOADING_SPINNER, payload: false });
-      history.push("/dashboard");
+      setTimeout(() => {
+        dispatch({
+          type: SIGNUP_CREATE,
+          payload: res.data,
+        });
+        dispatch({ type: LOADING_SPINNER, payload: false });
+        history.push("/dashboard");
+      }, 1500);
     })
     .catch((error) => {
-      dispatch({ type: LOADING_SPINNER, payload: false });
-      dispatch({ type: SIGNUP_ERROR, payload: error.response.data.message });
+      setTimeout(() => {
+        dispatch({ type: LOADING_SPINNER, payload: false });
+        dispatch({ type: SIGNUP_ERROR, payload: error.response.data.message });
+      }, 1500);
     });
 
   // history.push("/dashboard");
+};
+
+export const signUpErrorClose = () => (dispatch) => {
+  dispatch({ type: SIGNUP_ERROR_CLOSE });
 };
 
 export const fetchAuth = () => async (dispatch) => {
