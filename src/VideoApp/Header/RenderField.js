@@ -6,14 +6,19 @@ const RenderField = (props) => {
   useEffect(() => {
     const offSetWidth = anchorRef.current.offsetWidth;
     setAnchorHeight(offSetWidth);
+    console.log("FROMRENDERFIELD");
   }, []);
-  useEffect(() => {
-    if (inputRef.current.name === "username") {
-      inputRef.current.focus();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (inputRef.current.name === "username") {
+  //     inputRef.current.focus();
+  //   }
+  // }, []);
+  //props.meta.touched =>"app__input"
+  //
+  //
+  //
   const className = `app__input ${
-    props.meta.touched && props.meta.error ? "app__danger" : "app__good"
+    props.meta.touched && props.meta.error && "app__danger"
   }`;
   console.log(props);
   return (
@@ -25,9 +30,9 @@ const RenderField = (props) => {
       </label>
       <div>
         <input
-          ref={inputRef}
+          autoFocus={props.autoFocus}
+          // ref={inputRef}
           className={className}
-          //   className="app__input"
           {...props.input}
           type={props.type}
           autoComplete="off"
@@ -45,6 +50,12 @@ const RenderField = (props) => {
           >
             {props.meta.error}
           </span>
+        )}
+        {props.input.name === "username" && props.meta.active && (
+          <div className="position__abs alarm__username">{`Usernames must be between 4 and 30 characters😒`}</div>
+        )}
+        {props.input.name === "password" && props.meta.active && (
+          <div className="position__abs alarm__password">{`Passwords must be at least 8 characters long😒`}</div>
         )}
       </div>
     </div>

@@ -62,7 +62,11 @@
   position: relative;
   top: -1rem;
 }
-
+.app__flex__set {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 .app__flex {
   display: flex !important;
 }
@@ -85,6 +89,10 @@
   background-color: rgba(0, 0, 0, 0.05) !important;
   border: 2px solid transparent !important;
   border-radius: 5px !important;
+}
+.app__input:focus {
+  border: 2px solid #00b5ad !important;
+  background-color: #fff !important;
 }
 .app__good:focus {
   border: 2px solid #00b5ad !important;
@@ -135,4 +143,23 @@
 }
 .error__icon {
   fill: #f65f20 !important;
+}
+
+.validate {
+  position: absolute;
+}
+.position__abs {
+  position: absolute !important;
+}
+.alarm__password {
+  font-size: 0.9rem;
+}
+.alarm__username {
+  font-size: 0.9rem;
+}
+
+#login__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }

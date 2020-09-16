@@ -8,6 +8,8 @@ import modalReducers from "./modalReducers";
 import errorReducers from "./errorReducers";
 import carouselReducers from "./carouselReducers";
 import loadingReducers from "./loadingReducers";
+
+import signupLoginReducers from "./signupLoginReducers";
 export default combineReducers({
   // carousel: carouselReducers,
   error: errorReducers,
@@ -18,4 +20,5 @@ export default combineReducers({
   selectedVideo: selectReducers,
   modal: modalReducers,
   loading: loadingReducers,
+  join: signupLoginReducers,
 });

@@ -22,12 +22,36 @@ import {
   SIGNUP_ERROR,
   SIGNUP_ERROR_CLOSE,
   LOADING_SPINNER,
+  LOGIN_TOKEN,
+  LOGIN_ERROR,
 } from "./types";
 const BASE_URL = "http://localhost:5000";
 
+export const logIn = (formValues) => (dispatch, getState) => {
+  dispatch({ type: LOADING_SPINNER, payload: true });
+  axios
+    .post(`${BASE_URL}/auth/login`, {
+      ...formValues,
+    })
+    .then((res) => {
+      console.log(res);
+      localStorage.token = res.data.token;
+
+      setTimeout(() => {
+        dispatch({ type: LOGIN_TOKEN });
+        dispatch({ type: LOADING_SPINNER, payload: false });
+        // history.go(0);
+      }, 1500);
+    })
+    .catch((error) => {
+      setTimeout(() => {
+        dispatch({ type: LOADING_SPINNER, payload: false });
+        dispatch({ type: LOGIN_ERROR, payload: error.response.data.message });
+      }, 1500);
+    });
+};
 export const signUpCreate = (formValues) => (dispatch, getState) => {
   dispatch({ type: LOADING_SPINNER, payload: true });
-
   axios
     .post(`${BASE_URL}/auth/signup`, {
       ...formValues,
@@ -39,7 +63,7 @@ export const signUpCreate = (formValues) => (dispatch, getState) => {
           payload: res.data,
         });
         dispatch({ type: LOADING_SPINNER, payload: false });
-        history.push("/dashboard");
+        history.go(0);
       }, 1500);
     })
     .catch((error) => {

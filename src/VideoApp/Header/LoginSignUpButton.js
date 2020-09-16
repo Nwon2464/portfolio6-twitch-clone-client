@@ -28,10 +28,10 @@ const LoginSignUpButton = () => {
       </button>
 
       <LoginModal ref={modalRef}>
-        <i
-          onClick={() => modalRef.current.close()}
-          className="window__icon large window close icon"
-        ></i>
+        <div className="clear__btn" onClick={() => modalRef.current.close()}>
+          <ClearIcon className="clear__icon" style={{ fontSize: "2rem" }} />
+        </div>
+
         <LoginModalForm />
       </LoginModal>
       <button

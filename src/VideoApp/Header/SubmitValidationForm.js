@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { Field, reduxForm } from "redux-form";
+import React, { useEffect, useRef, useState } from "react";
+import { Field, reduxForm, formValueSelector } from "redux-form";
 import { Link } from "react-router-dom";
 import renderField from "./RenderField";
 import { connect } from "react-redux";
@@ -8,11 +8,20 @@ import SignupLoading from "./SignupLoading";
 import { ReactComponent as TwitchIcon } from "./twitch-seeklogo.com.svg";
 import ErrorMessage from "./ErrorMessage";
 const SubmitValidationForm = (props) => {
-  const { error, handleSubmit, pristine, reset, submitting } = props;
+  const {
+    visited,
+    valid,
+    invalid,
+    touched,
+    handleSubmit,
+    pristine,
+    reset,
+    submitting,
+  } = props;
   const onSubmit = (formValue) => {
     props.signUpCreate(formValue);
   };
-  //   console.log(props);
+
   return (
     <>
       {props.loading.loading ? (
@@ -40,13 +49,13 @@ const SubmitValidationForm = (props) => {
             </div>
             <div className="field">
               <Field
-                validate={[usernameValidate, required, maxLength30]}
+                validate={[usernameValidate, required]}
                 name="username"
                 label="Username"
                 type="text"
                 component={renderField}
                 placeholder="Username"
-                // autoFocus="true"
+                autoFocus={true}
               />
             </div>
             <div className="field">
@@ -67,7 +76,7 @@ const SubmitValidationForm = (props) => {
                 type="password"
                 component={renderField}
                 placeholder="Confirm Password"
-                validate={[password, required]}
+                validate={[required, confirmPassword]}
               />
             </div>
 
@@ -155,6 +164,7 @@ const SubmitValidationForm = (props) => {
               }}
             >
               <button
+                // disabled={props.input.value}
                 style={{
                   position: "relative",
                   bottom: "3px",
@@ -163,7 +173,6 @@ const SubmitValidationForm = (props) => {
                 }}
                 className="ui fluid medium button"
                 type="submit"
-                disabled={submitting}
               >
                 Sign Up{" "}
               </button>
@@ -183,20 +192,36 @@ const SubmitValidationForm = (props) => {
   );
 };
 //username validation
-const required = (value) => (value ? undefined : "Required😒");
+const required = (value) => {
+  // console.log(value);
+  return value ? undefined : "Required😒";
+};
+// Usernames must be between 3 and 30 characters.
 const maxLength = (max) => (value) =>
   value && value.length > max
     ? `Must be ${max} characters or less😒`
     : undefined;
 const maxLength30 = maxLength(30);
+////
+// ? `Usernames must be between 4 and 30 characters😒`
+
 const usernameValidate = (value) =>
   value &&
   !/^(?=.{4,30}$)(?:[a-zA-Z\d]+(?:(?:\.|-|_)[a-zA-Z\d])*)+$/i.test(value)
     ? "Invalid Username😒"
     : undefined;
+/////password
+const passWord8min = (min) => (value) =>
+  value && value.length < min
+    ? `Passwords must be at least ${min} characters long😒`
+    : undefined;
+const passWord8minValidate = passWord8min(8);
 
 const password = (value, allValues) => {
-  if (value && !/^[a-zA-Z0-9]{3,30}$/i.test(value)) return "Invalid password😒";
+  if (value && !/^[a-zA-Z0-9]{8,30}$/i.test(value)) return "Invalid password😒";
+  return undefined;
+};
+const confirmPassword = (value, allValues) => {
   if (value !== allValues.password) {
     return "Passwords don't match😒";
   }
@@ -227,12 +252,12 @@ const email = (value) =>
     ? "Invalid email address😒"
     : undefined;
 
-// SubmitValidationForm = connect(null, { signUpCreate })(SubmitValidationForm);
+// const selector = formValueSelector("submitValidation");
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     errorFromRedux: state.error.errorMessage,
     loading: state.loading,
+    // join: state.join.signupState,
   };
 };
 export default connect(mapStateToProps, { signUpCreate })(

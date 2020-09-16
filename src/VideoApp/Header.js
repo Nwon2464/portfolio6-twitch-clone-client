@@ -38,42 +38,9 @@ class Header extends React.Component {
     this.modalRef.current.openModal();
   };
 
-  // componentDidMount() {
-  //   window.gapi.load("client:auth2", () => {
-  //     window.gapi.client
-  //       .init({
-  //         clientId:
-  //           "1039122878379-b81ks1uqmmh4frc0dl9rm1ut4rg2708f.apps.googleusercontent.com",
-  //         scope: "email",
-  //       })
-  //       .then(() => {
-  //         this.auth = window.gapi.auth2.getAuthInstance();
-  //         this.onAuthChange(this.auth.isSignedIn.get());
-  //         this.auth.isSignedIn.listen(this.onAuthChange);
-  //       });
-  //   });
-  // }
-
-  // async componentDidMount() {
-  //   const response = await axios.get("http://localhost:5000/auth/currnet_user");
-  //   console.log(response);
-  // }
-  // onAuthChange = (isSignedIn) => {
-  //   if (isSignedIn) {
-  //     const profile = this.auth.currentUser.get().getBasicProfile();
-  //     this.props.signIn(profile);
-  //   } else {
-  //     this.props.signOut();
-  //   }
-  // };
-  // onSignIn = () => {
-  //   this.auth.signIn();
-  // };
   onSignOut = () => {
-    // this.auth.signOut();
     this.props.logOutAuth();
   };
-
   renderButton() {
     if (this.props.auth === null) {
       return (
@@ -121,6 +88,7 @@ class Header extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="header">
         <div className="header__left">
@@ -165,6 +133,7 @@ class Header extends React.Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
+    join: state.join,
   };
 };
 export default connect(mapStateToProps, { signIn, signOut, logOutAuth })(
