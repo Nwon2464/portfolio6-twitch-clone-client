@@ -69,7 +69,6 @@ const LoginModalForm = (props) => {
     // console.log(formValue);
     props.logIn(formValue);
   };
-  console.log(props);
   return (
     <>
       {props.loading.loading ? (

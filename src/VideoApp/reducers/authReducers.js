@@ -1,9 +1,11 @@
 import { FETCH_AUTH, LOGOUT_AUTH } from "../actions/types";
 
-const INITIAL_STATE = {
-  google_oauth: null,
-  login_token: null,
-};
+// const INITIAL_STATE = {
+//   isSignedIn: null,
+//   userId: null,
+//   userImage: null,
+//   userEmail: null,
+// };
 
 export default (state = null, action) => {
   // console.log(action);

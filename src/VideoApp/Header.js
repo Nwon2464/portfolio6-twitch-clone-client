@@ -3,7 +3,7 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { signIn, signOut, logOutAuth } from "./actions/index";
 import { connect } from "react-redux";
-
+import history from "./history";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ToggleOffOutlinedIcon from "@material-ui/icons/ToggleOffOutlined";
 import Brightness2OutlinedIcon from "@material-ui/icons/Brightness2Outlined";
@@ -19,7 +19,7 @@ import SettingsApplicationsOutlinedIcon from "@material-ui/icons/SettingsApplica
 import VideoCallIcon from "@material-ui/icons/VideoCall";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-
+import axios from "axios";
 import SearchBar from "./Header/SearchBar/SearchBar";
 import LoginSignUpButton from "./Header/LoginSignUpButton";
 import NavBar from "./Header/NavBar/NavBar";
@@ -31,9 +31,32 @@ class Header extends React.Component {
     this.modalRef = React.createRef();
     this.state = {
       open: false,
+      jwt: false,
+      jwtData: {},
     };
   }
-
+  // componentDidMount() {
+  //   if (localStorage.token) {
+  //     this.setState({ jwt: true });
+  //   }
+  // }
+  // async componentDidMount() {
+  //   const response = await axios.get("http://localhost:5000/", {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.token}`,
+  //     },
+  //   });
+  //   console.log(response.data);
+  //   if (response.data.user) {
+  //     this.setState({ jwtData: response.data.user });
+  //   } else {
+  //     // this.jwtlogOut();
+  //   }
+  // }
+  jwtlogOut = () => {
+    localStorage.removeItem("token");
+    history.go(0);
+  };
   openLoginModal = () => {
     this.modalRef.current.openModal();
   };
@@ -88,7 +111,7 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state);
     return (
       <div className="header">
         <div className="header__left">
@@ -131,9 +154,10 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     auth: state.auth,
-    join: state.join,
+    join: state.login_jwt,
   };
 };
 export default connect(mapStateToProps, { signIn, signOut, logOutAuth })(

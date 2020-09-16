@@ -9,7 +9,7 @@ const LoginRenderField = (props) => {
   //     console.log("FROMRENDERFIELD");
   //   }, []);
   const className = `app__input ${props.meta.active && ""}`;
-  console.log(props);
+//   console.log(props);
   return (
     <div className="field" style={{ position: "relative" }}>
       <label>

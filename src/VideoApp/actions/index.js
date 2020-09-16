@@ -24,9 +24,13 @@ import {
   LOADING_SPINNER,
   LOGIN_TOKEN,
   LOGIN_ERROR,
+  CHECKOUT_JWT,
 } from "./types";
 const BASE_URL = "http://localhost:5000";
 
+// export const checkoutJWTToken = () => (dispatch) => {
+//   dispatch({ type: CHECKOUT_JWT });
+// };
 export const logIn = (formValues) => (dispatch, getState) => {
   dispatch({ type: LOADING_SPINNER, payload: true });
   axios
@@ -34,13 +38,12 @@ export const logIn = (formValues) => (dispatch, getState) => {
       ...formValues,
     })
     .then((res) => {
-      console.log(res);
       localStorage.token = res.data.token;
 
       setTimeout(() => {
-        dispatch({ type: LOGIN_TOKEN });
+        // dispatch({ type: LOGIN_TOKEN });
         dispatch({ type: LOADING_SPINNER, payload: false });
-        // history.go(0);
+        history.go(0);
       }, 1500);
     })
     .catch((error) => {
@@ -57,6 +60,8 @@ export const signUpCreate = (formValues) => (dispatch, getState) => {
       ...formValues,
     })
     .then((res) => {
+      localStorage.token = res.data.token;
+
       setTimeout(() => {
         dispatch({
           type: SIGNUP_CREATE,
