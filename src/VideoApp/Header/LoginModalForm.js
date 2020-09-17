@@ -78,60 +78,63 @@ const LoginModalForm = (props) => {
           {props.errorFromRedux && (
             <ErrorMessage error={props.errorFromRedux} />
           )}
-
-          <form
-            id="login__form"
-            className="ui large form"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <div className="app__join">
-              <figure className="app__flex app__margin__0">
-                <TwitchIcon />
-              </figure>
-              <div className="app__marginLeft__0_5">
-                <h4 className="app__fontSize__1_7 app__fontWeight__b">
-                  Log in to Twitch
-                </h4>
+          <>
+            <div>
+              <div className="app__join">
+                <figure className="app__flex app__margin__0">
+                  <TwitchIcon />
+                </figure>
+                <div className="app__marginLeft__0_5">
+                  <h4 className="app__fontSize__1_7 app__fontWeight__b">
+                    Log in to Twitch
+                  </h4>
+                </div>
               </div>
             </div>
-            <div className="field">
-              <Field
-                // validate={[usernameValidate, required]}
-                name="username"
-                label="Username"
-                type="text"
-                component={LoginRenderField}
-                placeholder="Username"
-                autoFocus={true}
-              />
-            </div>
-            <div className="field">
-              <Field
-                label="Password"
-                name="password"
-                type="password"
-                component={LoginRenderField}
-                placeholder="Password"
-                // validate={[password, required]}
-              />
-            </div>
-            <div>
-              <button className="ui fluid medium button" type="submit">
-                Log In
-              </button>
-            </div>
-            <div className="ui horizontal divider">Or</div>
-            <div className="app__flex__set">
-              <a
-                id="google__log"
-                href="/auth/google"
-                className="ui red labeled icon button"
-              >
-                Log In With Google
-                <i className="google icon"></i>
-              </a>
-            </div>
-          </form>
+            <form
+              id="login__form"
+              className="ui large form"
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <div className="field">
+                <Field
+                  // validate={[usernameValidate, required]}
+                  name="username"
+                  label="Username"
+                  type="text"
+                  component={LoginRenderField}
+                  placeholder="Username"
+                  autoFocus={true}
+                />
+              </div>
+              <div className="field">
+                <Field
+                  label="Password"
+                  name="password"
+                  type="password"
+                  component={LoginRenderField}
+                  placeholder="Password"
+                  // validate={[password, required]}
+                />
+              </div>
+              <div>
+                <button className="ui fluid medium button" type="submit">
+                  Log In
+                </button>
+              </div>
+              <div className="ui horizontal divider">Or</div>
+              <div className="app__flex__set">
+                <a
+                  id="google__log"
+                  href="/auth/google"
+                  className="ui red labeled icon button"
+                >
+                  Log In With Google
+                  <i className="google icon"></i>
+                </a>
+              </div>
+            </form>
+          </>{" "}
         </>
       )}
     </>

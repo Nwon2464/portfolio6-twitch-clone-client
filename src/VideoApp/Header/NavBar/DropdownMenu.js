@@ -55,7 +55,7 @@ const DropdownMenu = (props) => {
         props.signOut();
       }
     };
-
+    console.log(props);
     return (
       <>
         <LoginModal ref={modalRef}>
@@ -76,23 +76,8 @@ const DropdownMenu = (props) => {
           }}
           className="menu__item"
         >
-          <span className="icon__button">
-            {props.leftIcon ? (
-              props.leftIcon
-            ) : (
-              <img src={props.userImage} alt="" />
-            )}
-          </span>
-          {props.children ? (
-            props.children
-          ) : (
-            <div style={{ marginTop: 15 }}>
-              {props.userEmail}
-              <hr
-                style={{ position: "relative", top: 9, width: 200, right: 50 }}
-              />
-            </div>
-          )}
+          <span className="icon__button">{props.leftIcon}</span>
+          {props.children ? props.children : <span>{props.userEmail}</span>}
 
           <span className="icon__right">{props.rightIcon}</span>
         </div>
@@ -124,7 +109,6 @@ const DropdownMenu = (props) => {
                   goToMenu={contents.goToMenu ? contents.goToMenu : ""}
                   rightIcon={contents.rightIcon}
                   signOut={props.onSignOut}
-                  userImage={props.userImage}
                   userEmail={props.userEmail}
                 >
                   {contents.content}

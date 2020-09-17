@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import { signIn, signOut, logOutAuth } from "./actions/index";
+import { signIn, signOut, logOutAuth, jwtlogOut } from "./actions/index";
 import { connect } from "react-redux";
 import history from "./history";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -62,17 +62,27 @@ class Header extends React.Component {
   };
 
   onSignOut = () => {
-    this.props.logOutAuth();
+    if (this.props.auth.googleAuthIsSignedIn) {
+      this.props.logOutAuth();
+    } else if (this.props.auth.jwtToken && this.props.auth.jwtUsername) {
+      this.props.jwtlogOut();
+    }
   };
   renderButton() {
-    if (this.props.auth === null) {
+    if (
+      this.props.auth.googleAuthIsSignedIn === null &&
+      this.props.auth.jwtToken === null
+    ) {
       return (
         <div
           style={{ fontSize: "2.1875rem" }}
           className="ui active small inline loader"
         ></div>
       );
-    } else if (this.props.auth) {
+    } else if (
+      this.props.auth.googleAuthIsSignedIn ||
+      (this.props.auth.jwtToken && this.props.auth.jwtUsername)
+    ) {
       return (
         <NavBar>
           <NavItem
@@ -82,8 +92,13 @@ class Header extends React.Component {
               onSignOut={this.onSignOut}
               allContents={loggedInContents}
               languages={languages}
-              userImage={this.props.auth.googleImage}
-              userEmail={this.props.auth.googleEmail}
+              userEmail={
+                this.props.auth.googleAuthIsSignedIn
+                  ? this.props.auth.googleAuthIsSignedIn.googleEmail.split(
+                      "@"
+                    )[0]
+                  : this.props.auth.jwtToken && this.props.auth.jwtUsername
+              }
             ></DropdownMenu>
           </NavItem>
         </NavBar>
@@ -96,7 +111,10 @@ class Header extends React.Component {
           <NavBar>
             <NavItem
               notLoggedIcon={
-                <FaceIcon fontSize="large" className="header__icon" />
+                <FaceIcon
+                  style={{ fontSize: "1.8rem" }}
+                  className="header__icon"
+                />
               }
             >
               <DropdownMenu
@@ -154,15 +172,18 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     auth: state.auth,
     join: state.login_jwt,
   };
 };
-export default connect(mapStateToProps, { signIn, signOut, logOutAuth })(
-  Header
-);
+export default connect(mapStateToProps, {
+  signIn,
+  signOut,
+  jwtlogOut,
+  logOutAuth,
+})(Header);
 
 const yetLoggedInContents = [
   {
@@ -185,7 +206,7 @@ const yetLoggedInContents = [
 const loggedInContents = [
   {
     content: "",
-    leftIcon: "",
+    leftIcon: <AccountCircleOutlinedIcon />,
 
     logged: true,
     online: "Online",

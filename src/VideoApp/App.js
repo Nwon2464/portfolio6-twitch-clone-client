@@ -30,7 +30,9 @@ const App = (props) => {
   }, []);
   useEffect(() => {
     props.fetchAuth();
+    // props.fetchJWT();
   }, []);
+  console.log(props.auth);
   // const [streams, setStreams] = useState([]);
   // const [showModal, setShowModal] = useState(false);
   //Youtube API

@@ -39,18 +39,19 @@ export const logIn = (formValues) => (dispatch, getState) => {
     })
     .then((res) => {
       localStorage.token = res.data.token;
-
+      const username = res.data.user.username;
       setTimeout(() => {
-        // dispatch({ type: LOGIN_TOKEN });
+        dispatch({ type: "JWT_AUTH", payload: username });
         dispatch({ type: LOADING_SPINNER, payload: false });
-        history.go(0);
+        history.push("/");
+        // history.go(0);
       }, 1500);
     })
     .catch((error) => {
       setTimeout(() => {
         dispatch({ type: LOADING_SPINNER, payload: false });
         dispatch({ type: LOGIN_ERROR, payload: error.response.data.message });
-      }, 1500);
+      }, 2000);
     });
 };
 export const signUpCreate = (formValues) => (dispatch, getState) => {
@@ -61,15 +62,12 @@ export const signUpCreate = (formValues) => (dispatch, getState) => {
     })
     .then((res) => {
       localStorage.token = res.data.token;
-
+      const username = res.data.user.username;
       setTimeout(() => {
-        dispatch({
-          type: SIGNUP_CREATE,
-          payload: res.data,
-        });
+        dispatch({ type: "JWT_AUTH", payload: username });
         dispatch({ type: LOADING_SPINNER, payload: false });
-        history.go(0);
-      }, 1500);
+        history.push("/");
+      }, 2000);
     })
     .catch((error) => {
       setTimeout(() => {
@@ -84,11 +82,27 @@ export const signUpCreate = (formValues) => (dispatch, getState) => {
 export const signUpErrorClose = () => (dispatch) => {
   dispatch({ type: SIGNUP_ERROR_CLOSE });
 };
-
 export const fetchAuth = () => async (dispatch) => {
-  const { data } = await axios.get("/auth/current_user");
+  if (localStorage.token) {
+    const response = await axios.get("http://localhost:5000/", {
+      headers: {
+        authorization: `Bearer ${localStorage.token}`,
+      },
+    });
+    dispatch({ type: "JWT_AUTH", payload: response.data.user.username });
+  }
   // console.log(response);
-  dispatch({ type: FETCH_AUTH, payload: data });
+  else {
+    const { data } = await axios.get("/auth/current_user");
+    dispatch({ type: FETCH_AUTH, payload: data });
+  }
+};
+export const jwtlogOut = () => async (dispatch) => {
+  localStorage.removeItem("token");
+  dispatch({ type: "JWT_AUTH_LOGOUT" });
+  history.push("/");
+
+  // history.go(0);
 };
 
 export const logOutAuth = () => async (dispatch) => {
@@ -96,6 +110,7 @@ export const logOutAuth = () => async (dispatch) => {
   // console.log(data);
   dispatch({ type: LOGOUT_AUTH });
   history.push("/");
+  // history.go(0);
 };
 
 export const showModal = (trueOrFalse) => {
