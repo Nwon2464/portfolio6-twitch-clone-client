@@ -1,28 +1,3 @@
-// import React, { useState } from "react";
-// import ReactDOM from "react-dom";
-
-// const LoginModal = (props) => {
-//   return ReactDOM.createPortal(
-//     <div onClick={props.onDismiss} className="ui dimmer modals visible active">
-//       <div
-//         onClick={(e) => e.stopPropagation()}
-//         className="ui standard modal visible active"
-//       >
-//         <div className="ui middle aligned center aligned grid">
-//           <div className="column">
-//             <h2 className="ui teal image header">
-//               <img src="" className="image" />
-//               <div className="content">Log In to your account</div>
-//             </h2>
-//           </div>
-//         </div>
-//         {/* <div className="actions">asdf</div> */}
-//       </div>
-//     </div>,
-//     document.querySelector("#modal3")
-//   );
-// };
-// export default LoginModal;
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import ReactDOM from "react-dom";
 import { Field, reduxForm } from "redux-form";
@@ -47,7 +22,10 @@ const LoginModal = forwardRef((props, ref) => {
     return ReactDOM.createPortal(
       <div className="modal-wrapper">
         <div onClick={close} className="modal-backdrop">
-          <div onClick={(e) => e.stopPropagation()} className="modal-box">
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="modal-box modal__signup"
+          >
             {props.children}
           </div>
         </div>

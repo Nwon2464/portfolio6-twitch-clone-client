@@ -19,6 +19,7 @@ import GoogleAuth from "./Header";
 import Dashboard from "./Dashboard";
 import Search from "./components/Search/Search";
 
+import Skeleton from "react-loading-skeleton";
 import { showModal } from "./actions";
 const KEY = "AIzaSyAR4iYaiGT4oNWSkga37lDBzxqJLp0Rg70";
 const clientId =
@@ -33,6 +34,7 @@ const App = (props) => {
     // props.fetchJWT();
   }, []);
   console.log(props.auth);
+
   // const [streams, setStreams] = useState([]);
   // const [showModal, setShowModal] = useState(false);
   //Youtube API

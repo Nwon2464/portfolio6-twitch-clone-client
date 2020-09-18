@@ -1,68 +1,10 @@
-// import React from "react";
-// import { connect } from "react-redux";
-// import { ReactComponent as TwitchIcon } from "./twitch-seeklogo.com.svg";
-
-// const LoginModalForm = (props) => {
-//   return (
-//     <>
-//       <div className="ui middle aligned center aligned grid">
-//         <div className="column">
-//           <h2 className="ui image header">
-//             <TwitchIcon />
-//             <div className="content">Log-in to your account</div>
-//           </h2>
-
-//           <form className="ui large form">
-//             <div className="ui stacked segment">
-//               <div className="field">
-//                 <div className="ui left icon input">
-//                   <i className="user icon"></i>
-//                   <input
-//                     type="text"
-//                     name="email"
-//                     placeholder="E-mail address"
-//                   />
-//                 </div>
-//               </div>
-//               <div className="field">
-//                 <div className="ui left icon input">
-//                   <i className="lock icon"></i>
-//                   <input
-//                     type="password"
-//                     name="password"
-//                     placeholder="Password"
-//                   />
-//                 </div>
-//               </div>
-//               <div className="ui fluid large teal submit button">Login</div>
-//             </div>
-//             <div className="ui error message"></div>
-//           </form>
-//           <div class="ui horizontal divider">Or</div>
-//           <a
-//             id="google__log"
-//             href="/auth/google"
-//             className="ui red labeled icon button"
-//           >
-//             Log In With Google
-//             <i class="google icon"></i>
-//           </a>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default connect(null)(LoginModalForm);
 import React from "react";
 import { connect } from "react-redux";
-import { ReactComponent as TwitchIcon } from "./twitch-seeklogo.com.svg";
 import { Field, reduxForm } from "redux-form";
 import { logIn } from "../actions";
 import LoginRenderField from "./LoginRenderField";
 import ErrorMessage from "./ErrorMessage";
 import SignupLoading from "./SignupLoading";
-
 const LoginModalForm = (props) => {
   const { handleSubmit } = props;
   const onSubmit = (formValue) => {
@@ -79,18 +21,6 @@ const LoginModalForm = (props) => {
             <ErrorMessage error={props.errorFromRedux} />
           )}
           <>
-            <div>
-              <div className="app__join">
-                <figure className="app__flex app__margin__0">
-                  <TwitchIcon />
-                </figure>
-                <div className="app__marginLeft__0_5">
-                  <h4 className="app__fontSize__1_7 app__fontWeight__b">
-                    Log in to Twitch
-                  </h4>
-                </div>
-              </div>
-            </div>
             <form
               id="login__form"
               className="ui large form"
@@ -122,7 +52,12 @@ const LoginModalForm = (props) => {
                   Log In
                 </button>
               </div>
-              <div className="ui horizontal divider">Or</div>
+              <div
+                style={{ fontSize: "0.8rem" }}
+                className="ui horizontal divider"
+              >
+                Or
+              </div>
               <div className="app__flex__set">
                 <a
                   id="google__log"
@@ -134,7 +69,7 @@ const LoginModalForm = (props) => {
                 </a>
               </div>
             </form>
-          </>{" "}
+          </>
         </>
       )}
     </>

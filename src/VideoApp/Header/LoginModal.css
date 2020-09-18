@@ -25,10 +25,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 26.9rem;
+  width: 30rem;
+  height: auto;
   background-color: white;
   box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.25);
-  padding: 2rem 1rem;
+  padding: 0rem 1rem;
+}
+/* .modal__login {
+  width: 30rem !important;
+  top: 1rem !important;
+  height: 32rem !important;
+} */
+.margin__top__1 {
+  margin-top: 1rem !important;
+}
+.height__2 {
+  height: 2rem !important;
+}
+.position__relative {
+  position: relative !important;
+}
+.app__full__width {
+  width: 100%;
+}
+.border__bottom__solid {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+.app__ul {
+  flex-grow: 1;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  height: 100%;
 }
 #google__log {
   padding: 0.95rem;
@@ -60,7 +87,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  /* top: -1rem; */
+  top: 1rem;
 }
 .app__flex__set {
   display: flex !important;
@@ -162,4 +189,38 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+.ui.segment.active.tab {
+  box-shadow: none !important;
+
+  border-radius: 0 !important;
+  border: none !important;
+}
+.ui.attached.menu:not(.tabular) {
+  border: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.ui.secondary.pointing.menu .active.item {
+  color: #00b5ad;
+}
+.ui.secondary.pointing.menu .active.item:hover {
+  color: #00b5ad !important;
+}
+
+.ui.secondary.pointing.menu .active.item {
+  border-color: #00b5ad !important;
+}
+.ui.secondary.pointing.menu .item {
+  bottom: 2px;
+  border-bottom-width: 19px;
+}
+.ui .pointing .secondary .bottom .attached .menu {
+  font-size: 1.15rem;
+}
+
+.ui.segment {
+  margin-bottom: 0px !important;
 }

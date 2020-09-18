@@ -37,16 +37,6 @@ const SubmitValidationForm = (props) => {
             style={{ padding: "1rem" }}
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div className="app__join">
-              <figure className="app__flex app__margin__0">
-                <TwitchIcon />
-              </figure>
-              <div className="app__marginLeft__0_5">
-                <h4 className="app__fontSize__1_7 app__fontWeight__b">
-                  Join Today
-                </h4>
-              </div>
-            </div>
             <div className="field">
               <Field
                 validate={[usernameValidate, required]}

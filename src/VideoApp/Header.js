@@ -25,14 +25,15 @@ import LoginSignUpButton from "./Header/LoginSignUpButton";
 import NavBar from "./Header/NavBar/NavBar";
 import NavItem from "./Header/NavBar/NavItem";
 import DropdownMenu from "./Header/NavBar/DropdownMenu";
+import Skeleton from "react-loading-skeleton";
+
+import { ReactComponent as TwitchIcon } from "./Header/twitch-seeklogo.com.svg";
 class Header extends React.Component {
   constructor(props) {
     super(props);
     this.modalRef = React.createRef();
     this.state = {
       open: false,
-      jwt: false,
-      jwtData: {},
     };
   }
   // componentDidMount() {
@@ -74,10 +75,9 @@ class Header extends React.Component {
       this.props.auth.jwtToken === null
     ) {
       return (
-        <div
-          style={{ fontSize: "2.1875rem" }}
-          className="ui active small inline loader"
-        ></div>
+        <div>
+          <Skeleton height={25} width={25} />
+        </div>
       );
     } else if (
       this.props.auth.googleAuthIsSignedIn ||
@@ -129,19 +129,20 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="header">
         <div className="header__left">
-          <button>
-            <MenuIcon />
-          </button>
           <Link to="/">
-            <img
-              className="header__logo"
-              src="https://react.semantic-ui.com/logo.png"
-              alt="youtube"
-            />
+            <TwitchIcon width={30} height={30} />
+          </Link>
+          <Link to="/">
+            <TwitchIcon width={30} height={30} />
+          </Link>
+          <Link to="/">
+            <TwitchIcon width={30} height={30} />
+          </Link>
+          <Link to="/">
+            <TwitchIcon width={30} height={30} />
           </Link>
         </div>
         <div className="header__input">
@@ -175,7 +176,6 @@ const mapStateToProps = (state) => {
   // console.log(state);
   return {
     auth: state.auth,
-    join: state.login_jwt,
   };
 };
 export default connect(mapStateToProps, {
