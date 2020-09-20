@@ -124,52 +124,57 @@ const LoginSignUpButton = () => {
   const openSignUpModal = () => {
     signUpModalRef.current.openModal();
   };
-  console.log(tryRef);
-  console.log(modalRef2);
   return (
-    <>
-      <button
-        onClick={openLoginModal}
-        className="header__icon smt__button__login ui button"
-      >
-        Log In
-      </button>
+    <div className="app-flex app-flex-nowrap">
+      <div className="app-pd-x-03">
+        <button
+          className="app-border-bottom-left-radius-large app-border-bottom-right-radius-large app-border-top-left-radius-large app-border-top-right-radius-large app-core-secondary app-align-middle app-relative app-justify-content-center app-align-items-center app-inline-flex app-core-button app-overflow-hidden app-cursor-pointer"
+          onClick={openLoginModal}
+        >
+          <div className="app-button-x app align-items-center app-flex app-flex-grow-0">
+            <div className="app-flex-grow-0">Log In</div>
+          </div>
+        </button>
 
-      <LoginModal ref={modalRef}>
-        <div className="clear__btn" onClick={() => modalRef.current.close()}>
-          <ClearIcon className="clear__icon" style={{ fontSize: "2rem" }} />
-        </div>
+        <LoginModal ref={modalRef}>
+          <div className="clear__btn" onClick={() => modalRef.current.close()}>
+            <ClearIcon className="clear__icon" style={{ fontSize: "2rem" }} />
+          </div>
 
-        <Tab
-          style={{ width: "100%" }}
-          panes={panes}
-          menu={{ secondary: true, pointing: true, attached: "bottom" }}
-          defaultActiveIndex={0}
-        />
+          <Tab
+            style={{ width: "100%" }}
+            panes={panes}
+            menu={{ secondary: true, pointing: true, attached: "bottom" }}
+            defaultActiveIndex={0}
+          />
 
-        {/* <LoginModalForm /> */}
-      </LoginModal>
-
-      <button
-        onClick={openLoginModal2}
-        style={{ marginRight: "5px" }}
-        className="header__icon smt__button__signup ui button"
-      >
-        Sign Up
-      </button>
-      <LoginModal ref={modalRef2}>
-        <div className="clear__btn" onClick={() => modalRef2.current.close()}>
-          <ClearIcon className="clear__icon" style={{ fontSize: "2rem" }} />
-        </div>
-        <Tab
-          ref={tryRef}
-          style={{ width: "100%" }}
-          panes={panes}
-          menu={{ secondary: true, pointing: true, attached: "bottom" }}
-          defaultActiveIndex={1}
-        />
-      </LoginModal>
-    </>
+          {/* <LoginModalForm /> */}
+        </LoginModal>
+      </div>
+      <div className="app-pd-x-03">
+        <button
+          onClick={openLoginModal2}
+          style={{ marginRight: "5px" }}
+          className="app-border-bottom-left-radius-large app-border-bottom-right-radius-large app-border-top-left-radius-large app-border-top-right-radius-large app-align-middle app-relative app-justify-content-center app-align-items-center app-inline-flex app-core-button app-core-primary app-overflow-hidden app-cursor-pointer"
+        >
+          <div className="app-button-x app align-items-center app-flex app-flex-grow-0">
+            <div className="app-flex-grow-0">Sign Up</div>
+          </div>
+        </button>
+        <LoginModal ref={modalRef2}>
+          <div className="clear__btn" onClick={() => modalRef2.current.close()}>
+            <ClearIcon className="clear__icon" style={{ fontSize: "2rem" }} />
+          </div>
+          <Tab
+            ref={tryRef}
+            style={{ width: "100%" }}
+            panes={panes}
+            menu={{ secondary: true, pointing: true, attached: "bottom" }}
+            defaultActiveIndex={1}
+          />
+        </LoginModal>
+      </div>
+    </div>
   );
 };
 export default LoginSignUpButton;

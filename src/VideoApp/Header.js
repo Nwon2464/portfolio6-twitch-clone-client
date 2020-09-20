@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { signIn, signOut, logOutAuth, jwtlogOut } from "./actions/index";
@@ -7,7 +7,7 @@ import history from "./history";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ToggleOffOutlinedIcon from "@material-ui/icons/ToggleOffOutlined";
 import Brightness2OutlinedIcon from "@material-ui/icons/Brightness2Outlined";
-import FaceIcon from "@material-ui/icons/Face";
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import SubscriptionsOutlinedIcon from "@material-ui/icons/SubscriptionsOutlined";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
@@ -26,53 +26,34 @@ import NavBar from "./Header/NavBar/NavBar";
 import NavItem from "./Header/NavBar/NavItem";
 import DropdownMenu from "./Header/NavBar/DropdownMenu";
 import Skeleton from "react-loading-skeleton";
-
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { ReactComponent as TwitchIcon } from "./Header/twitch-seeklogo.com.svg";
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.modalRef = React.createRef();
-    this.state = {
-      open: false,
-    };
-  }
-  // componentDidMount() {
-  //   if (localStorage.token) {
-  //     this.setState({ jwt: true });
-  //   }
-  // }
-  // async componentDidMount() {
-  //   const response = await axios.get("http://localhost:5000/", {
-  //     headers: {
-  //       authorization: `Bearer ${localStorage.token}`,
-  //     },
-  //   });
-  //   console.log(response.data);
-  //   if (response.data.user) {
-  //     this.setState({ jwtData: response.data.user });
-  //   } else {
-  //     // this.jwtlogOut();
-  //   }
-  // }
-  jwtlogOut = () => {
+const Header = (props) => {
+  const modalRef = useRef();
+  const [open, setOpen] = useState(false);
+  const [navIndicatorActive, setNavIndicatorActive] = useState("");
+  const toggleMultipleIndicator = (value) => {
+    setNavIndicatorActive(value);
+  };
+  const jwtlogOut = () => {
     localStorage.removeItem("token");
     history.go(0);
   };
-  openLoginModal = () => {
-    this.modalRef.current.openModal();
+  const openLoginModal = () => {
+    modalRef.current.openModal();
   };
 
-  onSignOut = () => {
-    if (this.props.auth.googleAuthIsSignedIn) {
-      this.props.logOutAuth();
-    } else if (this.props.auth.jwtToken && this.props.auth.jwtUsername) {
-      this.props.jwtlogOut();
+  const onSignOut = () => {
+    if (props.auth.googleAuthIsSignedIn) {
+      props.logOutAuth();
+    } else if (props.auth.jwtToken && props.auth.jwtUsername) {
+      props.jwtlogOut();
     }
   };
-  renderButton() {
+  const renderButton = () => {
     if (
-      this.props.auth.googleAuthIsSignedIn === null &&
-      this.props.auth.jwtToken === null
+      props.auth.googleAuthIsSignedIn === null &&
+      props.auth.jwtToken === null
     ) {
       return (
         <div>
@@ -80,24 +61,26 @@ class Header extends React.Component {
         </div>
       );
     } else if (
-      this.props.auth.googleAuthIsSignedIn ||
-      (this.props.auth.jwtToken && this.props.auth.jwtUsername)
+      props.auth.googleAuthIsSignedIn ||
+      (props.auth.jwtToken && props.auth.jwtUsername)
     ) {
       return (
         <NavBar>
           <NavItem
-            loggedIcon={<AccountCircleOutlinedIcon className="header__icon" />}
+            loggedIcon={
+              <AccountCircleOutlinedIcon
+              // className="header__icon"
+              />
+            }
           >
             <DropdownMenu
-              onSignOut={this.onSignOut}
+              onSignOut={onSignOut}
               allContents={loggedInContents}
               languages={languages}
               userEmail={
-                this.props.auth.googleAuthIsSignedIn
-                  ? this.props.auth.googleAuthIsSignedIn.googleEmail.split(
-                      "@"
-                    )[0]
-                  : this.props.auth.jwtToken && this.props.auth.jwtUsername
+                props.auth.googleAuthIsSignedIn
+                  ? props.auth.googleAuthIsSignedIn.googleEmail.split("@")[0]
+                  : props.auth.jwtToken && props.auth.jwtUsername
               }
             ></DropdownMenu>
           </NavItem>
@@ -111,9 +94,9 @@ class Header extends React.Component {
           <NavBar>
             <NavItem
               notLoggedIcon={
-                <FaceIcon
-                  style={{ fontSize: "1.8rem" }}
-                  className="header__icon"
+                <PersonOutlineIcon
+                  style={{ width: "100%", height: "100%" }}
+                  // className="header__icon"
                 />
               }
             >
@@ -126,51 +109,115 @@ class Header extends React.Component {
         </>
       );
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className="header">
-        <div className="header__left">
-          <Link to="/">
-            <TwitchIcon width={30} height={30} />
-          </Link>
-          <Link to="/">
-            <TwitchIcon width={30} height={30} />
-          </Link>
-          <Link to="/">
-            <TwitchIcon width={30} height={30} />
-          </Link>
-          <Link to="/">
-            <TwitchIcon width={30} height={30} />
-          </Link>
-        </div>
-        <div className="header__input">
-          <SearchBar onSubmitForm={this.props.onSubmitForm} />
-          <SearchIcon className="header__inputButton" />
-        </div>
-        <div className="header__icons">
+  return (
+    <nav className="app-top-nav app-height-5 app-flex-shrink-0">
+      <div className="app-flex app-flex-nowrap app-full-height app-align-items-stretch">
+        <div className="app-flex app-flex-grow-1 app-flex-shrink-1 app-justify-content-start app-align-items-stretch app-full-width">
           <Link
-            to="/streams/new"
-            style={{
-              display: "flex",
-              alignSelf: "center",
-              justifyContent: "center",
-            }}
+            className="app-flex app-justify-content-center app-align-items-center"
+            to="/"
           >
-            <VideoCallIcon
-              style={{ marginRight: "10px" }}
-              className="header__icon"
-            />
+            <div className="app-inline-flex app-pd-05">
+              <TwitchIcon width={30} height={30} />
+            </div>
           </Link>
+          <div className="app-flex app-flex-row app-full-height app-justify-content-between">
+            <div className="app-flex app-flex-column app-full-height app-pd-x-1">
+              <div
+                onClick={() => toggleMultipleIndicator("Browse")}
+                className="app-align-self-center app-flex app-full-height app-justify-content-center app-align-items-center"
+              >
+                <Link to="/">
+                  <h3 className="app-flex app-flex-column">Browse</h3>
+                </Link>
+              </div>
+              <div className="navigation-link-indicator-container">
+                {navIndicatorActive === "Browse" && (
+                  <div className="navigation-link-active-indicator"></div>
+                )}
+              </div>
+            </div>
+            <div className="navigation-link-left-border app-mg-t-1"></div>
+            <div className="app-flex app-flex-column app-full-height app-pd-x-1">
+              <div
+                onClick={() => toggleMultipleIndicator("Esports")}
+                className="app-align-self-center app-flex app-full-height  app-justify-content-center app-align-items-center"
+              >
+                <Link to="/">
+                  <h3 className="app-flex app-flex-column">Esports</h3>
+                </Link>
+              </div>
+              <div className="navigation-link-indicator-container">
+                {navIndicatorActive === "Esports" && (
+                  <div className="navigation-link-active-indicator"></div>
+                )}
+              </div>
+            </div>
+            <div className="app-flex app-flex-column app-full-height app-pd-x-1">
+              <div
+                onClick={() => toggleMultipleIndicator("Music")}
+                className="app-align-self-center app-flex app-full-height  app-justify-content-center app-align-items-center"
+              >
+                <Link to="/">
+                  <h3 className="app-flex app-flex-column">Music</h3>
+                </Link>
+              </div>
+              <div className="navigation-link-indicator-container">
+                {navIndicatorActive === "Music" && (
+                  <div className="navigation-link-active-indicator"></div>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="app-flex app-align-items-center app-full-height app-pd-x-1 app-justify-content-center">
+            <button className="app-cursor-pointer app-inline-flex app-align-items-center app-align-middle app-relative app-justify-content-center">
+              <div style={{ width: "2.5rem", height: "2.5rem" }}>
+                <MoreHorizIcon style={{ width: "100%", height: "100%" }} />
+              </div>
+            </button>
+          </div>
+        </div>
+        <div className="app-flex app-flex-grow-1 app-flex-shrink-1 app-full-width app-justify-content-center app-align-items-center">
+          <div className="app-top-nav-search-container app-mg-x-2">
+            <div className="app-top-nav-search-max-width">
+              <div className="app-pd-05">
+                <div className="app-flex app-full-width">
+                  <div className="app-flex-grow-1" style={{ marginRight: 1 }}>
+                    <div className="app-relative">
+                      <SearchBar onSubmitForm={props.onSubmitForm} />
+                    </div>
+                  </div>
+                  <button className="app-border-top-right-radius-large app-border-top-left-radius-none app-border-bottom-left-radius-none app-border-bottom-right-radius-large app-button-y app-inline-flex app-justify-content app-align-items-center app-relative app-core-button app-cursor-pointer app-input-find-button">
+                    <div className="app-justify-content-center app-core-button-icon app-inline-flex app-align-items-center">
+                      <SearchIcon className="app-core-icon-color" />
+                    </div>{" "}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="app-flex app-align-items-center app-flex-grow-1 app-flex-shrink-1 app-justify-content-end app-full-width">
+          <div className="app-mg-x-05 app-flex-shrink-0 app-flex-grow-0 app-align-self-center app-flex-nowrap">
+            <Link to="/streams/new">
+              <VideoCallIcon
+                // style={{ marginRight: "10px" }}
+                className="header__icon"
+              />
+            </Link>
+          </div>
           {/* <LoginSignUpButton /> */}
 
-          {this.renderButton()}
+          <div className="app-mg-r-1 app-pd-y-1 app-flex app-full-height">
+            <div className="app-flex app-flex-nowrap">{renderButton()}</div>{" "}
+          </div>
         </div>
       </div>
-    );
-  }
-}
+    </nav>
+  );
+};
 
 const mapStateToProps = (state) => {
   // console.log(state);

@@ -133,11 +133,12 @@ const Body = (props) => {
     e.preventDefault();
     setVisible(visible + 4);
   };
-
   const checkTags = (streams, i) => {
+    console.log(streams)
     if (streams.localization_names.length !== 1) {
       let a = _.mapKeys(streams.localization_names, "en-us");
       let b = Object.keys(a);
+      // console.log(a);
       return (
         <>
           {b.map((e, i) => {
@@ -146,7 +147,7 @@ const Body = (props) => {
                 className="channel__tag__anchor"
                 key={i}
                 style={{ marginLeft: 2, maxWidth: 90 }}
-                to="/"
+                to={`/category/all/tags/${streams.tag_ids[i]}`}
               >
                 {e}
               </Link>
@@ -159,7 +160,7 @@ const Body = (props) => {
       <Link
         className="channel__tag__anchor"
         style={{ marginLeft: 2, maxWidth: 90 }}
-        to="/"
+        to={`/category/all/tags/${streams.tag_ids}`}
       >
         {streams.localization_names[0]["en-us"]}
       </Link>
@@ -185,13 +186,13 @@ const Body = (props) => {
   };
 
   const renderCreate = () => {
-    if (props.auth) {
+    // if (props.auth) {
       return (
         <div className="render__create">
           <Link to="/streams/new">Create New Stream</Link>
         </div>
       );
-    }
+    // }
   };
 
   return (

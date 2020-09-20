@@ -1,4 +1,4 @@
-.header {
+/* .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,12 +8,12 @@
   z-index: 100;
   height: 4rem;
   background: #fff;
-}
-.header__left {
+} */
+/* .header__left {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .header__logo {
   height: 25px;
   object-fit: contain;
@@ -32,11 +32,11 @@
   align-items: center;
 }
 
-.header__inputButton {
+/* .header__inputButton {
   width: 65px !important;
   border-left: 1px solid lightgray;
   background-color: #fafafa;
-}
+} */
 
 .header__icon {
   margin-left: 8px;

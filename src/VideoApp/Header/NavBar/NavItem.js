@@ -21,11 +21,17 @@ const NavItem = (props) => {
     <div
       onClick={(e) => e.stopPropagation()}
       ref={dropdownRef}
-      className="nav__item"
+      className="app-flex app-justify-content-center app-align-items-center"
     >
-      <a href="#" className="icon__button" onClick={() => setOpen(!open)}>
-        {props.loggedIcon ? props.loggedIcon : props.notLoggedIcon}
-      </a>
+      <button
+        id="user"
+        className="app-cursor-pointer app-inline-flex app-align-items-center app-align-middle app-relative app-justify-content-center"
+        onClick={() => setOpen(!open)}
+      >
+        <div style={{ width: "2.5rem", height: "2.5rem" }}>
+          {props.loggedIcon ? props.loggedIcon : props.notLoggedIcon}
+        </div>
+      </button>
 
       {open && props.children}
     </div>

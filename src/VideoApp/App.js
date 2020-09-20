@@ -18,7 +18,7 @@ import StreamsShow from "./components/Streams/StreamsShow";
 import GoogleAuth from "./Header";
 import Dashboard from "./Dashboard";
 import Search from "./components/Search/Search";
-
+import CategoryGamesId from "./CategoryGamesId";
 import Skeleton from "react-loading-skeleton";
 import { showModal } from "./actions";
 const KEY = "AIzaSyAR4iYaiGT4oNWSkga37lDBzxqJLp0Rg70";
@@ -33,7 +33,6 @@ const App = (props) => {
     props.fetchAuth();
     // props.fetchJWT();
   }, []);
-  console.log(props.auth);
 
   // const [streams, setStreams] = useState([]);
   // const [showModal, setShowModal] = useState(false);
@@ -75,9 +74,9 @@ const App = (props) => {
   // };
 
   return (
-    <div>
+    <div className="app-flex app-flex-column app-flex-nowrap app-bottom-0 app-left-0 app-right-0 app-bottom-0">
       <Router history={history}>
-        <div className="app">
+        <div className="app-flex app-flex-column app-flex-nowrap app-full-height">
           <Header />
           {props.modal ? <Modal /> : null}
 
@@ -86,6 +85,31 @@ const App = (props) => {
               <div className="app__body">
                 <BodyLeft />
                 <BodyRight streams={props.streams} />
+              </div>
+            </Route>
+            <Route exact path="/:id">
+              <div className="app__body">
+                <BodyLeft />
+                <div>/:id</div>
+              </div>
+            </Route>
+            <Route exact path="/:id/videos/all">
+              <div className="app__body">
+                <BodyLeft />
+                <div>/:id/videos/all</div>
+              </div>
+            </Route>
+
+            <Route
+              exact
+              path="/category/games/:id"
+              component={CategoryGamesId}
+            />
+
+            <Route exact path="/category/all/tags/:id">
+              <div className="app__body">
+                <BodyLeft />
+                <div>/category/all/tags/:id</div>
               </div>
             </Route>
             <Route exact path="/streams/new">

@@ -3,9 +3,9 @@ import "./NavBar.css";
 
 const NavBar = (props) => {
   return (
-    <nav className="navbar__">
-      <div className="navbar__nav">{props.children}</div>
-    </nav>
+    <div className="app-flex-grow-1 app-flex app-pd-l-05 app-relative app-full-height app-align-items-stretch">
+      {props.children}
+    </div>
   );
 };
 

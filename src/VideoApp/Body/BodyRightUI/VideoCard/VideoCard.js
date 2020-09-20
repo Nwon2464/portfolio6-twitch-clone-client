@@ -4,13 +4,16 @@ import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 const VideoCard = (props) => {
+  console.log(props);
   return (
     <div className="game__card">
       <div className="card__maxWidth__margin app__tower__gutter">
         <h3>
           {props.recommend ? " Recommended " : ""}
-          <strong style={{ color: "#00b5ad" }}>{props.categories}</strong> we
-          think you'll like
+          <Link to="/category">
+            <strong style={{ color: "#00b5ad" }}>{props.categories}</strong>
+          </Link>{" "}
+          we think you'll like
         </h3>
         <div className="app__relative">
           <div className="card__display__flex__wrap">
@@ -30,7 +33,7 @@ const VideoCard = (props) => {
                                 <div className="channel__font_1">
                                   <h3 className="app__ellipsis app__font__weight">
                                     <Link
-                                      to="/"
+                                      to={`/${e.user_name}`}
                                       className="app__font__size app__cursor"
                                     >
                                       {e.title}
@@ -42,7 +45,7 @@ const VideoCard = (props) => {
                                 <div>
                                   <h4 className="app__ellipsis app__font__size__0_8 app__color__grey app__cursor">
                                     <Link
-                                      to="/"
+                                      to={`/${e.user_name}/videos/all`}
                                       className="app__color__grey app__cursor app__font__size__0_8"
                                     >
                                       {e.user_name}
@@ -52,7 +55,9 @@ const VideoCard = (props) => {
                                 <div>
                                   <h5 className="app__ellipsis app__font__size__0_8">
                                     <Link
-                                      to="/"
+                                      to={`/category/games/${e.game_name
+                                        .split(" ")
+                                        .join("")}`}
                                       className="app__color__grey app__cursor app__font__size__0_8"
                                     >
                                       {e.game_name}
@@ -71,7 +76,7 @@ const VideoCard = (props) => {
                               </div>
                             </div>
                             <div className="channel__icon">
-                              <Link to="/">
+                              <Link to={`/${e.user_name}/videos/all`}>
                                 <img
                                   className="channel__icon__1"
                                   src={e.profile_image_url}
@@ -84,16 +89,14 @@ const VideoCard = (props) => {
                           </div>
                         </div>
 
-                        <div className="app__order__1">
+                        <Link to={`/${e.user_name}`} className="app__order__1">
                           <div className="app__relative app__cursor">
-                            <Link to="/">
-                              <div>
-                                <img
-                                  className="channel__thumbnail"
-                                  src={e.thumbnail_url}
-                                />
-                              </div>
-                            </Link>
+                            <div>
+                              <img
+                                className="channel__thumbnail"
+                                src={e.thumbnail_url}
+                              />
+                            </div>
                             <div className="app__absolute app__top__0 app__left__0 app__card__height app__width">
                               <div className="app__absolute app__top__0 app__left__0 app__margin">
                                 <p className="app__uppercase app__live__indicator app__font__weight app__border__radius app__padding">
@@ -107,7 +110,7 @@ const VideoCard = (props) => {
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </Link>
                       </article>
                     </div>
                   </div>
