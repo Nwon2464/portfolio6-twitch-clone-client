@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 
 const LoadingGameCard = () => {
   return (
-    <div className="game__category">
+    <div className="game__category app-pd-15">
       <h3>
         <Skeleton height={28} width={250} />
       </h3>
@@ -21,7 +21,7 @@ const LoadingGameCard = () => {
                   <div className="app__relative">
                     <div className="app__flex__column app__flex app__flex__nowrap">
                       <div>
-                        <Skeleton width="155px" height="215px" />{" "}
+                        <Skeleton width="145px" height="215px" />{" "}
                       </div>
 
                       <div className="app__ellipsis app__margin__top app__flex__shrink__1 app__flex__grow__1 app__color app__font__weight app__cursor">

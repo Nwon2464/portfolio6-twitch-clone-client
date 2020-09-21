@@ -1,12 +1,7 @@
 .body__right {
-  width: 85%;
-  height: 100%;
-  flex: 0.87 1;
   background-color: #f9f9f9;
   padding: 25px 15px;
-  overflow: hidden;
-  position: relative;
-}
+ }
 
 .body__right > h2 {
   margin-left: 5px;

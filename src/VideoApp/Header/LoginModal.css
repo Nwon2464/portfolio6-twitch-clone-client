@@ -162,8 +162,8 @@
   padding: 0.2rem 1.5rem;
   align-items: center;
   color: red;
-  position: absolute;
-  /* position: relative; */
+  /* position: absolute; */
+  position: relative;
   top: 0;
   /* left: 2.5rem; */
   background-color: #f0b2b3;

@@ -4,13 +4,13 @@ import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 const VideoCard = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
-    <div className="game__card">
+    <div className="game__card app-pd-15">
       <div className="card__maxWidth__margin app__tower__gutter">
         <h3>
           {props.recommend ? " Recommended " : ""}
-          <Link to="/category">
+          <Link to="/category" style={{ fontSize: "1.5rem" }}>
             <strong style={{ color: "#00b5ad" }}>{props.categories}</strong>
           </Link>{" "}
           we think you'll like

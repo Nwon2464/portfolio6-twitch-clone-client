@@ -2,7 +2,7 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 const Loading = () => {
   return (
-    <div className="game__card">
+    <div className="game__card app-pd-15">
       <div className="card__maxWidth__margin app__tower__gutter">
         <h3>
           <Skeleton height={28} width={250} />
@@ -71,7 +71,7 @@ const Loading = () => {
 
                           <div className="app__order__1">
                             <div className="app__relative app__cursor">
-                              <Skeleton width="320px" height="170px" />
+                              <Skeleton width="290px" height="170px" />
                             </div>
                           </div>
                         </article>

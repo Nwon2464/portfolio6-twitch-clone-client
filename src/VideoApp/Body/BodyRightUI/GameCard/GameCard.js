@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 const GameCard = (props) => {
   return (
-    <div className="game__category">
+    <div className="game__category app-pd-15">
       <h3>
-        <Link to="/category">
+        <Link to="/category" style={{ fontSize: "1.5rem" }}>
           <strong style={{ color: "#00b5ad" }}>{props.categories}</strong>
         </Link>{" "}
         we think you’ll like
@@ -35,9 +35,7 @@ const GameCard = (props) => {
 
                     <div className="app__ellipsis app__margin__top app__flex__shrink__1 app__flex__grow__1 app__color app__font__weight app__cursor">
                       <Link
-                        to={`/category/games/${e.name
-                          .split(" ")
-                          .join("")}`}
+                        to={`/category/games/${e.name.split(" ").join("")}`}
                         className="app__font__size app__cursor"
                       >
                         {e.name}
@@ -45,9 +43,7 @@ const GameCard = (props) => {
                     </div>
                     <p className="app__font__size">
                       <Link
-                        to={`/category/games/${e.name
-                          .split(" ")
-                          .join("")}`}
+                        to={`/category/games/${e.name.split(" ").join("")}`}
                         className="app__cursor"
                       >
                         {props.checkViewers(e.gameViewers)}

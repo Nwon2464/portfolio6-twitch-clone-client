@@ -208,7 +208,7 @@ const Carousel = (props) => {
     }
   };
   return (
-    <div className="carousel">
+    <div className="carousel app-pd-20">
       <div ref={styleRef} className="slides">
         <div className="app__absolute app__left__0">
           <button className="app__carousel__btn" onClick={moveRight}>

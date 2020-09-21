@@ -10,10 +10,14 @@
   --color-header-background: #ffffff;
   --color-header-input-button-background: #f2f2f2;
   --color-header-input-find-button-background: rgba(0, 0, 0, 0.03);
-
+  --color-text-alt: #1f1f23;
   --color-text-base: #0e0e10;
   --color-border-input: rgba(0, 0, 0, 0.05);
   --color-button: #f9f9f9;
+  --color-fill-live: #e91916;
+  --font-size-6: 1.2rem;
+  --font-size-5: 1rem;
+  --border-radius-rounded: 9000px;
   --border-width-input: 2px;
   --border-radius-none: 0;
   --border-radius-large: 0.6rem;
@@ -40,7 +44,7 @@
 *::after {
   box-sizing: inherit;
 }
-#root,
+.root,
 body,
 html {
   display: flex;
@@ -59,7 +63,14 @@ hr,
 img {
   border: none !important;
 }
-
+figure {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
 button {
   background: 0 0;
   border-radius: 0;
@@ -181,10 +192,15 @@ button {
   margin-left: 2rem !important;
   margin-right: 2rem !important;
 }
+.app-mg-l-05 {
+  margin-left: 0.5rem !important;
+}
 .app-mg-t-1 {
   margin-top: 1rem !important;
 }
-
+.app-mg-1 {
+  margin: 1rem !important;
+}
 .app-mg-x-05 {
   margin-left: 0.5rem !important;
   margin-right: 0.5rem !important;
@@ -199,6 +215,9 @@ button {
 
 .app-mg-l-1 {
   margin-left: 1rem !important;
+}
+.app-pd-t-05 {
+  padding-top: 0.5rem !important;
 }
 .app-pd-y-1 {
   padding-bottom: 1rem !important;
@@ -241,7 +260,12 @@ button {
 .app-pd-05 {
   padding: 0.5rem !important;
 }
-
+.app-pd-15 {
+  padding: 1.5rem !important;
+}
+.app-pd-20 {
+  padding: 2rem !important;
+}
 /* INPUT */
 .app-input {
   appearance: none;
@@ -390,4 +414,62 @@ button {
   margin-bottom: -0.1rem;
   transform-origin: 0 0;
   transition: transform 0.2s ease;
+}
+
+/* BODY LEFT */
+.side-nav {
+  background-color: #efeff1;
+  width: 20rem;
+}
+
+.app-z-above {
+  z-index: 10 !important;
+}
+.side-nav-card-link {
+  height: 4rem;
+}
+
+.app-live-channel-status-indicator {
+  background-color: var(--color-fill-live);
+}
+.app-live-channel-status-indicator--small,
+.app-live-channel-status-indicator--small:after {
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.app-border-radius-rounded {
+  border-radius: 9000px !important;
+  border-radius: var(--border-radius-rounded) !important;
+}
+
+.app-font-size-6 {
+  font-size: 1.2rem !important;
+  font-size: var(--font-size-6) !important;
+}
+.app-font-size-5 {
+  font-size: 1rem !important;
+  font-size: var(--font-size-5) !important;
+}
+.app-c-text-alt {
+  color: #1f1f23 !important;
+  color: var(--color-text-alt) !important;
+}
+.app-avatar--size-30 {
+  height: 30px;
+  width: 30px;
+}
+.app-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.app-z-index-default {
+  z-index: var(--z-index-default);
+}
+.app-recommend:hover {
+  background: #e6e6ea;
+}
+.app-body-right-background {
+  background: #f7f7f8;
 }

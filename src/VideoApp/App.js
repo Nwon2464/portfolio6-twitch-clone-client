@@ -18,9 +18,10 @@ import StreamsShow from "./components/Streams/StreamsShow";
 import GoogleAuth from "./Header";
 import Dashboard from "./Dashboard";
 import Search from "./components/Search/Search";
-import CategoryGamesId from "./CategoryGamesId";
+import CategoryGamesId from "./Body/BodyPage/CategoryGamesId";
 import Skeleton from "react-loading-skeleton";
 import { showModal } from "./actions";
+import Id from "./Body/BodyPage/Id";
 const KEY = "AIzaSyAR4iYaiGT4oNWSkga37lDBzxqJLp0Rg70";
 const clientId =
   "979708510452-oa44268dodlk7at65bponsb27c0utgn2.apps.googleusercontent.com";
@@ -74,7 +75,7 @@ const App = (props) => {
   // };
 
   return (
-    <div className="app-flex app-flex-column app-flex-nowrap app-bottom-0 app-left-0 app-right-0 app-bottom-0">
+    <div className="app-flex app-flex-column app-flex-nowrap app-bottom-0 app-left-0 app-right-0 app-top-0 app-absolute">
       <Router history={history}>
         <div className="app-flex app-flex-column app-flex-nowrap app-full-height">
           <Header />
@@ -82,20 +83,19 @@ const App = (props) => {
 
           <Switch>
             <Route exact path="/">
-              <div className="app__body">
-                <BodyLeft />
+              <div className="app-flex app-flex-nowrap app-relative">
+                <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
+                  <BodyLeft />
+                </div>
                 <BodyRight streams={props.streams} />
               </div>
             </Route>
-            <Route exact path="/:id">
-              <div className="app__body">
-                <BodyLeft />
-                <div>/:id</div>
-              </div>
-            </Route>
+            <Route exact path="/:id" component={Id} />
             <Route exact path="/:id/videos/all">
-              <div className="app__body">
-                <BodyLeft />
+              <div className="app-flex app-flex-nowrap app-relative app-full-height">
+                <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
+                  <BodyLeft />
+                </div>
                 <div>/:id/videos/all</div>
               </div>
             </Route>
@@ -107,8 +107,10 @@ const App = (props) => {
             />
 
             <Route exact path="/category/all/tags/:id">
-              <div className="app__body">
-                <BodyLeft />
+              <div className="app-flex app-flex-nowrap app-relative app-full-height">
+                <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
+                  <BodyLeft />
+                </div>
                 <div>/category/all/tags/:id</div>
               </div>
             </Route>

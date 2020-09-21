@@ -69,7 +69,9 @@ const Header = (props) => {
           <NavItem
             loggedIcon={
               <AccountCircleOutlinedIcon
-              // className="header__icon"
+                style={{ width: "100%", height: "100%" }}
+
+                // className="header__icon"
               />
             }
           >
@@ -116,7 +118,7 @@ const Header = (props) => {
       <div className="app-flex app-flex-nowrap app-full-height app-align-items-stretch">
         <div className="app-flex app-flex-grow-1 app-flex-shrink-1 app-justify-content-start app-align-items-stretch app-full-width">
           <Link
-            className="app-flex app-justify-content-center app-align-items-center"
+            className="app-mg-l-1 app-flex app-justify-content-center app-align-items-center"
             to="/"
           >
             <div className="app-inline-flex app-pd-05">
