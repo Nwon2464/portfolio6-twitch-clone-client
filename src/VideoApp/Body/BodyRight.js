@@ -12,7 +12,7 @@ import GameCard from "./BodyRightUI/GameCard/GameCard";
 // import CarouselMiddleCategory from "./Carousel/CarouselMiddleFirst/CarouselMiddleCategory";
 import Loading from "./BodyRightUI/VideoCard/Loading";
 import LoadingGameCard from "./BodyRightUI/GameCard/LoadingGameCard";
-const Body = (props) => {
+const BodyRight = (props) => {
   const [liveVideos, setLiveVideos] = useState([]);
   const [visible, setVisible] = useState(4);
 
@@ -194,7 +194,10 @@ const Body = (props) => {
     // }
   };
   return (
-    <div className="app-body-right-background app-z-index-default app-flex app-flex-column app-flex-grow-1 app-full-height app-full-width">
+    <div
+      style={{ overflow: "scroll" }}
+      className="app-body-right-background app-z-index-default app-flex app-flex-column app-flex-grow-1 app-full-height app-full-width"
+    >
       {/* <h2>Stream Lists</h2> */}
       <div className="app-full-width app-relative">
         <Carousel />
@@ -305,4 +308,4 @@ const mapStateToProps = (state) => {
     auth: state.auth,
   };
 };
-export default connect(mapStateToProps)(Body);
+export default connect(mapStateToProps)(BodyRight);

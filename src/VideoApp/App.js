@@ -35,45 +35,6 @@ const App = (props) => {
     // props.fetchJWT();
   }, []);
 
-  // const [streams, setStreams] = useState([]);
-  // const [showModal, setShowModal] = useState(false);
-  //Youtube API
-  // const onSubmitForm = async (term) => {
-  //   const response = await youtube.get("/search", {
-  //     params: {
-  //       part: "snippet",
-  //       type: "video",
-  //       maxResults: 20,
-  //       key: KEY,
-  //       q: term,f
-  //     },
-  //   });
-  //   setVideos(response.data.items);
-  // };
-  // useEffect(() => {
-  //   onSubmitForm("sky");
-  // }, []);
-
-  //Json API
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await axios.get("http://localhost:3001/videos");
-  //     setVideos(response.data);
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // const onVideoSelect = (streams) => {
-  //   console.log(streams);
-  //   props.showModal(true);
-  //   props.selectVideo(streams);
-  // };
-
-  // const onPortalDismiss = () => {
-  //   props.closeModal(false);
-  //   history.push("/");
-  // };
-
   return (
     <div className="app-flex app-flex-column app-flex-nowrap app-bottom-0 app-left-0 app-right-0 app-top-0 app-absolute">
       <Router history={history}>
@@ -83,7 +44,7 @@ const App = (props) => {
 
           <Switch>
             <Route exact path="/">
-              <div className="app-flex app-flex-nowrap app-relative">
+              <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
                 <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
                   <BodyLeft />
                 </div>
