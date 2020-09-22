@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import BodyLeft from "../../Body/BodyLeft";
+import BodyLeft from "../Body/BodyLeft";
 import "./ViewLeft.css";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import history from "../../history";
@@ -13,7 +13,6 @@ import CommentList from "./CommentList/CommentList";
 import { fetchStreams } from "../../actions";
 import { connect } from "react-redux";
 const ViewLeft = (props) => {
-  console.log(props);
   useEffect(() => {
     props.fetchStreams();
   }, []);

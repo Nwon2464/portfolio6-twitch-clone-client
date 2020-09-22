@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { logIn } from "../actions";
+import { logIn } from "../../actions";
 import LoginRenderField from "./LoginRenderField";
 import ErrorMessage from "./ErrorMessage";
 import SignupLoading from "./SignupLoading";

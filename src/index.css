@@ -17,6 +17,8 @@
   --color-fill-live: #e91916;
   --font-size-6: 1.2rem;
   --font-size-5: 1rem;
+  --font-size-4: 0.9rem;
+  --font-weight-bold: bold;
   --border-radius-rounded: 9000px;
   --border-width-input: 2px;
   --border-radius-none: 0;
@@ -107,6 +109,9 @@ button {
 .app-flex {
   display: flex !important;
 }
+.app-align-items-start {
+  align-items: flex-start !important;
+}
 .app-align-items-stretch {
   align-items: stretch !important;
 }
@@ -116,6 +121,14 @@ button {
 .app-align-self-center {
   align-self: center !important;
 }
+.app-align-items-baseline {
+  align-items: baseline !important;
+}
+
+.app-align-items-end {
+  align-items: flex-end !important;
+}
+
 .app-inline-flex {
   display: inline-flex !important;
 }
@@ -180,7 +193,6 @@ button {
 .app-justify-content-center {
   justify-content: center !important;
 }
-
 .app-justify-content-end {
   justify-content: flex-end !important;
 }
@@ -201,6 +213,9 @@ button {
 .app-mg-1 {
   margin: 1rem !important;
 }
+.app-mg-b-03 {
+  margin-bottom: 0.3rem !important;
+}
 .app-mg-x-05 {
   margin-left: 0.5rem !important;
   margin-right: 0.5rem !important;
@@ -212,7 +227,9 @@ button {
 .app-mg-r-1 {
   margin-right: 1rem !important;
 }
-
+.app-mg-r-05 {
+  margin-right: 0.5rem !important;
+}
 .app-mg-l-1 {
   margin-left: 1rem !important;
 }
@@ -226,6 +243,11 @@ button {
 .app-pd-y-05 {
   padding-bottom: 0.5rem !important;
   padding-top: 0.5rem !important;
+}
+
+.app-pd-y-03 {
+  padding-bottom: 0.3rem !important;
+  padding-top: 0.3rem !important;
 }
 .app-pd-x-1 {
   padding-left: 1rem !important;
@@ -248,6 +270,9 @@ button {
   padding-left: 0.3rem !important;
   padding-right: 0.3rem !important;
 }
+.app-mg-t-03 {
+  margin-top: 0.3rem !important;
+}
 .app-pd-r-1 {
   padding-right: 1rem !important;
 }
@@ -256,6 +281,9 @@ button {
 }
 .app-pd-l-05 {
   padding-left: 0.5rem !important;
+}
+.app-pd-l-02 {
+  padding-left: 0.2rem !important;
 }
 .app-pd-05 {
   padding: 0.5rem !important;
@@ -287,6 +315,13 @@ button {
 }
 .app-input:focus {
   border: 2px solid var(--color-icon-main);
+}
+.app-color-main {
+  color: var(--color-icon-main);
+}
+.app-color-main:hover {
+  color: var(--color-icon-main);
+  text-decoration: underline;
 }
 /* LARGE BORDER BOTTOM LEFT OR RIGHT */
 .app-border-bottom-left-radius-large {
@@ -320,19 +355,19 @@ button {
   border-top-right-radius: var(--border-radius-large) !important;
 }
 /* MEDIUM BORDER BOTTOM LEFT OR RIGHT */
-.app-border-bottom-left-radius-large {
+.app-border-bottom-left-radius-medium {
   border-bottom-left-radius: var(--border-radius-medium) !important;
 }
 
-.app-border-bottom-right-radius-large {
+.app-border-bottom-right-radius-medium {
   border-bottom-right-radius: var(--border-radius-medium) !important;
 }
 /* MEDIUM BORDER TOP LEFT OR RIGHT */
-.app-border-top-left-radius-large {
+.app-border-top-left-radius-medium {
   border-top-left-radius: var(--border-radius-medium) !important;
 }
 
-.app-border-top-right-radius-large {
+.app-border-top-right-radius-medium {
   border-top-right-radius: var(--border-radius-medium) !important;
 }
 /* BUTTON */
@@ -340,7 +375,7 @@ button {
   padding: 0 var(--button-padding-y) !important;
 }
 .app-button-x {
-  padding: 0 var(--button-padding-x);
+  padding: 0 var(--button-padding-x) !important;
 }
 .app-core-button {
   -moz-user-select: none;
@@ -451,6 +486,10 @@ button {
   font-size: 1rem !important;
   font-size: var(--font-size-5) !important;
 }
+.app-font-size-4 {
+  font-size: 0.9rem !important;
+  font-size: var(--font-size-4) !important;
+}
 .app-c-text-alt {
   color: #1f1f23 !important;
   color: var(--color-text-alt) !important;
@@ -472,4 +511,28 @@ button {
 }
 .app-body-right-background {
   background: #f7f7f8;
+}
+
+/* PAGE */
+.app-avatar--size-50 {
+  height: 5rem !important;
+  width: 5rem !important;
+}
+.app-uppercase {
+  text-transform: uppercase !important;
+}
+.app-live-indicator {
+  background-color: var(--color-fill-live) !important;
+  color: var(--color-text-button-primary) !important;
+}
+.app-font-weight {
+  font-weight: var(--font-weight-bold) !important;
+}
+.app-border-radius {
+  border-radius: var(--border-radius-medium) !important;
+}
+
+/* ERROR */
+.app-error-container {
+  max-width: 30rem !important;
 }

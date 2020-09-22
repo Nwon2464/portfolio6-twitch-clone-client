@@ -4,7 +4,7 @@ import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 const VideoCard = (props) => {
-  // console.log(props);
+  console.log(props);
   return (
     <div className="game__card app-pd-15">
       <div className="card__maxWidth__margin app__tower__gutter">
@@ -89,7 +89,13 @@ const VideoCard = (props) => {
                           </div>
                         </div>
 
-                        <Link to={`/${e.user_name}`} className="app__order__1">
+                        <Link
+                          to={{
+                            pathname: `/${e.user_name}`,
+                            state: { data: e },
+                          }}
+                          className="app__order__1"
+                        >
                           <div className="app__relative app__cursor">
                             <div>
                               <img

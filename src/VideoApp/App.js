@@ -6,9 +6,10 @@ import { connect } from "react-redux";
 import { fetchVideos, fetchStreams, fetchAuth } from "./actions";
 import { Router, Route, Switch } from "react-router-dom";
 import Header from "./Header";
-import BodyRight from "./Body/BodyRight";
-import BodyLeft from "./Body/BodyLeft";
+import BodyRight from "./components/Body/BodyRight";
+import BodyLeft from "./components/Body/BodyLeft";
 import Modal from "./Modal";
+
 import youtube from "./apis/youtube";
 import history from "./history";
 import StreamsCreate from "./components/Streams/StreamsCreate";
@@ -18,13 +19,12 @@ import StreamsShow from "./components/Streams/StreamsShow";
 import GoogleAuth from "./Header";
 import Dashboard from "./Dashboard";
 import Search from "./components/Search/Search";
-import CategoryGamesId from "./Body/BodyPage/CategoryGamesId";
+import CategoryGamesId from "./components/MainRoute/CategoryGamesId";
 import Skeleton from "react-loading-skeleton";
 import { showModal } from "./actions";
-import Id from "./Body/BodyPage/Id";
-const KEY = "AIzaSyAR4iYaiGT4oNWSkga37lDBzxqJLp0Rg70";
-const clientId =
-  "979708510452-oa44268dodlk7at65bponsb27c0utgn2.apps.googleusercontent.com";
+import Id from "./components/MainRoute/Id";
+// import Slash from "."
+import NotFound from "./error/NotFound";
 const App = (props) => {
   //fetching videos from redux
   useEffect(() => {
@@ -35,6 +35,7 @@ const App = (props) => {
     // props.fetchJWT();
   }, []);
 
+  console.log(props);
   return (
     <div className="app-flex app-flex-column app-flex-nowrap app-bottom-0 app-left-0 app-right-0 app-top-0 app-absolute">
       <Router history={history}>
@@ -43,6 +44,7 @@ const App = (props) => {
           {props.modal ? <Modal /> : null}
 
           <Switch>
+            {/* <Route exact path="/" component={Slash}/> */}
             <Route exact path="/">
               <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
                 <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
@@ -52,6 +54,7 @@ const App = (props) => {
               </div>
             </Route>
             <Route exact path="/:id" component={Id} />
+
             <Route exact path="/:id/videos/all">
               <div className="app-flex app-flex-nowrap app-relative app-full-height">
                 <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
@@ -75,6 +78,20 @@ const App = (props) => {
                 <div>/category/all/tags/:id</div>
               </div>
             </Route>
+
+            {/* Error Handler */}
+            <Route
+              path="*"
+              render={() => (
+                <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
+                  <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
+                    <BodyLeft />
+                  </div>
+                  <NotFound />
+                </div>
+              )}
+            />
+
             <Route exact path="/streams/new">
               <div className="app__body">
                 <StreamsCreate />

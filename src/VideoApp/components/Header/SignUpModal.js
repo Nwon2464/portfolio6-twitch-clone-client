@@ -1,6 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import ReactDOM from "react-dom";
-import { signUpErrorClose } from "../actions";
+import { signUpErrorClose } from "../../actions";
 import { connect } from "react-redux";
 const SignUpModal = forwardRef((props, ref) => {
   const [display, setDisplay] = useState(false);

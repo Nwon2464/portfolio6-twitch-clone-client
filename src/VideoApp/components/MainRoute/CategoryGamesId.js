@@ -1,5 +1,5 @@
 import React from "react";
-import BodyLeft from "../BodyLeft";
+import BodyLeft from "../Body/BodyLeft";
 const CategoryGamesId = (props) => {
   console.log(props);
   return (

@@ -21,7 +21,6 @@ const BodyRight = (props) => {
   const [justChat, setJustChat] = useState([]);
   const [fallGuys, setFallGuys] = useState([]);
   const [fortNite, setFortNite] = useState([]);
-  console.log(props);
   // ("/twitch/minecraft"
   // "/twitch/fortnite"
   // "/twitch/chat"

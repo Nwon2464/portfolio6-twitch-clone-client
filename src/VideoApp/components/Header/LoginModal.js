@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Field, reduxForm } from "redux-form";
 import { SubmissionError } from "redux-form";
 import "./LoginModal.css";
-import history from "../history";
+import history from "../../history";
 const LoginModal = forwardRef((props, ref) => {
   const [display, setDisplay] = useState(false);
   useImperativeHandle(ref, () => {

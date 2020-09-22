@@ -3,7 +3,7 @@ import { Field, reduxForm, formValueSelector } from "redux-form";
 import { Link } from "react-router-dom";
 import renderField from "./RenderField";
 import { connect } from "react-redux";
-import { signUpCreate } from "../actions";
+import { signUpCreate } from "../../actions";
 import SignupLoading from "./SignupLoading";
 import { ReactComponent as TwitchIcon } from "./twitch-seeklogo.com.svg";
 import ErrorMessage from "./ErrorMessage";

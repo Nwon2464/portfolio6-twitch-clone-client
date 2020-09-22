@@ -3,7 +3,18 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { signIn, signOut, logOutAuth, jwtlogOut } from "./actions/index";
 import { connect } from "react-redux";
+import axios from "axios";
+
 import history from "./history";
+import SearchBar from "./components/Header/SearchBar/SearchBar";
+import LoginSignUpButton from "./components/Header/LoginSignUpButton";
+import NavBar from "./components/Header/NavBar/NavBar";
+import NavItem from "./components/Header/NavBar/NavItem";
+import DropdownMenu from "./components/Header/NavBar/DropdownMenu";
+import Skeleton from "react-loading-skeleton";
+import { ReactComponent as TwitchIcon } from "./components/Header/twitch-seeklogo.com.svg";
+
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ToggleOffOutlinedIcon from "@material-ui/icons/ToggleOffOutlined";
 import Brightness2OutlinedIcon from "@material-ui/icons/Brightness2Outlined";
@@ -19,15 +30,6 @@ import SettingsApplicationsOutlinedIcon from "@material-ui/icons/SettingsApplica
 import VideoCallIcon from "@material-ui/icons/VideoCall";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import axios from "axios";
-import SearchBar from "./Header/SearchBar/SearchBar";
-import LoginSignUpButton from "./Header/LoginSignUpButton";
-import NavBar from "./Header/NavBar/NavBar";
-import NavItem from "./Header/NavBar/NavItem";
-import DropdownMenu from "./Header/NavBar/DropdownMenu";
-import Skeleton from "react-loading-skeleton";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { ReactComponent as TwitchIcon } from "./Header/twitch-seeklogo.com.svg";
 const Header = (props) => {
   const modalRef = useRef();
   const [open, setOpen] = useState(false);
