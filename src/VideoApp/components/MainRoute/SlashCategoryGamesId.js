@@ -11,7 +11,6 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 
 const CategoryGamesId = (props) => {
-  const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState([]);
   const [totalViews, setTotalViews] = useState(0);
   const [topGamesImage, setTopGamesImage] = useState([]);
@@ -22,7 +21,9 @@ const CategoryGamesId = (props) => {
         return null;
       }
       const { data } = await axios.get(
-        `/api/v1/twitch/streams/${props.location.state.data.game_id||props.location.state.data.id}`
+        `/api/v1/twitch/streams/${
+          props.location.state.data.game_id || props.location.state.data.id
+        }`
       );
       // console.log(data);
 
@@ -48,7 +49,6 @@ const CategoryGamesId = (props) => {
     };
     fecthLive();
   }, []);
-
   const checkTags = (streams, i) => {
     return (
       <Link
@@ -78,18 +78,13 @@ const CategoryGamesId = (props) => {
       );
     }
   };
-
-  console.log(props.location.state);
   return (
     <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
       <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
         <BodyLeft />
       </div>
       {props.location.state ? (
-        <div
-          style={{ border: "1px solid red" }}
-          className="app-flex app-flex-column app-full-width app-overflow-scroll"
-        >
+        <div className="app-flex app-flex-column app-full-width app-overflow-scroll">
           {!topGamesImage[0] || !category ? (
             <LoadingForCategory />
           ) : (
@@ -115,7 +110,9 @@ const CategoryGamesId = (props) => {
                           <p className="app-font-size-7">•</p>
                         </div>
                         <div className="app-inline-block">
-                          <p className="app-font-size-7">7.7M Followers</p>
+                          <p className="app-font-size-7">
+                            <strong>7.7M Followers</strong>
+                          </p>
                         </div>
                         <div className="app-inline-block app-mg-x-1">
                           <p className="app-font-size-7">•</p>
@@ -203,6 +200,7 @@ const CategoryGamesId = (props) => {
                   <div className="app-flex app-justify-content-center app-align-items-center app-pd-l-2 app-pd-r-2">
                     <div className="card__display__flex__wrap">
                       {category.map((e, i) => {
+                        console.log(e);
                         return (
                           <div
                             key={i}
@@ -220,7 +218,10 @@ const CategoryGamesId = (props) => {
                                               <Link
                                                 to={{
                                                   pathname: `/${e.user_name}`,
-                                                  state: { data: e },
+                                                  state: {
+                                                    data:
+                                                      props.location.state.data,
+                                                  },
                                                 }}
                                                 className="app__font__size app__cursor"
                                               >
@@ -233,22 +234,18 @@ const CategoryGamesId = (props) => {
                                           <div>
                                             <h4 className="app__ellipsis app__font__size__0_8 app__color__grey app__cursor">
                                               <Link
-                                                to={`/${e.user_name}/videos/all`}
+                                                to={{
+                                                  pathname: `/${e.user_name}/videos/all`,
+                                                  state: {
+                                                    data:
+                                                      props.location.state.data,
+                                                  },
+                                                }}
                                                 className="app__color__grey app__cursor app__font__size__0_8"
                                               >
                                                 {e.user_name}
                                               </Link>
                                             </h4>
-                                          </div>
-                                          <div>
-                                            <h5 className="app__ellipsis app__font__size__0_8">
-                                              <Link
-                                                to="/"
-                                                className="app__color__grey app__cursor app__font__size__0_8"
-                                              >
-                                                {e.game_name}
-                                              </Link>
-                                            </h5>
                                           </div>
                                         </div>
                                         <div className="channel__tag">

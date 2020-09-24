@@ -10,6 +10,7 @@ import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import MoreVertOutlinedIcon from "@material-ui/icons/MoreVertOutlined";
 import SaveAltOutlinedIcon from "@material-ui/icons/SaveAltOutlined";
 const SlashId = (props) => {
+  console.log(props);
   return (
     <>
       <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
@@ -29,10 +30,7 @@ const SlashId = (props) => {
             ></iframe>
 
             <div className="app-body-right-background">
-              <div
-                style={{ border: "1px solid red" }}
-                className="app-flex app-justify-content-between app-relative"
-              >
+              <div className="app-flex app-justify-content-between app-relative">
                 <div className="app-mg-1 app-full-width app-flex">
                   <div className="app-mg-t-03 app-pd-l-1">
                     <Link className="">
@@ -67,12 +65,9 @@ const SlashId = (props) => {
                       </div>{" "}
                     </Link>
                   </div>
-                  <div
-                    style={{ border: "1px solid red" }}
-                    className="app-flex app-flex-column app-full-width app-pd-x-1"
-                  >
+                  <div className="app-flex app-flex-column app-full-width app-pd-x-1">
                     <div
-                      style={{ border: "1px solid red", minHeight: "2.5rem" }}
+                      style={{ minHeight: "2.5rem" }}
                       className="app-flex app-justify-content-between app-align-items-end"
                     >
                       <div className="app-flex app-align-items-baseline">
@@ -124,7 +119,13 @@ const SlashId = (props) => {
                             <h5>{props.location.state.data.title}</h5>
                           </div>
                           <div>
-                            <Link className="app-color-main app-font-size-5">
+                            <Link
+                              to={{
+                                pathname: `/category/games/${props.location.state.data.game_name}`,
+                                state: { data: props.location.state.data },
+                              }}
+                              className="app-color-main app-font-size-5"
+                            >
                               {props.location.state.data.game_name}
                             </Link>
                           </div>
@@ -167,7 +168,7 @@ const SlashId = (props) => {
                   </div>
                 </div>
               </div>
-              <div style={{ minHeight: 1500, background: "red" }}>Bottom</div>
+              {/* <div style={{ minHeight: 1500 }}>Bottom</div> */}
             </div>
           </div>
         ) : (
