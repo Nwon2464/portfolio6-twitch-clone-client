@@ -23,7 +23,12 @@ const GameCard = (props) => {
                   <div className="app__flex__column app__flex app__flex__nowrap">
                     <div>
                       <Link
-                        to={`/category/games/${e.name.split(" ").join("")}`}
+                        to={{
+                          pathname: `/category/games/${e.name
+                            .split(" ")
+                            .join("")}`,
+                          state: { data: e },
+                        }}
                       >
                         <img
                           className="app__img__transition app__cursor"
@@ -35,7 +40,12 @@ const GameCard = (props) => {
 
                     <div className="app__ellipsis app__margin__top app__flex__shrink__1 app__flex__grow__1 app__color app__font__weight app__cursor">
                       <Link
-                        to={`/category/games/${e.name.split(" ").join("")}`}
+                        to={{
+                          pathname: `/category/games/${e.name
+                            .split(" ")
+                            .join("")}`,
+                          state: { data: e },
+                        }}
                         className="app__font__size app__cursor"
                       >
                         {e.name}
@@ -43,7 +53,12 @@ const GameCard = (props) => {
                     </div>
                     <p className="app__font__size">
                       <Link
-                        to={`/category/games/${e.name.split(" ").join("")}`}
+                        to={{
+                          pathname: `/category/games/${e.name
+                            .split(" ")
+                            .join("")}`,
+                          state: { data: e },
+                        }}
                         className="app__cursor"
                       >
                         {props.checkViewers(e.gameViewers)}

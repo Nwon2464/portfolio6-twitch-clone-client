@@ -9,15 +9,15 @@ import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 
 import MoreVertOutlinedIcon from "@material-ui/icons/MoreVertOutlined";
 import SaveAltOutlinedIcon from "@material-ui/icons/SaveAltOutlined";
-const Id = (props) => {
+const SlashId = (props) => {
   return (
     <>
-      <div className="app-flex app-flex-nowrap app-relative app-full-height">
+      <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
         <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
           <BodyLeft />
         </div>
         {props.location.state ? (
-          <div className="app-flex app-flex-column app-full-width">
+          <div className="app-flex app-flex-column app-full-width app-overflow-scroll">
             <iframe
               // https://player.twitch.tv/?channel=juansguarnizo&muted=true&parent=frontend-react-video-app-vercel-app&parent=frontend-react-video-app.vercel.app
               src={`https://player.twitch.tv/?channel=${props.location.state.data.user_name}&muted=true&parent=frontend-react-video-app-vercel-app&parent=frontend-react-video-app.vercel.app`}
@@ -178,4 +178,4 @@ const Id = (props) => {
   );
 };
 
-export default Id;
+export default SlashId;

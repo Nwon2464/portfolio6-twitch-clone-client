@@ -45,20 +45,10 @@ const BodyLeft = () => {
     }
   };
 
-  console.log(liveVideos);
   const renderIcons = liveVideos.map((e, i) => {
     return (
-      <div className="app-full-width app-recommend">
-        {" "}
+      <div key={i} className="app-full-width app-recommend">
         <Link className="app-full-width side-nav-card-link app-pd-x-1 app-pd-y-05 app-align-items-center app-flex-nowrap app-flex">
-          {/* <div className={`body__left__row`}>
-            <Icon className="body__left__row__icon" />
-          </div>
-          <div className={`body__left__row`}>
-            <h2 className="body__left__row__h2">{Title}</h2>
-          </div> */}
-          {/* body__left__row ${selected && "selected"} */}
-          {/* <BodyLeftRow Icon={Icon} title={Title} liveVideos={liveVideos} /> */}
           <div className="app-align-items-center app-flex-shrink-0 app-avatar--size-30">
             <figure className="app-avatar--size-30">
               <img

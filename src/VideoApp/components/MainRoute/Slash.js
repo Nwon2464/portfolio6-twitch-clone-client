@@ -1,6 +1,6 @@
 import React from "react";
-import BodyLeft from "../BodyLeft";
-import BodyRight from "../BodyRight";
+import BodyLeft from "../Body/BodyLeft";
+import BodyRight from "../Body/BodyRight";
 const Slash = (props) => {
   return (
     <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">

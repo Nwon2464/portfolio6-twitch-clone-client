@@ -194,8 +194,7 @@ const BodyRight = (props) => {
   };
   return (
     <div
-      style={{ overflow: "scroll" }}
-      className="app-body-right-background app-z-index-default app-flex app-flex-column app-flex-grow-1 app-full-height app-full-width"
+      className="app-overflow-scroll app-body-right-background app-z-index-default app-flex app-flex-column app-flex-grow-1 app-full-height app-full-width"
     >
       {/* <h2>Stream Lists</h2> */}
       <div className="app-full-width app-relative">

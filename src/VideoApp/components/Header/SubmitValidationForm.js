@@ -183,7 +183,6 @@ const SubmitValidationForm = (props) => {
 };
 //username validation
 const required = (value) => {
-  // console.log(value);
   return value ? undefined : "Required😒";
 };
 // Usernames must be between 3 and 30 characters.

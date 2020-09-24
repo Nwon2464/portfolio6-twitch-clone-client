@@ -6,7 +6,6 @@ const RenderField = (props) => {
   useEffect(() => {
     const offSetWidth = anchorRef.current.offsetWidth;
     setAnchorHeight(offSetWidth);
-    console.log("FROMRENDERFIELD");
   }, []);
   // useEffect(() => {
   //   if (inputRef.current.name === "username") {
@@ -20,7 +19,6 @@ const RenderField = (props) => {
   const className = `app__input ${
     props.meta.touched && props.meta.error && "app__danger"
   }`;
-  console.log(props);
   return (
     <div className="field" style={{ position: "relative" }}>
       <label>

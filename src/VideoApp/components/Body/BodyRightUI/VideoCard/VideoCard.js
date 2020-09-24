@@ -4,7 +4,7 @@ import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 const VideoCard = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="game__card app-pd-15">
       <div className="card__maxWidth__margin app__tower__gutter">
@@ -33,7 +33,10 @@ const VideoCard = (props) => {
                                 <div className="channel__font_1">
                                   <h3 className="app__ellipsis app__font__weight">
                                     <Link
-                                      to={`/${e.user_name}`}
+                                      to={{
+                                        pathname: `/${e.user_name}`,
+                                        state: { data: e },
+                                      }}
                                       className="app__font__size app__cursor"
                                     >
                                       {e.title}
@@ -45,7 +48,10 @@ const VideoCard = (props) => {
                                 <div>
                                   <h4 className="app__ellipsis app__font__size__0_8 app__color__grey app__cursor">
                                     <Link
-                                      to={`/${e.user_name}/videos/all`}
+                                      to={{
+                                        pathname: `/${e.user_name}/videos/all`,
+                                        state: { data: e },
+                                      }}
                                       className="app__color__grey app__cursor app__font__size__0_8"
                                     >
                                       {e.user_name}
@@ -55,9 +61,12 @@ const VideoCard = (props) => {
                                 <div>
                                   <h5 className="app__ellipsis app__font__size__0_8">
                                     <Link
-                                      to={`/category/games/${e.game_name
-                                        .split(" ")
-                                        .join("")}`}
+                                      to={{
+                                        pathname: `/category/games/${e.game_name
+                                          .split(" ")
+                                          .join("")}`,
+                                        state: { data: e },
+                                      }}
                                       className="app__color__grey app__cursor app__font__size__0_8"
                                     >
                                       {e.game_name}
@@ -76,7 +85,12 @@ const VideoCard = (props) => {
                               </div>
                             </div>
                             <div className="channel__icon">
-                              <Link to={`/${e.user_name}/videos/all`}>
+                              <Link
+                                to={{
+                                  pathname: `/${e.user_name}/videos/all`,
+                                  state: { data: e },
+                                }}
+                              >
                                 <img
                                   className="channel__icon__1"
                                   src={e.profile_image_url}
