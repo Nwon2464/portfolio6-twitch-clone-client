@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SlashVideoAllLoading from "./SlashVideoAllLoading";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 const Reuseable2 = (props) => {
   const timeSince = (date) => {
@@ -48,8 +49,8 @@ const Reuseable2 = (props) => {
       );
     }
   };
-  console.log(props);
 
+  console.log(props);
   return (
     <>
       <div className="app-pd-l-2 app-pd-r-2 app-mg-b-1">
@@ -57,32 +58,24 @@ const Reuseable2 = (props) => {
           <div className="app-flex app-flex-column app-full-height">
             <div className="app-align-self-center app-flex app-full-height app-justify-content-center app-align-items-center">
               <Link to="/">
-                <h3 className="app-flex app-flex-column">Videos</h3>
+                <h3 className="app-flex app-flex-column app-font-size-9">
+                  Videos
+                </h3>
               </Link>
             </div>
             <div
-              style={{ marginTop: 11 }}
+              style={{ marginTop: 13 }}
               className="navigation-link-indicator-container"
             >
               <div className="navigation-link-active-indicator"></div>
             </div>
           </div>
-
-          {/* <li className="app-full-height app-align-items-center app-flex app-font-weight">
-              <Link
-                className="app-block app-full-height app-full-width app-pd-r-1"
-                to="/"
-              >
-                Clips
-              </Link>
-            </li> */}
         </div>
       </div>
       <div>
         <div className="app-flex app-justify-content-center app-align-items-center app-pd-l-2 app-pd-r-2">
           <div className="card__display__flex__wrap">
             {props.streams.map((e, i) => {
-              console.log(e);
               return (
                 <div key={i} className="app__tower__300 app-pd-r-02">
                   <div className="app__card__height">
@@ -129,9 +122,13 @@ const Reuseable2 = (props) => {
                         </div>
 
                         <Link
+                          // to={{
+                          //   pathname: `/${e.user_name}`,
+                          //   state: { data: e },
+                          // }}
                           to={{
-                            pathname: `/${e.user_name}`,
-                            state: { data: e },
+                            pathname: `/${props.match.params.id}`,
+                            state: { data: props.location.state.data },
                           }}
                           className="app__order__1"
                         >

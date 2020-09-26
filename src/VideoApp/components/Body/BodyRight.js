@@ -101,8 +101,11 @@ const BodyRight = (props) => {
       let dataArray = data;
       dataArray.map((game) => {
         let newUrl = game.box_art_url
-          .replace("{width}", "180")
-          .replace("{height}", "240");
+          // .replace("{width}", "180")
+          // .replace("{height}", "240");
+          
+          .replace("{width}", "188")
+          .replace("{height}", "250");
         game.box_art_url = newUrl;
       });
       setTopGames(data);

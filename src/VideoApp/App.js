@@ -23,6 +23,7 @@ import Skeleton from "react-loading-skeleton";
 import { showModal } from "./actions";
 import SlashId from "./components/MainRoute/SlashId";
 import Slash from "./components/MainRoute/Slash";
+import SlashCategoryAll from "./components/MainRoute/SlashCategoryAll";
 import SlashCategoryGamesId from "./components/MainRoute/SlashCategoryGamesId";
 import SlashIdVideosAll from "./components/MainRoute/SlashIdVideosAll";
 import NotFound from "./error/NotFound";
@@ -52,7 +53,7 @@ const App = (props) => {
               component={SlashCategoryGamesId}
             />
             <Route exact path="/:id/videos/all" component={SlashIdVideosAll} />
-
+            <Route exact path="/category/all" component={SlashCategoryAll} />
             <Route exact path="/category/all/tags/:id">
               <div className="app-flex app-flex-nowrap app-relative app-full-height">
                 <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">

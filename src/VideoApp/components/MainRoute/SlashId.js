@@ -33,7 +33,15 @@ const SlashId = (props) => {
               <div className="app-flex app-justify-content-between app-relative">
                 <div className="app-mg-1 app-full-width app-flex">
                   <div className="app-mg-t-03 app-pd-l-1">
-                    <Link className="">
+                    <Link
+                      to={{
+                        pathname: `/${props.location.state.data.user_name}/videos/all`,
+                        state: {
+                          data: props.location.state.data,
+                        },
+                      }}
+                      className=""
+                    >
                       <div className="app-relative">
                         <div>
                           <figure className="tw-avatar--size-50">
@@ -71,7 +79,12 @@ const SlashId = (props) => {
                       className="app-flex app-justify-content-between app-align-items-end"
                     >
                       <div className="app-flex app-align-items-baseline">
-                        <Link>
+                        <Link
+                          to={{
+                            pathname: `/${props.location.state.data.user_name}`,
+                            state: { data: props.location.state.data },
+                          }}
+                        >
                           <h2>{props.location.state.data.user_name}</h2>
                         </Link>
                         <div>
@@ -126,7 +139,8 @@ const SlashId = (props) => {
                               }}
                               className="app-color-main app-font-size-5"
                             >
-                              {props.location.state.data.game_name}
+                              {props.location.state.data.game_name ||
+                                props.location.state.game_name}
                             </Link>
                           </div>
                         </div>

@@ -5,7 +5,7 @@ import _ from "lodash";
 import NotFound from "../../error/NotFound";
 import { Link } from "react-router-dom";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import LoadingForCategory from "../Body/BodyRightUI/VideoCard/LoadingForCategory";
+import SlashCategoryGamesIdLoading from "./ReuseableUI/SlashCategoryGamesIdLoading";
 
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
@@ -49,6 +49,7 @@ const CategoryGamesId = (props) => {
     };
     fecthLive();
   }, []);
+  console.log(topGamesImage);
   const checkTags = (streams, i) => {
     return (
       <Link
@@ -78,6 +79,7 @@ const CategoryGamesId = (props) => {
       );
     }
   };
+  console.log(props);
   return (
     <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
       <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
@@ -86,7 +88,7 @@ const CategoryGamesId = (props) => {
       {props.location.state ? (
         <div className="app-flex app-flex-column app-full-width app-overflow-scroll">
           {!topGamesImage[0] || !category ? (
-            <LoadingForCategory />
+            <SlashCategoryGamesIdLoading />
           ) : (
             <>
               <div className="app-flex">
@@ -168,44 +170,40 @@ const CategoryGamesId = (props) => {
               <div className="app-full-height app-full-width">
                 <div className="app-pd-l-2 app-pd-r-2 app-mg-b-1">
                   <div className="app-flex app-full-width app-relative app-height-15">
-                    <ul className="app-font-size-9 app-flex app-flex-grow-1 app-justify-content-start app-full-height app-align-items-center">
-                      <li className="app-full-height app-align-items-center app-flex app-font-weight">
+                    <div className="app-font-size-9 app-flex app-flex-grow-1 app-justify-content-start app-full-height app-align-items-center">
+                      {/* <div className="app-full-height app-align-items-center app-flex app-font-weight">
                         <Link
                           className="app-block app-full-height app-full-width app-pd-r-1"
                           to="/"
                         >
                           Live Channels
                         </Link>
-                      </li>
-                      <li className="app-full-height app-align-items-center app-flex app-font-weight">
-                        <Link
-                          className="app-block app-full-height app-full-width app-pd-r-1"
-                          to="/"
+                      </div>
+                     */}
+                      <div className="app-flex app-flex-column app-full-height">
+                        <div className="app-align-self-center app-flex app-full-height app-justify-content-center app-align-items-center">
+                          <Link to="/">
+                            <h3 className="app-flex app-flex-column app-font-size-9">
+                              Live Channels
+                            </h3>
+                          </Link>
+                        </div>
+                        <div
+                          style={{ marginTop: 13 }}
+                          className="navigation-link-indicator-container"
                         >
-                          Videos
-                        </Link>
-                      </li>
-                      <li className="app-full-height app-align-items-center app-flex app-font-weight">
-                        <Link
-                          className="app-block app-full-height app-full-width app-pd-r-1"
-                          to="/"
-                        >
-                          Clips
-                        </Link>
-                      </li>
-                    </ul>
+                          <div className="navigation-link-active-indicator"></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div>
                   <div className="app-flex app-justify-content-center app-align-items-center app-pd-l-2 app-pd-r-2">
                     <div className="card__display__flex__wrap">
                       {category.map((e, i) => {
-                        console.log(e);
                         return (
-                          <div
-                            key={i}
-                            className="app__tower__300 app__tower__padding__gutter"
-                          >
+                          <div key={i} className="app__tower__300 app-pd-r-02">
                             <div className="app__card__height">
                               <div className="app__card__padding_bottom app__card__height">
                                 <article className="card__display__flex__direction">
@@ -219,8 +217,9 @@ const CategoryGamesId = (props) => {
                                                 to={{
                                                   pathname: `/${e.user_name}`,
                                                   state: {
-                                                    data:
-                                                      props.location.state.data,
+                                                    data: e,
+                                                    game_name:
+                                                      topGamesImage[0].name,
                                                   },
                                                 }}
                                                 className="app__font__size app__cursor"
@@ -237,8 +236,7 @@ const CategoryGamesId = (props) => {
                                                 to={{
                                                   pathname: `/${e.user_name}/videos/all`,
                                                   state: {
-                                                    data:
-                                                      props.location.state.data,
+                                                    data: e,
                                                   },
                                                 }}
                                                 className="app__color__grey app__cursor app__font__size__0_8"
@@ -267,7 +265,10 @@ const CategoryGamesId = (props) => {
                                   <Link
                                     to={{
                                       pathname: `/${e.user_name}`,
-                                      state: { data: e },
+                                      // state: { data: e },
+                                      state: {
+                                        data: e,
+                                      },
                                     }}
                                     className="app__order__1"
                                   >

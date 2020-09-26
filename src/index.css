@@ -15,7 +15,7 @@
   --color-border-input: rgba(0, 0, 0, 0.05);
   --color-button: #f9f9f9;
   --color-fill-live: #e91916;
-
+  --font-size-40: 4rem;
   --font-size-14: 2rem;
   --font-size-9: 1.5rem;
   --font-size-7: 1.3rem;
@@ -71,13 +71,18 @@ hr,
 img {
   border: none !important;
 }
-figure {
+figure,
+h3 {
   border: 0;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+}
+h3,
+h4 {
+  font-weight: 600;
 }
 button {
   background: 0 0;
@@ -114,6 +119,12 @@ button {
 }
 .app-flex {
   display: flex !important;
+}
+.app-flex-order-1 {
+  order: 1 !important;
+}
+.app-flex-order-2 {
+  order: 2 !important;
 }
 .app-align-items-start {
   align-items: flex-start !important;
@@ -220,6 +231,12 @@ button {
 .app-mg-l-05 {
   margin-left: 0.5rem !important;
 }
+.app-mg-l-13 {
+  margin-left: 1.3rem !important;
+}
+.app-mg-l-15 {
+  margin-left: 1.5rem !important;
+}
 .app-mg-t-1 {
   margin-top: 1rem !important;
 }
@@ -256,6 +273,12 @@ button {
 .app-pd-t-05 {
   padding-top: 0.5rem !important;
 }
+.app-pd-b-1 {
+  padding-bottom: 1rem !important;
+}
+.app-pd-t-1 {
+  padding-top: 1rem !important;
+}
 .app-pd-y-1 {
   padding-bottom: 1rem !important;
   padding-top: 1rem !important;
@@ -276,6 +299,19 @@ button {
 .app-pd-x-1 {
   padding-left: 1rem !important;
   padding-right: 1rem !important;
+}
+
+.app-pd-x-14 {
+  padding-left: 1.4rem !important;
+  padding-right: 1.4rem !important;
+}
+.app-pd-x-17 {
+  padding-left: 1.7rem !important;
+  padding-right: 1.7rem !important;
+}
+.app-pd-x-15 {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 .app-xl-pd-x-2 {
   /* MEDIAQUERY MIN-WIDTH 1440px .app-xl-pd-x-1 */
@@ -307,6 +343,10 @@ button {
 .app-pd-r-02 {
   padding-right: 0.2rem !important;
 }
+.app-pd-l-02 {
+  padding-left: 0.2rem !important;
+}
+
 .app-pd-l-1 {
   padding-left: 1rem !important;
 }
@@ -440,6 +480,9 @@ button {
 .app-cursor-pointer {
   cursor: pointer !important;
 }
+.app-cursor-pointer:hover {
+  color: var(--color-background-button-primary-default);
+}
 .app-core-button-icon {
   width: 2.4rem !important;
 }
@@ -510,6 +553,10 @@ button {
 .app-border-radius-rounded {
   border-radius: 9000px !important;
   border-radius: var(--border-radius-rounded) !important;
+}
+.app-font-size-40 {
+  font-size: 4rem !important;
+  font-size: var(--font-size-40) !important;
 }
 .app-font-size-14 {
   font-size: 2rem !important;
@@ -591,4 +638,18 @@ button {
 }
 .app-height-15 {
   height: 1.5rem !important;
+}
+/* CATEGORY ALL */
+.app-page-wrapper {
+  margin: 0 auto;
+  max-width: 150rem;
+}
+.app-min-width {
+  min-width: 100%;
+}
+.app-max-width-5 {
+  max-width: 50%;
+}
+.app-flex-gutter-03 {
+  padding: 0 0.3rem !important;
 }

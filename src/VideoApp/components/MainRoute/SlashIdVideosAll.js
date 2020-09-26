@@ -4,11 +4,11 @@ import Reuseable from "./ReuseableUI/Reuseable";
 import BodyLeft from "../Body/BodyLeft";
 import axios from "axios";
 import Reuseable2 from "./ReuseableUI/Reuseable2";
-
+import SlashVideoAllLoading from "./ReuseableUI/SlashVideoAllLoading";
 const SlashIdVideosAll = (props) => {
   console.log(props);
   const [streams, setStreams] = useState([]);
-
+  const [totalViews, setTotalViews] = useState(0);
   useEffect(() => {
     const fecthLive = async () => {
       //to prevent from fetching using useEffect, otherwise, it shows an error, data is undefined to fetch
@@ -43,6 +43,15 @@ const SlashIdVideosAll = (props) => {
     fecthLive();
   }, []);
 
+  useEffect(() => {
+    const fetch = async () => {
+      const { data } = await axios.get(
+        `/api/v1/twitch/streams/${props.location.state.data.game_id}`
+      );
+      setTotalViews(data.totalViews);
+    };
+    fetch();
+  }, []);
   const checkViewers = (views) => {
     if (views <= 999) {
       return <>{`${views} Viewers`}</>;
@@ -60,18 +69,23 @@ const SlashIdVideosAll = (props) => {
       );
     }
   };
-  console.log(props);
   console.log(streams);
+
   return (
     <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
       <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
         <BodyLeft />
       </div>
       <div className="app-relative app-flex app-flex-column app-full-height app-full-width app-overflow-scroll">
+        {" "}
         <div className="app-full-height">
           <div className="app-flex app-flex-column app-full-height app-full-width">
             <div
-              style={{ minHeight: "28.5rem", maxHeight: "100%", width: "100%" }}
+              style={{
+                minHeight: "28.5rem",
+                maxHeight: "100%",
+                width: "100%",
+              }}
             >
               {" "}
               <div className="app-full-height app-full-width app-relative">
@@ -122,7 +136,8 @@ const SlashIdVideosAll = (props) => {
                             state: { data: props.location.state.data },
                           }}
                         >
-                          Watch now with {checkViewers(props.location.state.data.viewer_count)}
+                          Watch now with{" "}
+                          {checkViewers(props.location.state.data.viewer_count)}
                         </Link>
                       </div>
                     </div>
@@ -139,42 +154,48 @@ const SlashIdVideosAll = (props) => {
                 zIndex: 2,
               }}
             >
-              <div
-                style={{
-                  backgroundColor: "#fff",
-                  width: "85%",
-                  height: "100%",
-                }}
-                className="app-absolute"
-              >
-                <div
-                  className="app-mg-x-2"
-                  style={{
-                    height: "30%",
-                    paddingTop: "1.5rem",
-                    position: "sticky",
-                    zIndex: 2,
-                  }}
-                >
-                  <div className="app-flex">
-                    <Reuseable {...props} />
+              {totalViews === 0 ? (
+                <SlashVideoAllLoading />
+              ) : (
+                <>
+                  <div
+                    style={{
+                      backgroundColor: "#fff",
+                      width: "85%",
+                      // border: "5px inset #00b5ad",
+                    }}
+                    className="app-absolute"
+                  >
+                    <div
+                      className="app-mg-x-2"
+                      style={{
+                        height: "30%",
+                        paddingTop: "1.5rem",
+                        position: "sticky",
+                        zIndex: 2,
+                      }}
+                    >
+                      <div className="app-flex">
+                        <Reuseable {...props} totalViews={totalViews} />
+                      </div>
+                    </div>
+                    <div style={{ width: "100%", background: "#fff" }}>
+                      <Reuseable2
+                        streams={streams}
+                        {...props}
+                        user={props.location.state.data}
+                      />
+                    </div>
+                    <div></div>
                   </div>
-                </div>
-                <div style={{ width: "100%", background: "#fff" }}>
-                  <Reuseable2
-                    streams={streams}
-                    user={props.location.state.data}
-                  />
-                </div>
-                <div></div>
-              </div>
+                </>
+              )}
             </div>
           </div>
         </div>{" "}
         <div
           className="app-absolute app-top-0 app-left-0"
           style={{
-            background: "green",
             maxHeight: 470,
             width: "100%",
             overflow: "hidden",
@@ -183,7 +204,7 @@ const SlashIdVideosAll = (props) => {
         >
           <div className="app-flex">
             <img
-              style={{ height: 470, width: "100%" }}
+              style={{ height: 470, width: "100%", objectFit: "cover" }}
               src={props.location.state.data.thumbnail_url}
             />
           </div>

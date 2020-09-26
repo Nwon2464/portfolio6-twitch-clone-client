@@ -120,6 +120,7 @@ const Header = (props) => {
       <div className="app-flex app-flex-nowrap app-full-height app-align-items-stretch">
         <div className="app-flex app-flex-grow-1 app-flex-shrink-1 app-justify-content-start app-align-items-stretch app-full-width">
           <Link
+            onClick={() => toggleMultipleIndicator("")}
             className="app-mg-l-1 app-flex app-justify-content-center app-align-items-center"
             to="/"
           >
@@ -133,8 +134,10 @@ const Header = (props) => {
                 onClick={() => toggleMultipleIndicator("Browse")}
                 className="app-align-self-center app-flex app-full-height app-justify-content-center app-align-items-center"
               >
-                <Link to="/">
-                  <h3 className="app-flex app-flex-column">Browse</h3>
+                <Link to="/category/all">
+                  <h3 className="app-flex app-flex-column app-font-size-7 app-cursor-pointer">
+                    Browse
+                  </h3>
                 </Link>
               </div>
               <div className="navigation-link-indicator-container">
@@ -150,7 +153,9 @@ const Header = (props) => {
                 className="app-align-self-center app-flex app-full-height  app-justify-content-center app-align-items-center"
               >
                 <Link to="/">
-                  <h3 className="app-flex app-flex-column">Esports</h3>
+                  <h3 className="app-flex app-flex-column app-font-size-7 app-cursor-pointer">
+                    Esports
+                  </h3>
                 </Link>
               </div>
               <div className="navigation-link-indicator-container">
@@ -165,7 +170,9 @@ const Header = (props) => {
                 className="app-align-self-center app-flex app-full-height  app-justify-content-center app-align-items-center"
               >
                 <Link to="/">
-                  <h3 className="app-flex app-flex-column">Music</h3>
+                  <h3 className="app-flex app-flex-column app-font-size-7 app-cursor-pointer">
+                    Music
+                  </h3>
                 </Link>
               </div>
               <div className="navigation-link-indicator-container">

@@ -9,28 +9,34 @@ import SaveAltOutlinedIcon from "@material-ui/icons/SaveAltOutlined";
 import { Link } from "react-router-dom";
 
 const Reuseable = (props) => {
+  console.log(props);
   const checkViewers = (views) => {
     if (views <= 999) {
-      return <>{`${views + 159} Followers`}</>;
+      return <>{`${views} Followers`}</>;
     } else if (views < 999999) {
       return (
         <>{`${
-          Math.sign(views) * (Math.abs(views) / 1000).toFixed(1) + 159
+          Math.sign(views) * (Math.abs(views) / 1000).toFixed(1)
         }K Followers`}</>
       );
     } else if (views <= 9999999) {
       return (
         <>{`${
-          Math.sign(views) * (Math.abs(views) / 1000000).toFixed(1) + 150
+          Math.sign(views) * (Math.abs(views) / 1000000).toFixed(1)
         }M Followers`}</>
       );
     }
   };
-
   return (
     <>
       <div className="app-mg-t-03">
-        <Link className="">
+        <Link
+          to={{
+            pathname: `/${props.match.params.id}`,
+            state: { data: props.location.state.data },
+          }}
+          className=""
+        >
           <div className="app-relative">
             <div>
               <figure className="tw-avatar--size-50">
@@ -68,7 +74,12 @@ const Reuseable = (props) => {
           className="app-flex app-justify-content-between app-align-items-end"
         >
           <div className="app-flex app-align-items-baseline">
-            <Link>
+            <Link
+              to={{
+                pathname: `/${props.match.params.id}`,
+                state: { data: props.location.state.data },
+              }}
+            >
               <h2>{props.location.state.data.user_name}</h2>
             </Link>
             <div>
@@ -123,8 +134,17 @@ const Reuseable = (props) => {
           <div className="app-flex app-flex-grow-1 app-flex-shrink-1">
             <div className="app-flex app-full-width app-flex-column app-mg-b-03">
               <div>
-                <Link className="app-color-main app-font-size-5">
-                  {checkViewers(props.location.state.data.viewer_count)}
+                <Link
+                  to={{
+                    pathname: `/${props.match.params.id}`,
+                    state: { data: props.location.state.data },
+                  }}
+                  className="app-color-main app-font-size-5"
+                >
+                  {checkViewers(
+                    props.location.state.data.userTotalChannelViewCount ||
+                      props.totalViews
+                  )}
                 </Link>
               </div>
             </div>
