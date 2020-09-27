@@ -27,12 +27,13 @@ import {
   CHECKOUT_JWT,
 } from "./types";
 const BASE_URL = "http://localhost:5000";
-
+const DEPLOYMENT_URL = "https://backend-express-video-app.vercel.app";
 export const fetchActiveLiveGameContents = () => async (dispatch) => {
   const responseAll = await axios.get(
-    "https://backend-express-video-app.vercel.app/api/v1/twitch/streams/contents"
-  );
+    // "/api/v1/twitch/streams/contents"
 
+    `${DEPLOYMENT_URL}/api/v1/twitch/streams/contents`
+  );
   let dataFallGuy = responseAll.data.frontPage.fallGuy;
   dataFallGuy.map((game) => {
     let newUrl = game.thumbnail_url
@@ -72,9 +73,11 @@ export const fetchActiveLiveGameContents = () => async (dispatch) => {
 
 export const fetchActiveLiveTwitch = () => async (dispatch) => {
   const responseAll = await axios.get(
-    "https://backend-express-video-app.vercel.app/api/v1/twitch/streams"
+    `${DEPLOYMENT_URL}/api/v1/twitch/streams`
+    // "/api/v1/twitch/streams"
   );
 
+  console.log(responseAll);
   let dataStreams = responseAll.data.frontPage.allStreams;
   dataStreams.map((game) => {
     let newUrl = game.thumbnail_url
@@ -98,7 +101,7 @@ export const fetchActiveLiveTwitch = () => async (dispatch) => {
 export const logIn = (formValues) => (dispatch, getState) => {
   dispatch({ type: LOADING_SPINNER, payload: true });
   axios
-    .post(`${BASE_URL}/auth/login`, {
+    .post(`${DEPLOYMENT_URL}/auth/login`, {
       ...formValues,
     })
     .then((res) => {
@@ -121,7 +124,7 @@ export const logIn = (formValues) => (dispatch, getState) => {
 export const signUpCreate = (formValues) => (dispatch, getState) => {
   dispatch({ type: LOADING_SPINNER, payload: true });
   axios
-    .post(`${BASE_URL}/auth/signup`, {
+    .post(`${DEPLOYMENT_URL}/auth/signup`, {
       ...formValues,
     })
     .then((res) => {
@@ -148,7 +151,7 @@ export const signUpErrorClose = () => (dispatch) => {
 };
 export const fetchAuth = () => async (dispatch) => {
   if (localStorage.token) {
-    const response = await axios.get("http://localhost:5000/", {
+    const response = await axios.get(`${DEPLOYMENT_URL}`, {
       headers: {
         authorization: `Bearer ${localStorage.token}`,
       },
@@ -157,7 +160,7 @@ export const fetchAuth = () => async (dispatch) => {
   }
   // console.log(response);
   else {
-    const { data } = await axios.get("/auth/current_user");
+    const { data } = await axios.get(`${DEPLOYMENT_URL}/auth/current_user`);
     dispatch({ type: FETCH_AUTH, payload: data });
   }
 };
@@ -170,7 +173,7 @@ export const jwtlogOut = () => async (dispatch) => {
 };
 
 export const logOutAuth = () => async (dispatch) => {
-  const response = await axios.get("/auth/logout");
+  const response = await axios.get(`${DEPLOYMENT_URL}/auth/logout`);
   // console.log(data);
   dispatch({ type: LOGOUT_AUTH });
   history.push("/");

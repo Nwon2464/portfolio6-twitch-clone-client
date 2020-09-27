@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./BodyRight.css";
-import axios from "axios";
 import _ from "lodash";
 import VideoCard from "./BodyRightUI/VideoCard/VideoCard";
 import ShowClickRender from "./ShowClickRender";

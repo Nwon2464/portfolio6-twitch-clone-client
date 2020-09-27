@@ -36,9 +36,9 @@ import NotFound from "./error/NotFound";
 import Construction from "./error/Construction";
 const App = (props) => {
   //fetching videos from redux
-  useEffect(() => {
-    props.fetchStreams();
-  }, []);
+  // useEffect(() => {
+  //   props.fetchStreams();
+  // }, []);
   useEffect(() => {
     props.fetchAuth();
     // props.fetchJWT();
