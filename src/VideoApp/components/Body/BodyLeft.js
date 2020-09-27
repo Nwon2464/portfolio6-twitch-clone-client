@@ -5,27 +5,26 @@ import "./BodyLeft.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import HomeIcon from "@material-ui/icons/Home";
-const BodyLeft = () => {
-  const [loading, setLoading] = useState([]);
-
+import { connect } from "react-redux";
+const BodyLeft = (props) => {
   const [liveVideos, setLiveVideos] = useState([]);
-  useEffect(() => {
-    const fecthLive = async () => {
-      const { data } = await axios.get(
-        "https://backend-express-video-app.vercel.app/api/v1/twitch/streams"
-      );
-      let dataArray = data;
-      dataArray.map((game) => {
-        let newUrl = game.thumbnail_url
-          .replace("{width}", "440")
-          .replace("{height}", "248");
-        game.thumbnail_url = newUrl;
-      });
-      setLiveVideos(data);
-      setLoading(false);
-    };
-    fecthLive();
-  }, []);
+  // useEffect(() => {
+  //   const fecthLive = async () => {
+  //     const { data } = await axios.get(
+  //       "https://backend-express-video-app.vercel.app/api/v1/twitch/streams"
+  //     );
+  //     let dataArray = data;
+  //     dataArray.map((game) => {
+  //       let newUrl = game.thumbnail_url
+  //         .replace("{width}", "440")
+  //         .replace("{height}", "248");
+  //       game.thumbnail_url = newUrl;
+  //     });
+  //     setLiveVideos(data);
+  //     setLoading(false);
+  //   };
+  //   fecthLive();
+  // }, []);
 
   const checkViewers = (views) => {
     if (views <= 999) {
@@ -45,7 +44,7 @@ const BodyLeft = () => {
     }
   };
 
-  const renderIcons = liveVideos.map((e, i) => {
+  const renderIcons = props.twitch.activeLiveTwitch.map((e, i) => {
     return (
       <div key={i} className="app-full-width app-recommend">
         <Link className="app-full-width side-nav-card-link app-pd-x-1 app-pd-y-05 app-align-items-center app-flex-nowrap app-flex">
@@ -95,17 +94,25 @@ const BodyLeft = () => {
       </div>
     );
   });
-
   return (
     <div className="app-flex app-flex-column">
-      <div className="app-mg-1 app-pd-t-05">
-        <h5>Recommended Channels</h5>
-      </div>
-      <div className="app-relative app-align-items-center app-flex app-flex-column app-full-width">
-        {renderIcons}
-      </div>
+      {props.twitch.activeLiveTwitch.length === 0 ? null : (
+        <>
+          <div className="app-mg-1 app-pd-t-05">
+            <h5>Recommended Channels</h5>
+          </div>
+          <div className="app-relative app-align-items-center app-flex app-flex-column app-full-width">
+            {renderIcons}
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
-export default BodyLeft;
+const mapStateToProps = (state) => {
+  return {
+    twitch: state.twitch,
+  };
+};
+export default connect(mapStateToProps)(BodyLeft);
