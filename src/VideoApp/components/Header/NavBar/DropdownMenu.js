@@ -3,6 +3,10 @@ import LoginModal from "../LoginModal";
 import LoginModalForm from "../LoginModalForm";
 import { CSSTransition } from "react-transition-group";
 // import { FaLongArrowAltUp } from "react-icons/fa";
+import ClearIcon from "@material-ui/icons/Clear";
+
+import { Tab } from "semantic-ui-react";
+import { panes } from "../SignupReuse";
 
 const DropdownMenu = (props) => {
   const [activeMenu, setActiveMenu] = useState("main");
@@ -15,12 +19,6 @@ const DropdownMenu = (props) => {
       dropdownRef.current.onclose();
     };
   }, []);
-
-  // const dropdownRef = useCallback((node) => {
-  //   if (node !== null) {
-  //     //fetch(...)   load data
-  //   }
-  // }, []);
 
   function calcHeight(el) {
     const height = el.offsetHeight;
@@ -55,15 +53,19 @@ const DropdownMenu = (props) => {
         props.signOut();
       }
     };
-    console.log(props);
     return (
       <>
         <LoginModal ref={modalRef}>
-          <i
-            onClick={() => modalRef.current.close()}
-            className="window__icon large window close icon"
-          ></i>
-          <LoginModalForm />
+          <div className="clear__btn" onClick={() => modalRef.current.close()}>
+            <ClearIcon className="clear__icon" style={{ fontSize: "2rem" }} />
+          </div>
+
+          <Tab
+            style={{ width: "100%" }}
+            panes={panes}
+            menu={{ secondary: true, pointing: true, attached: "bottom" }}
+            defaultActiveIndex={0}
+          />
         </LoginModal>
 
         <div

@@ -4,7 +4,7 @@ const Loading = () => {
   return (
     <div className="game__card app-pd-15">
       <div className="card__maxWidth__margin app__tower__gutter">
-        <h3>
+        <h3 style={{ paddingBottom: "0.5rem", paddingLeft: "0.2rem" }}>
           <Skeleton height={28} width={250} />
         </h3>
         <div className="app__relative">

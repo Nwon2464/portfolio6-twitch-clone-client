@@ -82,7 +82,10 @@ const SlashId = (props) => {
                         <Link
                           to={{
                             pathname: `/${props.location.state.data.user_name}`,
-                            state: { data: props.location.state.data },
+                            state: {
+                              data: props.location.state.data,
+                              game_name: props.location.state.game_name,
+                            },
                           }}
                         >
                           <h2>{props.location.state.data.user_name}</h2>
@@ -134,8 +137,14 @@ const SlashId = (props) => {
                           <div>
                             <Link
                               to={{
-                                pathname: `/category/games/${props.location.state.data.game_name}`,
-                                state: { data: props.location.state.data },
+                                pathname: `/category/games/${
+                                  props.location.state.data.game_name ||
+                                  props.location.state.game_name
+                                }`,
+                                state: {
+                                  data: props.location.state.data,
+                                  game_name: props.location.state.game_name,
+                                },
                               }}
                               className="app-color-main app-font-size-5"
                             >

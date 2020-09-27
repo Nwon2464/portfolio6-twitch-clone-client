@@ -9,6 +9,7 @@ const SlashIdVideosAll = (props) => {
   console.log(props);
   const [streams, setStreams] = useState([]);
   const [totalViews, setTotalViews] = useState(0);
+  const [totalFollowers, setTotalFollowers] = useState(0);
   useEffect(() => {
     const fecthLive = async () => {
       //to prevent from fetching using useEffect, otherwise, it shows an error, data is undefined to fetch
@@ -18,7 +19,6 @@ const SlashIdVideosAll = (props) => {
       const { data } = await axios.get(
         `/api/v1/twitch/streams/user/${props.location.state.data.user_id}`
       );
-      console.log(data);
 
       let dataArray = data.streams;
       dataArray.map((game) => {
@@ -28,6 +28,7 @@ const SlashIdVideosAll = (props) => {
         game.thumbnail_url = newUrl;
       });
       setStreams(data.streams);
+      setTotalFollowers(data.totalFollowers);
       //       let dataArray2 = data.streams;
       //       dataArray2.map((game) => {
       //         let newUrl = game.thumbnail_url
@@ -69,8 +70,6 @@ const SlashIdVideosAll = (props) => {
       );
     }
   };
-  console.log(streams);
-
   return (
     <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
       <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
@@ -122,7 +121,8 @@ const SlashIdVideosAll = (props) => {
                       <div className="app-inline-block">
                         <h2>
                           {props.location.state.data.user_name} is streaming{" "}
-                          {props.location.state.data.game_name}
+                          {props.location.state.data.game_name ||
+                            props.location.state.game_name}
                         </h2>
                       </div>
                       <div
@@ -176,7 +176,11 @@ const SlashIdVideosAll = (props) => {
                       }}
                     >
                       <div className="app-flex">
-                        <Reuseable {...props} totalViews={totalViews} />
+                        <Reuseable
+                          {...props}
+                          totalViews={totalViews}
+                          totalFollowers={totalFollowers}
+                        />
                       </div>
                     </div>
                     <div style={{ width: "100%", background: "#fff" }}>

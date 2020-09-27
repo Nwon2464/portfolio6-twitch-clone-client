@@ -59,7 +59,7 @@ const Header = (props) => {
     ) {
       return (
         <div>
-          <Skeleton height={25} width={25} />
+          <Skeleton height={30} width={30} />
         </div>
       );
     } else if (

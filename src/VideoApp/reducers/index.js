@@ -8,7 +8,7 @@ import modalReducers from "./modalReducers";
 import errorReducers from "./errorReducers";
 import carouselReducers from "./carouselReducers";
 import loadingReducers from "./loadingReducers";
-
+import twitchReducers from "./twitchReducers";
 import signupLoginReducers from "./signupLoginReducers";
 export default combineReducers({
   // carousel: carouselReducers,
@@ -21,4 +21,5 @@ export default combineReducers({
   modal: modalReducers,
   loading: loadingReducers,
   join: signupLoginReducers,
+  twitch: twitchReducers,
 });

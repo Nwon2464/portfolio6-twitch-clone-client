@@ -19,7 +19,7 @@ const Reuseable = (props) => {
           Math.sign(views) * (Math.abs(views) / 1000).toFixed(1)
         }K Followers`}</>
       );
-    } else if (views <= 9999999) {
+    } else if (views <= 99999999999999) {
       return (
         <>{`${
           Math.sign(views) * (Math.abs(views) / 1000000).toFixed(1)
@@ -27,13 +27,19 @@ const Reuseable = (props) => {
       );
     }
   };
+  console.log(props);
   return (
     <>
       <div className="app-mg-t-03">
         <Link
           to={{
             pathname: `/${props.match.params.id}`,
-            state: { data: props.location.state.data },
+            state: {
+              data: props.location.state.data,
+              // totalFollowers: props.totalFollowers,
+              game_name: props.location.state.game_name,
+                           
+            },
           }}
           className=""
         >
@@ -143,7 +149,7 @@ const Reuseable = (props) => {
                 >
                   {checkViewers(
                     props.location.state.data.userTotalChannelViewCount ||
-                      props.totalViews
+                      props.totalFollowers
                   )}
                 </Link>
               </div>

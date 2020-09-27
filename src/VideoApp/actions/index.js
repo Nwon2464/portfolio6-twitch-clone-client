@@ -28,9 +28,69 @@ import {
 } from "./types";
 const BASE_URL = "http://localhost:5000";
 
-// export const checkoutJWTToken = () => (dispatch) => {
-//   dispatch({ type: CHECKOUT_JWT });
-// };
+export const fetchActiveLiveGameContents = () => async (dispatch) => {
+  const responseAll = await axios.get("/api/v1/twitch/streams/contents");
+
+  let dataFallGuy = responseAll.data.frontPage.fallGuy;
+  dataFallGuy.map((game) => {
+    let newUrl = game.thumbnail_url
+      .replace("{width}", "440")
+      .replace("{height}", "248");
+    game.thumbnail_url = newUrl;
+  });
+  dispatch({ type: "ACTION_FALLGUY", payload: dataFallGuy });
+
+  let dataJustChat = responseAll.data.frontPage.justChat;
+  dataJustChat.map((game) => {
+    let newUrl = game.thumbnail_url
+      .replace("{width}", "440")
+      .replace("{height}", "248");
+    game.thumbnail_url = newUrl;
+  });
+  dispatch({ type: "ACTION_JUSTCHAT", payload: dataJustChat });
+
+  let dataFortNite = responseAll.data.frontPage.fortNite;
+  dataFortNite.map((game) => {
+    let newUrl = game.thumbnail_url
+      .replace("{width}", "440")
+      .replace("{height}", "248");
+    game.thumbnail_url = newUrl;
+  });
+  dispatch({ type: "ACTION_FORTNITE", payload: dataFortNite });
+
+  let dataMineCraft = responseAll.data.frontPage.mineCraft;
+  dataMineCraft.map((game) => {
+    let newUrl = game.thumbnail_url
+      .replace("{width}", "440")
+      .replace("{height}", "248");
+    game.thumbnail_url = newUrl;
+  });
+  dispatch({ type: "ACTION_MINECRAFT", payload: dataMineCraft });
+};
+
+export const fetchActiveLiveTwitch = () => async (dispatch) => {
+  const responseAll = await axios.get("/api/v1/twitch/streams");
+
+  let dataStreams = responseAll.data.frontPage.allStreams;
+  dataStreams.map((game) => {
+    let newUrl = game.thumbnail_url
+      .replace("{width}", "440")
+      .replace("{height}", "248");
+    game.thumbnail_url = newUrl;
+  });
+  dispatch({ type: "ACTION_LIVE_STREAMS", payload: dataStreams });
+
+  let dataTopGames = responseAll.data.frontPage.topGames;
+  dataTopGames.map((game) => {
+    let newUrl = game.box_art_url
+
+      .replace("{width}", "188")
+      .replace("{height}", "250");
+    game.box_art_url = newUrl;
+  });
+  dispatch({ type: "ACTION_TOP_GAMES", payload: dataTopGames });
+};
+
 export const logIn = (formValues) => (dispatch, getState) => {
   dispatch({ type: LOADING_SPINNER, payload: true });
   axios
@@ -154,13 +214,6 @@ export const fetchVideos = () => async (dispatch) => {
 // --------------------
 
 export const createStream = (formValues) => async (dispatch, getState) => {
-  // _.set(formValues, "description", formValues.Stream_Description);
-  // _.set(formValues, "title", formValues.Stream_Title);
-  // _.set(formValues, "channelTitle", formValues.Channel_Title);
-  // _.set(formValues, "notes", formValues.Notes);
-  // _.set(formValues, "publishTime", moment(new Date()).format("MM-DD-YYYY"));
-  // _.set(formValues, "imgUrl", faker.random.image());
-
   const { userId } = getState().auth;
   const response = await axios.post(`${BASE_URL}/streams`, {
     ...formValues,

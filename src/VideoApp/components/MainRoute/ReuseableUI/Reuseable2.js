@@ -90,7 +90,11 @@ const Reuseable2 = (props) => {
                                     <Link
                                       to={{
                                         pathname: `/${e.user_name}`,
-                                        state: { data: props.user },
+                                        state: {
+                                          data: props.user,
+                                          game_name:
+                                            props.location.state.game_name,
+                                        },
                                       }}
                                       className="app__font__size app__cursor"
                                     >
@@ -105,7 +109,11 @@ const Reuseable2 = (props) => {
                                     <Link
                                       to={{
                                         pathname: `/${e.user_name}`,
-                                        state: { data: props.user },
+                                        state: {
+                                          data: props.user,
+                                          game_name:
+                                            props.location.state.game_name,
+                                        },
                                       }}
                                       className="app__color__grey app__cursor app__font__size__0_8"
                                     >
@@ -127,8 +135,11 @@ const Reuseable2 = (props) => {
                           //   state: { data: e },
                           // }}
                           to={{
-                            pathname: `/${props.match.params.id}`,
-                            state: { data: props.location.state.data },
+                            pathname: `/${e.user_name}`,
+                            state: {
+                              data: props.location.state.data,
+                              game_name: props.location.state.game_name,
+                            },
                           }}
                           className="app__order__1"
                         >

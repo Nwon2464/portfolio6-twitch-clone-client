@@ -10,8 +10,7 @@ const NotFound = () => {
         </div>
         <div className="app-flex app-flex-column app-mg-l-05">
           <p className="app-font-size-6">
-            Sorry. Unless you’ve got a time machine, that content is
-            unavailable.
+            Sorry. that content is under construction
           </p>
           <Link to="/category/all">
             <button className="app-border-bottom-left-radius-large app-border-bottom-right-radius-large app-border-top-left-radius-large app-border-top-right-radius-large app-align-middle app-relative app-justify-content-center app-align-items-center app-inline-flex app-core-button app-core-primary app-overflow-hidden app-cursor-pointer">

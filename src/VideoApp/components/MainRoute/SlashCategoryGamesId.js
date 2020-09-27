@@ -9,11 +9,12 @@ import SlashCategoryGamesIdLoading from "./ReuseableUI/SlashCategoryGamesIdLoadi
 
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
-
+import { checkViewers, checkFollowers } from "../Body/checkViewers";
 const CategoryGamesId = (props) => {
   const [category, setCategory] = useState([]);
   const [totalViews, setTotalViews] = useState(0);
   const [topGamesImage, setTopGamesImage] = useState([]);
+  const [sumFollowers, setSumFollowers] = useState(0);
   useEffect(() => {
     const fecthLive = async () => {
       //to prevent from fetching using useEffect, otherwise, it shows an error, data is undefined to fetch
@@ -45,11 +46,11 @@ const CategoryGamesId = (props) => {
 
       setCategory(data.streams);
       setTopGamesImage(data.selectedGame);
-      setTotalViews(data.totalViews);
+      setTotalViews(data.totalCurrentWatching);
+      setSumFollowers(data.totalFollowers);
     };
     fecthLive();
   }, []);
-  console.log(topGamesImage);
   const checkTags = (streams, i) => {
     return (
       <Link
@@ -61,25 +62,6 @@ const CategoryGamesId = (props) => {
       </Link>
     );
   };
-
-  const checkViewers = (views) => {
-    if (views <= 999) {
-      return <>{`${views} Viewers`}</>;
-    } else if (views < 999999) {
-      return (
-        <>{`${
-          Math.sign(views) * (Math.abs(views) / 1000).toFixed(1)
-        }K Viewers`}</>
-      );
-    } else if (views <= 9999999) {
-      return (
-        <>{`${
-          Math.sign(views) * (Math.abs(views) / 1000000).toFixed(1)
-        }M Viewers`}</>
-      );
-    }
-  };
-  console.log(props);
   return (
     <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
       <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
@@ -113,7 +95,7 @@ const CategoryGamesId = (props) => {
                         </div>
                         <div className="app-inline-block">
                           <p className="app-font-size-7">
-                            <strong>7.7M Followers</strong>
+                            <strong>{checkFollowers(sumFollowers)}</strong>
                           </p>
                         </div>
                         <div className="app-inline-block app-mg-x-1">
@@ -183,7 +165,7 @@ const CategoryGamesId = (props) => {
                       <div className="app-flex app-flex-column app-full-height">
                         <div className="app-align-self-center app-flex app-full-height app-justify-content-center app-align-items-center">
                           <Link to="/">
-                            <h3 className="app-flex app-flex-column app-font-size-9">
+                            <h3 className="app-flex app-flex-column app-font-size-9 app-cursor-pointer">
                               Live Channels
                             </h3>
                           </Link>
@@ -237,6 +219,8 @@ const CategoryGamesId = (props) => {
                                                   pathname: `/${e.user_name}/videos/all`,
                                                   state: {
                                                     data: e,
+                                                    game_name:
+                                                      topGamesImage[0].name,
                                                   },
                                                 }}
                                                 className="app__color__grey app__cursor app__font__size__0_8"
@@ -268,6 +252,7 @@ const CategoryGamesId = (props) => {
                                       // state: { data: e },
                                       state: {
                                         data: e,
+                                        game_name: topGamesImage[0].name,
                                       },
                                     }}
                                     className="app__order__1"

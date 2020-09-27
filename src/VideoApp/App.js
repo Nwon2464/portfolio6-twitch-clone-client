@@ -3,7 +3,13 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { fetchVideos, fetchStreams, fetchAuth } from "./actions";
+import {
+  fetchVideos,
+  fetchStreams,
+  fetchAuth,
+  fetchActiveLiveTwitch,
+  fetchActiveLiveGameContents,
+} from "./actions";
 import { Router, Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import BodyRight from "./components/Body/BodyRight";
@@ -27,6 +33,7 @@ import SlashCategoryAll from "./components/MainRoute/SlashCategoryAll";
 import SlashCategoryGamesId from "./components/MainRoute/SlashCategoryGamesId";
 import SlashIdVideosAll from "./components/MainRoute/SlashIdVideosAll";
 import NotFound from "./error/NotFound";
+import Construction from "./error/Construction";
 const App = (props) => {
   //fetching videos from redux
   useEffect(() => {
@@ -37,6 +44,14 @@ const App = (props) => {
     // props.fetchJWT();
   }, []);
 
+  // FETCH TWITCH LIVE CHANNEL
+  useEffect(() => {
+    props.fetchActiveLiveTwitch();
+  }, []);
+  useEffect(() => {
+    props.fetchActiveLiveGameContents();
+  }, []);
+  console.log(props.twitch);
   return (
     <div className="app-flex app-flex-column app-flex-nowrap app-bottom-0 app-left-0 app-right-0 app-top-0 app-absolute">
       <Router history={history}>
@@ -59,7 +74,7 @@ const App = (props) => {
                 <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
                   <BodyLeft />
                 </div>
-                <div>/category/all/tags/:id</div>
+                <Construction />{" "}
               </div>
             </Route>
 
@@ -71,7 +86,7 @@ const App = (props) => {
                   <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
                     <BodyLeft />
                   </div>
-                  <NotFound />
+                  <Construction />
                 </div>
               )}
             />
@@ -102,15 +117,19 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     streams: Object.values(state.streams),
     modal: state.modal.showModal,
     auth: state.auth,
+    twitch: state.twitch,
   };
 };
 
 export default connect(mapStateToProps, {
   fetchStreams,
   showModal,
+  fetchActiveLiveTwitch,
+  fetchActiveLiveGameContents,
   fetchAuth,
 })(App);
