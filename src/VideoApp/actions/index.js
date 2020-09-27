@@ -29,7 +29,9 @@ import {
 const BASE_URL = "http://localhost:5000";
 
 export const fetchActiveLiveGameContents = () => async (dispatch) => {
-  const responseAll = await axios.get("/api/v1/twitch/streams/contents");
+  const responseAll = await axios.get(
+    "https://backend-express-video-app.vercel.app/api/v1/twitch/streams/contents"
+  );
 
   let dataFallGuy = responseAll.data.frontPage.fallGuy;
   dataFallGuy.map((game) => {
@@ -69,7 +71,9 @@ export const fetchActiveLiveGameContents = () => async (dispatch) => {
 };
 
 export const fetchActiveLiveTwitch = () => async (dispatch) => {
-  const responseAll = await axios.get("/api/v1/twitch/streams");
+  const responseAll = await axios.get(
+    "https://backend-express-video-app.vercel.app/api/v1/twitch/streams"
+  );
 
   let dataStreams = responseAll.data.frontPage.allStreams;
   dataStreams.map((game) => {

@@ -22,7 +22,7 @@ const CategoryGamesId = (props) => {
         return null;
       }
       const { data } = await axios.get(
-        `/api/v1/twitch/streams/${
+        `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/${
           props.location.state.data.game_id || props.location.state.data.id
         }`
       );

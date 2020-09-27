@@ -24,7 +24,9 @@ const SlashCategoryAll = (props) => {
 
   useEffect(() => {
     const fetchTopGames = async () => {
-      const { data } = await axios.get("/api/v1/twitch/categories/all");
+      const { data } = await axios.get(
+        "https://backend-express-video-app.vercel.app/api/v1/twitch/categories/all"
+      );
       let dataArray = data.topGames;
       // console.log(data);
       dataArray.map((game) => {
