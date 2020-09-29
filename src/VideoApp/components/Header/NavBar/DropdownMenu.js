@@ -20,11 +20,10 @@ const DropdownMenu = (props) => {
     };
   }, []);
 
-  function calcHeight(el) {
+  const calcHeight = (el) => {
     const height = el.offsetHeight;
     setMenuHeight(height);
-  }
-
+  };
   const DropdownItem = (props) => {
     const modalRef = React.useRef();
 
@@ -34,7 +33,6 @@ const DropdownMenu = (props) => {
         container === event.currentTarget &&
         container.hasChildNodes(event.currentTarget)
       ) {
-        console.log("YEs you are good togo");
         modalRef.current.openModal();
       }
     };

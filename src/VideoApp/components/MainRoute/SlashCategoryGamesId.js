@@ -26,8 +26,7 @@ const CategoryGamesId = (props) => {
           props.location.state.data.game_id || props.location.state.data.id
         }`
       );
-      // console.log(data);
-
+     
       let dataArray = data.selectedGame;
       dataArray.map((game) => {
         let newUrl = game.box_art_url
@@ -73,8 +72,16 @@ const CategoryGamesId = (props) => {
             <SlashCategoryGamesIdLoading />
           ) : (
             <>
-              <div className="app-flex">
+              <div className="app-flex app-relative app-banner-outer">
                 {/* /category/games/{props.match.params.id} */}
+                <div
+                  style={{
+                    backgroundImage: `url(${topGamesImage[0].box_art_url
+                      .replace("180", "1080")
+                      .replace("240", "340")})`,
+                  }}
+                  className="app-absolute app-banner"
+                ></div>
                 <div className="app-flex app-full-width app-pd-20">
                   <div className="app-full-width app-flex">
                     <div className="app-mg-r-2 app-flex">
@@ -121,7 +128,7 @@ const CategoryGamesId = (props) => {
                           </div>{" "}
                         </div>
                       </div>
-                      <div
+                      {/* <div
                         style={{ maxWidth: "60rem" }}
                         className="app-pd-t-05"
                       >
@@ -129,7 +136,7 @@ const CategoryGamesId = (props) => {
                           World of Warcraft is an MMORPG that takes place in
                           Blizzard Entertainment's Warcraft universe{" "}
                         </h3>
-                      </div>
+                      </div> */}
                       <div className="app-mg-t-1">
                         <div className="app-inline-flex">
                           <button className="app-cursor-pointer app-pd-y-06 app-pd-x-1 app-align-items-center app-justify-content-center app-flex app-core-primary app-border-bottom-left-radius-medium app-border-bottom-right-radius-medium app-border-top-left-radius-medium app-border-top-right-radius-medium">

@@ -5,11 +5,10 @@ import StarBorderOutlinedIcon from "@material-ui/icons/StarBorderOutlined";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 
 import MoreVertOutlinedIcon from "@material-ui/icons/MoreVertOutlined";
-import SaveAltOutlinedIcon from "@material-ui/icons/SaveAltOutlined";
 import { Link } from "react-router-dom";
 
 const Reuseable = (props) => {
-  console.log(props);
+
   const checkViewers = (views) => {
     if (views <= 999) {
       return <>{`${views} Followers`}</>;
@@ -27,7 +26,6 @@ const Reuseable = (props) => {
       );
     }
   };
-  console.log(props);
   return (
     <>
       <div className="app-mg-t-03">
@@ -38,7 +36,6 @@ const Reuseable = (props) => {
               data: props.location.state.data,
               // totalFollowers: props.totalFollowers,
               game_name: props.location.state.game_name,
-                           
             },
           }}
           className=""

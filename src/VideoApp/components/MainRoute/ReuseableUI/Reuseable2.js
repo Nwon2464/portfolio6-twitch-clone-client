@@ -50,7 +50,6 @@ const Reuseable2 = (props) => {
     }
   };
 
-  console.log(props);
   return (
     <>
       <div className="app-pd-l-2 app-pd-r-2 app-mg-b-1">

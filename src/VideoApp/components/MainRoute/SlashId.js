@@ -10,7 +10,6 @@ import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import MoreVertOutlinedIcon from "@material-ui/icons/MoreVertOutlined";
 import SaveAltOutlinedIcon from "@material-ui/icons/SaveAltOutlined";
 const SlashId = (props) => {
-  console.log(props);
   return (
     <>
       <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">
@@ -19,16 +18,15 @@ const SlashId = (props) => {
         </div>
         {props.location.state ? (
           <div className="app-flex app-flex-column app-full-width app-overflow-scroll">
-            <iframe
-              // https://player.twitch.tv/?channel=juansguarnizo&muted=true&parent=frontend-react-video-app-vercel-app&parent=frontend-react-video-app.vercel.app
-              src={`https://player.twitch.tv/?channel=${props.location.state.data.user_name}&muted=true&parent=frontend-react-video-app-vercel-app&parent=frontend-react-video-app.vercel.app`}
-              height="100%"
-              width="100%"
-              frameBorder="0"
-              scrolling="<scrolling>"
-              allowFullScreen
-            ></iframe>
-
+            <div>
+              <iframe
+                style={{ height: "40rem", width: "100%" }}
+                src={`https://player.twitch.tv/?channel=${props.location.state.data.user_name}&muted=true&parent=frontend-react-video-app-vercel-app&parent=frontend-react-video-app.vercel.app`}
+                frameBorder="0"
+                scrolling="<scrolling>"
+                allowFullScreen
+              ></iframe>
+            </div>
             <div className="app-body-right-background">
               <div className="app-flex app-justify-content-between app-relative">
                 <div className="app-mg-1 app-full-width app-flex">

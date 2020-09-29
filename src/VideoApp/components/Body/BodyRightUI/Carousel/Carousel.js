@@ -33,7 +33,6 @@ const Carousel = (props) => {
 
   const determineWidth = (index) => {
     const num = width[index];
-    // console.log(num.first);
     return num.widthSize;
   };
 
@@ -257,20 +256,25 @@ const Carousel = (props) => {
                   <div className="app__order__1 app__flex__start">
                     <div className="app__flex__grow__0 app__flex__shrink__0">
                       {" "}
-                      <Link to="/" className="">
+                      <div>
                         <img
                           src={streams.profile_image_url}
                           alt="streamJPG"
                           className="image__card__upper__image"
                         />
-                      </Link>
+                      </div>
                     </div>{" "}
                     <div className="app__min__width__0 app__order__2 app__flex__shrink__1 app__flex__grow__1 app__width app__flex__column app__flex app__margin__left__8">
                       <div className="app__margin__negative__bottom">
                         <div className="app__flex__start">
                           <h3 className="app__font__weight ">
                             <Link
-                              to="/"
+                              to={{
+                                pathname: `/${streams.user_name}`,
+                                state: {
+                                  data: streams,
+                                },
+                              }}
                               className="app__font__color app__font__size__0_8"
                             >
                               {streams.user_name}
@@ -280,7 +284,17 @@ const Carousel = (props) => {
                       </div>
                       <div className="app__flex__start">
                         <h5 className=" app__font__size__0_8">
-                          <Link to="/" className="app__font__color">
+                          <Link
+                            to={{
+                              pathname: `/category/games/${streams.game_name
+                                .split(" ")
+                                .join("")}`,
+                              state: {
+                                data: streams,
+                              },
+                            }}
+                            className="app__font__color"
+                          >
                             {streams.game_name}
                           </Link>
                         </h5>

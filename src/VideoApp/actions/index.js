@@ -1,7 +1,3 @@
-// import faker from "faker";
-import _ from "lodash";
-// import moment from "react-moment";
-// import moment from "moment";
 import axios from "axios";
 import history from "../history";
 import {
@@ -77,7 +73,6 @@ export const fetchActiveLiveTwitch = () => async (dispatch) => {
     // "/api/v1/twitch/streams"
   );
 
-  console.log(responseAll);
   let dataStreams = responseAll.data.frontPage.allStreams;
   dataStreams.map((game) => {
     let newUrl = game.thumbnail_url
@@ -157,9 +152,7 @@ export const fetchAuth = () => async (dispatch) => {
       },
     });
     dispatch({ type: "JWT_AUTH", payload: response.data.user.username });
-  }
-  // console.log(response);
-  else {
+  } else {
     const { data } = await axios.get(`${DEPLOYMENT_URL}/auth/current_user`);
     dispatch({ type: FETCH_AUTH, payload: data });
   }
@@ -174,7 +167,7 @@ export const jwtlogOut = () => async (dispatch) => {
 
 export const logOutAuth = () => async (dispatch) => {
   const response = await axios.get(`${DEPLOYMENT_URL}/auth/logout`);
-  // console.log(data);
+
   dispatch({ type: LOGOUT_AUTH });
   history.push("/");
   // history.go(0);

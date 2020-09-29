@@ -1,5 +1,4 @@
 import React from "react";
-import _ from "lodash";
 import { Link } from "react-router-dom";
 export const checkViewers = (views) => {
   if (views <= 999) {
@@ -19,22 +18,22 @@ export const checkViewers = (views) => {
   }
 };
 export const checkFollowers = (views) => {
-    if (views <= 999) {
-      return <>{`${views} Followers`}</>;
-    } else if (views < 999999) {
-      return (
-        <>{`${
-          Math.sign(views) * (Math.abs(views) / 1000).toFixed(1)
-        }K Followers`}</>
-      );
-    } else if (views <= 9999999999) {
-      return (
-        <>{`${
-          Math.sign(views) * (Math.abs(views) / 100000000).toFixed(1)
-        }M Followers`}</>
-      );
-    }
-  };
+  if (views <= 999) {
+    return <>{`${views} Followers`}</>;
+  } else if (views < 999999) {
+    return (
+      <>{`${
+        Math.sign(views) * (Math.abs(views) / 1000).toFixed(1)
+      }K Followers`}</>
+    );
+  } else if (views <= 9999999999) {
+    return (
+      <>{`${
+        Math.sign(views) * (Math.abs(views) / 100000000).toFixed(1)
+      }M Followers`}</>
+    );
+  }
+};
 export const checkTags = (streams, i) => {
   return streams.localization_names.map((e, i) => {
     return (

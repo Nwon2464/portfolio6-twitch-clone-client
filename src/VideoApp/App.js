@@ -51,7 +51,6 @@ const App = (props) => {
   useEffect(() => {
     props.fetchActiveLiveGameContents();
   }, []);
-  console.log(props.twitch);
   return (
     <div className="app-flex app-flex-column app-flex-nowrap app-bottom-0 app-left-0 app-right-0 app-top-0 app-absolute">
       <Router history={history}>
@@ -86,7 +85,7 @@ const App = (props) => {
                   <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
                     <BodyLeft />
                   </div>
-                  <Construction />
+                  <NotFound />
                 </div>
               )}
             />

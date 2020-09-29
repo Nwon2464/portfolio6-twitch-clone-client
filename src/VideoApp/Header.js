@@ -3,7 +3,6 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { signIn, signOut, logOutAuth, jwtlogOut } from "./actions/index";
 import { connect } from "react-redux";
-import axios from "axios";
 
 import history from "./history";
 import SearchBar from "./components/Header/SearchBar/SearchBar";
@@ -28,7 +27,6 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import SettingsApplicationsOutlinedIcon from "@material-ui/icons/SettingsApplicationsOutlined";
 import VideoCallIcon from "@material-ui/icons/VideoCall";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 const Header = (props) => {
   const modalRef = useRef();
@@ -36,10 +34,6 @@ const Header = (props) => {
   const [navIndicatorActive, setNavIndicatorActive] = useState("");
   const toggleMultipleIndicator = (value) => {
     setNavIndicatorActive(value);
-  };
-  const jwtlogOut = () => {
-    localStorage.removeItem("token");
-    history.go(0);
   };
   const openLoginModal = () => {
     modalRef.current.openModal();
@@ -211,14 +205,14 @@ const Header = (props) => {
           </div>
         </div>
         <div className="app-flex app-align-items-center app-flex-grow-1 app-flex-shrink-1 app-justify-content-end app-full-width">
-          <div className="app-mg-x-05 app-flex-shrink-0 app-flex-grow-0 app-align-self-center app-flex-nowrap">
+          {/* <div className="app-mg-x-05 app-flex-shrink-0 app-flex-grow-0 app-align-self-center app-flex-nowrap">
             <Link to="/streams/new">
               <VideoCallIcon
                 // style={{ marginRight: "10px" }}
                 className="header__icon"
               />
             </Link>
-          </div>
+          </div> */}
           {/* <LoginSignUpButton /> */}
 
           <div className="app-mg-r-1 app-pd-y-1 app-flex app-full-height">
@@ -231,7 +225,6 @@ const Header = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   return {
     auth: state.auth,
   };

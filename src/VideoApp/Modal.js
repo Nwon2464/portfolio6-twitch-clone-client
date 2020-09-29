@@ -12,7 +12,6 @@ const Modal = (props) => {
     selected: { id, title, description },
   } = props;
 
-  console.log(props);
   const videoSrc = `https://www.youtube.com/embed/${id}`;
   return ReactDOM.createPortal(
     <div

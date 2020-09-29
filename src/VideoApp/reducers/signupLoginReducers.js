@@ -1,9 +1,9 @@
-import { SIGNUP_CREATE, LOGIN_TOKEN, LOGOUT_TOKEN } from "../actions/types";
+import { SIGNUP_CREATE } from "../actions/types";
 
 const INITIAL_STATE = {
   signupState: null,
   login_jwt: null,
-//   checkout_jwt: false,
+  //   checkout_jwt: false,
 };
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

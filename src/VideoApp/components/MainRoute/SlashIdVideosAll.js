@@ -6,7 +6,6 @@ import axios from "axios";
 import Reuseable2 from "./ReuseableUI/Reuseable2";
 import SlashVideoAllLoading from "./ReuseableUI/SlashVideoAllLoading";
 const SlashIdVideosAll = (props) => {
-  console.log(props);
   const [streams, setStreams] = useState([]);
   const [totalViews, setTotalViews] = useState(0);
   const [totalFollowers, setTotalFollowers] = useState(0);
@@ -43,7 +42,6 @@ const SlashIdVideosAll = (props) => {
     };
     fecthLive();
   }, []);
-
   useEffect(() => {
     const fetch = async () => {
       const { data } = await axios.get(
@@ -200,17 +198,26 @@ const SlashIdVideosAll = (props) => {
         <div
           className="app-absolute app-top-0 app-left-0"
           style={{
-            maxHeight: 470,
+            maxHeight: 700,
             width: "100%",
             overflow: "hidden",
             zIndex: 1,
           }}
         >
           <div className="app-flex">
-            <img
+            <iframe
+              style={{ width: "100rem", height: "50rem" }}
+              // https://player.twitch.tv/?channel=juansguarnizo&muted=true&parent=frontend-react-video-app-vercel-app&parent=frontend-react-video-app.vercel.app
+              src={`https://player.twitch.tv/?channel=${props.location.state.data.user_name}&muted=true&parent=frontend-react-video-app-vercel-app&parent=frontend-react-video-app.vercel.app`}
+              frameBorder="0"
+              scrolling="<scrolling>"
+              allowFullScreen
+            ></iframe>
+
+            {/* <img
               style={{ height: 470, width: "100%", objectFit: "cover" }}
               src={props.location.state.data.thumbnail_url}
-            />
+            /> */}
           </div>
         </div>
       </div>

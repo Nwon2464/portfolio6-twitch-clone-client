@@ -1,18 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Field, reduxForm, formValueSelector } from "redux-form";
+import React from "react";
+import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import renderField from "./RenderField";
 import { connect } from "react-redux";
 import { signUpCreate } from "../../actions";
 import SignupLoading from "./SignupLoading";
-import { ReactComponent as TwitchIcon } from "./twitch-seeklogo.com.svg";
 import ErrorMessage from "./ErrorMessage";
 const SubmitValidationForm = (props) => {
   const {
-    visited,
-    valid,
-    invalid,
-    touched,
     handleSubmit,
     pristine,
     reset,
@@ -190,7 +185,7 @@ const maxLength = (max) => (value) =>
   value && value.length > max
     ? `Must be ${max} characters or less😒`
     : undefined;
-const maxLength30 = maxLength(30);
+// const maxLength30 = maxLength(30);
 ////
 // ? `Usernames must be between 4 and 30 characters😒`
 
@@ -204,7 +199,7 @@ const passWord8min = (min) => (value) =>
   value && value.length < min
     ? `Passwords must be at least ${min} characters long😒`
     : undefined;
-const passWord8minValidate = passWord8min(8);
+// const passWord8minValidate = passWord8min(8);
 
 const password = (value, allValues) => {
   if (value && !/^[a-zA-Z0-9]{8,30}$/i.test(value)) return "Invalid password😒";

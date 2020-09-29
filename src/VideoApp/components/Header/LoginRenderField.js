@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 const LoginRenderField = (props) => {
   const anchorRef = useRef();
   const inputRef = useRef();
-  const [anchorHeight, setAnchorHeight] = useState(0);
-  //   useEffect(() => {
-  //     const offSetWidth = anchorRef.current.offsetWidth;
-  //     setAnchorHeight(offSetWidth);
-  //     console.log("FROMRENDERFIELD");
-  //   }, []);
+  // const [anchorHeight, setAnchorHeight] = useState(0);
+  // useEffect(() => {
+  //   const offSetWidth = anchorRef.current.offsetWidth;
+  //   setAnchorHeight(offSetWidth);
+  // }, []);
   const className = `app__input ${props.meta.active && ""}`;
-//   console.log(props);
+  //   console.log(props);
   return (
     <div className="field" style={{ position: "relative" }}>
       <label>

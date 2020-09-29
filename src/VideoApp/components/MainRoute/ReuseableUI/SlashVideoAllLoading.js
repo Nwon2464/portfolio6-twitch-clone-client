@@ -56,13 +56,12 @@ const SlashVideoAllLoading = (props) => {
             .fill()
             .map((e, i) => {
               return (
-                <>
+                <React.Fragment key={i}>
                   <Skeleton width={250} height={150} />{" "}
-                </>
+                </React.Fragment>
               );
             })}
-
-         </div>
+        </div>
       </div>
     </>
   );

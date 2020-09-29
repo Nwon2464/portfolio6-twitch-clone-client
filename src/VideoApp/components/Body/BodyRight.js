@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./BodyRight.css";
-import _ from "lodash";
+
 import VideoCard from "./BodyRightUI/VideoCard/VideoCard";
 import ShowClickRender from "./ShowClickRender";
 import { connect } from "react-redux";
@@ -11,7 +11,6 @@ import { checkViewers, checkTags } from "./checkViewers";
 import Loading from "./BodyRightUI/VideoCard/Loading";
 import LoadingGameCard from "./BodyRightUI/GameCard/LoadingGameCard";
 const BodyRight = (props) => {
-  const [liveVideos, setLiveVideos] = useState([]);
   const [visible, setVisible] = useState(4);
 
   const showClick = (e) => {
@@ -45,7 +44,6 @@ const BodyRight = (props) => {
     );
     // }
   };
-  // console.log(props.twitch.activeCategoryGames.length);
   return (
     <div className="app-overflow-scroll app-body-right-background app-z-index-default app-flex app-flex-column app-flex-grow-1 app-full-height app-full-width">
       {/* <h2>Stream Lists</h2> */}

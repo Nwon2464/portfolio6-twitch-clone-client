@@ -1,8 +1,5 @@
-import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef } from "react";
 import LoginModal from "./LoginModal";
-import LoginModalForm from "./LoginModalForm";
-import SignUpModal from "./SignUpModal";
 import ClearIcon from "@material-ui/icons/Clear";
 import { panes } from "./SignupReuse";
 import { Tab } from "semantic-ui-react";
@@ -19,9 +16,9 @@ const LoginSignUpButton = () => {
   };
   const signUpModalRef = React.useRef();
 
-  const openSignUpModal = () => {
-    signUpModalRef.current.openModal();
-  };
+  // const openSignUpModal = () => {
+  //   signUpModalRef.current.openModal();
+  // };
   return (
     <div className="app-flex app-flex-nowrap">
       <div className="app-pd-x-03">

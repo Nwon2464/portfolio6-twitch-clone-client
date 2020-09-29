@@ -1,31 +1,8 @@
-import React, { useEffect, useState } from "react";
-import BodyLeftRow from "./BodyLeftRow";
-import { icons } from "./IconData";
+import React from "react";
 import "./BodyLeft.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import HomeIcon from "@material-ui/icons/Home";
 import { connect } from "react-redux";
 const BodyLeft = (props) => {
-  const [liveVideos, setLiveVideos] = useState([]);
-  // useEffect(() => {
-  //   const fecthLive = async () => {
-  //     const { data } = await axios.get(
-  //       "https://backend-express-video-app.vercel.app/api/v1/twitch/streams"
-  //     );
-  //     let dataArray = data;
-  //     dataArray.map((game) => {
-  //       let newUrl = game.thumbnail_url
-  //         .replace("{width}", "440")
-  //         .replace("{height}", "248");
-  //       game.thumbnail_url = newUrl;
-  //     });
-  //     setLiveVideos(data);
-  //     setLoading(false);
-  //   };
-  //   fecthLive();
-  // }, []);
-
   const checkViewers = (views) => {
     if (views <= 999) {
       return <>{`${views} viewers`}</>;
@@ -47,7 +24,15 @@ const BodyLeft = (props) => {
   const renderIcons = props.twitch.activeLiveTwitch.map((e, i) => {
     return (
       <div key={i} className="app-full-width app-recommend">
-        <Link className="app-full-width side-nav-card-link app-pd-x-1 app-pd-y-05 app-align-items-center app-flex-nowrap app-flex">
+        <Link
+          to={{
+            pathname: `/${e.user_name}`,
+            state: {
+              data: e,
+            },
+          }}
+          className="app-full-width side-nav-card-link app-pd-x-1 app-pd-y-05 app-align-items-center app-flex-nowrap app-flex"
+        >
           <div className="app-align-items-center app-flex-shrink-0 app-avatar--size-30">
             <figure className="app-avatar--size-30">
               <img

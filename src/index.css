@@ -653,3 +653,16 @@ button {
 .app-flex-gutter-03 {
   padding: 0 0.3rem !important;
 }
+.app-banner-outer {
+  background: linear-gradient(0deg, #f7f7f8, rgba(247, 247, 248, 0.25)),
+    linear-gradient(90deg, #f7f7f8, rgba(247, 247, 248, 0.25));
+  content: "";
+}
+.app-banner {
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
