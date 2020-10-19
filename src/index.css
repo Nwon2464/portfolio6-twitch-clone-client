@@ -596,6 +596,23 @@ button {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.app-carousel-metadata {
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 0) 0,
+    hsla(0, 0%, 100%, 0.9) 75%,
+    #fff 80%,
+    #fff
+  );
+  position: absolute !important;
+  height: 5rem;
+  width: 15rem;
+  bottom: 0;
+}
+.app-word-wrap{
+  
+  word-wrap: break-word !important;
+}
 .app-z-index-default {
   z-index: var(--z-index-default);
 }

@@ -181,11 +181,6 @@ img {
   display: flex;
   flex-direction: column;
 }
-.card__display__flex__direction__margin {
-  margin: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-}
 .card__display__info__2__order__1 {
   order: 1;
 }

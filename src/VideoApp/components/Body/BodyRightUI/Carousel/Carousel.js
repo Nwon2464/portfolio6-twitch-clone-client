@@ -252,7 +252,10 @@ const Carousel = (props) => {
                 style={{ display: `${AutoCard}` }}
                 className="image__card app__order__2"
               >
-                <div className="card__display__flex__direction__margin app__card__height app__width">
+                <div
+                  style={{ width: "15.7rem" }}
+                  className="app-flex-column app-flex app-pd-05 app__card__height"
+                >
                   <div className="app__order__1 app__flex__start">
                     <div className="app__flex__grow__0 app__flex__shrink__0">
                       {" "}
@@ -312,10 +315,10 @@ const Carousel = (props) => {
                   <div className="channel__tag__2 app__order__2 channel__tag__1">
                     <div className="channel__tag__3">{checkTags(streams)}</div>
                   </div>
-                  <div style={{ width: "90%" }} className="app__order__3">
-                    {/* image__card__bottom */}{" "}
-                    <Link to="/">{streams.description}</Link>
+                  <div className="app-word-wrap app__order__3 app-overflow-hidden">
+                    {streams.description}
                   </div>
+                  <div className="app-carousel-metadata"></div>
                 </div>
               </div>
             </div>
