@@ -9,6 +9,7 @@ const SlashCategoryAllLoading = () => {
         .map((e, i) => {
           return (
             <div
+              key={i}
               style={{ width: "15rem" }}
               className="app-flex app-max-width-5 app-flex-gutter-03 app-flex-grow-1"
             >

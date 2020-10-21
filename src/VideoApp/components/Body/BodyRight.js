@@ -82,7 +82,7 @@ const BodyRight = (props) => {
             render={(visible, showClick) => (
               <VideoCard
                 recommend="recommend"
-                categories="Just Chat"
+                categories="Just Chatting"
                 videos={props.twitch.activeJustChat}
                 visible={visible}
                 checkTags={checkTags}

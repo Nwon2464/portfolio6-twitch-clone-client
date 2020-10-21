@@ -2,23 +2,48 @@ import React from "react";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import { Link } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
 const VideoCard = (props) => {
   return (
     <div className="game__card app-pd-15">
       <div className="card__maxWidth__margin app__tower__gutter">
-        <h3 style={{ paddingBottom: "0.5rem", paddingLeft: "0.2rem" }}>
+        <h3
+          style={{
+            paddingBottom: "0.5rem",
+            paddingLeft: "0.2rem",
+            fontSize: "large",
+          }}
+        >
           {props.recommend ? "  Recommended " : ""}
-          <strong
-            style={{
-              color: "#00b5ad",
-              fontSize: "1.5rem",
-              paddingLeft: "0.1rem",
+          {props.categories === "Live Channel" ? "Live Channel " : ""}
+          <Link
+            to={{
+              pathname: `/category/games/${props.categories
+                .split(" ")
+                .join("")}`,
+              state: {
+                data: {
+                  game_id:
+                    (props.categories === "Just Chatting" && "509658") ||
+                    (props.categories === "Fortnite" && "33214") ||
+                    (props.categories === "Minecraft" && "27471") ||
+                    (props.categories === "Fall Guys" && "512980"),
+                },
+              },
             }}
           >
-            {props.categories}
-          </strong>
-          {" "}we think you'll like
+            {props.categories !== "Live Channel" && (
+              <strong
+                style={{
+                  color: "#00b5ad",
+                  fontSize: "1.5rem",
+                  paddingLeft: "0.1rem",
+                }}
+              >
+                {props.categories}{" "}
+              </strong>
+            )}
+          </Link>
+          we think you'll like
         </h3>
         <div className="app__relative">
           <div className="card__display__flex__wrap">

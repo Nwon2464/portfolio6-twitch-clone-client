@@ -146,7 +146,7 @@ const Header = (props) => {
                 onClick={() => toggleMultipleIndicator("Esports")}
                 className="app-align-self-center app-flex app-full-height  app-justify-content-center app-align-items-center"
               >
-                <Link to="/">
+                <Link to="/esports">
                   <h3 className="app-flex app-flex-column app-font-size-7 app-cursor-pointer">
                     Esports
                   </h3>
@@ -163,7 +163,7 @@ const Header = (props) => {
                 onClick={() => toggleMultipleIndicator("Music")}
                 className="app-align-self-center app-flex app-full-height  app-justify-content-center app-align-items-center"
               >
-                <Link to="/">
+                <Link to="/music">
                   <h3 className="app-flex app-flex-column app-font-size-7 app-cursor-pointer">
                     Music
                   </h3>

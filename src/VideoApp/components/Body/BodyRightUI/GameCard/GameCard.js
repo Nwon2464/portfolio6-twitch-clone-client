@@ -5,7 +5,7 @@ const GameCard = (props) => {
     <div className="game__category app-pd-15">
       <div className="card__maxWidth__margin app__tower__gutter">
         <h3 style={{ paddingBottom: "0.5rem" }}>
-          <Link to="/category" style={{ fontSize: "1.5rem" }}>
+          <Link to="/category/all" style={{ fontSize: "1.5rem" }}>
             <strong
               style={{
                 color: "#00b5ad",

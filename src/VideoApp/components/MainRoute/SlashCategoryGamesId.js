@@ -114,12 +114,14 @@ const CategoryGamesId = (props) => {
                             className="app-flex app-align-items-center app-full-height"
                           >
                             <Link
+                            to="/"
                               className="channel__tag__anchor"
                               style={{ marginLeft: 2, maxWidth: 90 }}
                             >
                               MOBA
                             </Link>{" "}
                             <Link
+                            to="/"
                               className="channel__tag__anchor"
                               style={{ marginLeft: 4, maxWidth: 90 }}
                             >
@@ -128,15 +130,7 @@ const CategoryGamesId = (props) => {
                           </div>{" "}
                         </div>
                       </div>
-                      {/* <div
-                        style={{ maxWidth: "60rem" }}
-                        className="app-pd-t-05"
-                      >
-                        <h3 className="app-font-regular">
-                          World of Warcraft is an MMORPG that takes place in
-                          Blizzard Entertainment's Warcraft universe{" "}
-                        </h3>
-                      </div> */}
+                    
                       <div className="app-mg-t-1">
                         <div className="app-inline-flex">
                           <button className="app-cursor-pointer app-pd-y-06 app-pd-x-1 app-align-items-center app-justify-content-center app-flex app-core-primary app-border-bottom-left-radius-medium app-border-bottom-right-radius-medium app-border-top-left-radius-medium app-border-top-right-radius-medium">

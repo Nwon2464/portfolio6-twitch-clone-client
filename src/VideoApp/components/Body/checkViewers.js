@@ -29,7 +29,7 @@ export const checkFollowers = (views) => {
   } else if (views <= 9999999999) {
     return (
       <>{`${
-        Math.sign(views) * (Math.abs(views) / 100000000).toFixed(1)
+        Math.sign(views) * (Math.abs(views) / 10000000).toFixed(1)
       }M Followers`}</>
     );
   }
