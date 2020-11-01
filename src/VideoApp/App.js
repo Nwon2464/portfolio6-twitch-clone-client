@@ -89,7 +89,6 @@ const App = (props) => {
                 </div>
               )}
             />
-
             <Route exact path="/streams/new">
               <div className="app__body">
                 <StreamsCreate />
