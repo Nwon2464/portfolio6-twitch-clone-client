@@ -17,23 +17,6 @@ const BodyRight = (props) => {
     e.preventDefault();
     setVisible(visible + 4);
   };
-  // const checkViewers = (views) => {
-  //   if (views <= 999) {
-  //     return <>{`${views} viewers`}</>;
-  //   } else if (views < 999999) {
-  //     return (
-  //       <>{`${
-  //         Math.sign(views) * (Math.abs(views) / 1000).toFixed(1)
-  //       }K viewers`}</>
-  //     );
-  //   } else if (views <= 9999999) {
-  //     return (
-  //       <>{`${
-  //         Math.sign(views) * (Math.abs(views) / 1000000).toFixed(1)
-  //       }M viewers`}</>
-  //     );
-  //   }
-  // };
 
   const renderCreate = () => {
     // if (props.auth) {
@@ -46,7 +29,6 @@ const BodyRight = (props) => {
   };
   return (
     <div className="app-overflow-scroll app-body-right-background app-z-index-default app-flex app-flex-column app-flex-grow-1 app-full-height app-full-width">
-      {/* <h2>Stream Lists</h2> */}
       <div className="app-full-width app-relative">
         <Carousel />
 
@@ -145,9 +127,6 @@ const BodyRight = (props) => {
           />
         )}
       </div>
-
-      {/* {renderCreate()} */}
-      {/* <VideoList onVideoSelect={props.onVideoSelect} streams={props.streams} /> */}
     </div>
   );
 };

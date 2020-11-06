@@ -18,12 +18,11 @@ const SlashCategoryAllLoading = () => {
                   <div className="app-pd-b-1 app-flex app-flex-column">
                     <div className="app-flex-order-1 app-relative">
                       <div className="app-flex app-flex-column app-flex-nowrap">
-                        <Skeleton height={310} width={235} />
+                        <Skeleton height={310} width={208} />
                         <div style={{ marginTop: 5 }} className="app-relative">
                           <Skeleton width={100} height={15} />
                         </div>
                         <Skeleton width={50} height={15} />
-                        <Skeleton width={40} height={15} />
                       </div>
                     </div>
                   </div>

@@ -115,7 +115,6 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  
   return {
     streams: Object.values(state.streams),
     modal: state.modal.showModal,

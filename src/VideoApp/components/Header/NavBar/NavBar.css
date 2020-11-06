@@ -55,7 +55,7 @@ nav {
   background-color: var(--bg);
   border: var(--border);
   border-radius: var(--border-radius);
-  padding: 5px;
+  padding: 0px;
   overflow: hidden;
   transition: height var(--speed) ease;
 }
@@ -80,10 +80,18 @@ nav {
   margin-right: 0.5rem;
 }
 .menu__item:hover {
-  background-color: #00b5ad;
+  background-color: #efeff1;
 }
 .icon__right {
-  margin-left: auto;
+  margin-top: 5px;
+  /* margin-right:10px; */
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  /* order: 3;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; */
 }
 
 .menu__ {
@@ -97,7 +105,7 @@ nav {
 
 .menu__primary-enter-active {
   transform: translateX(0%);
-  transition: all var(--speed) ease;
+  transition: transform 250ms ease 0ms, opacity;
 }
 
 .menu__primary-exit {
@@ -105,8 +113,10 @@ nav {
 }
 
 .menu__primary-exit-active {
+  /* transform: translateX(-110%); */
+
   transform: translateX(-110%);
-  transition: all var(--speed) ease;
+  transition: transform 250ms ease 0ms, opacity;
 }
 
 .menu__secondary-enter {
@@ -115,7 +125,7 @@ nav {
 
 .menu__secondary-enter-active {
   transform: translateX(0%);
-  transition: all var(--speed) ease;
+  transition: transform 250ms ease 0ms, opacity;
 }
 
 .menu__secondary-exit {
@@ -123,5 +133,5 @@ nav {
 
 .menu__secondary-exit-active {
   transform: translateX(110%);
-  transition: all var(--speed) ease;
+  transition: transform 250ms ease 0ms, opacity;
 }

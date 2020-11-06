@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import LoginModal from "../LoginModal";
 import LoginModalForm from "../LoginModalForm";
 import { CSSTransition } from "react-transition-group";
-// import { FaLongArrowAltUp } from "react-icons/fa";
 import ClearIcon from "@material-ui/icons/Clear";
 
 import { Tab } from "semantic-ui-react";
@@ -76,10 +75,11 @@ const DropdownMenu = (props) => {
           }}
           className="menu__item"
         >
-          <span className="icon__button">{props.leftIcon}</span>
-          {props.children ? props.children : <span>{props.userEmail}</span>}
-
-          <span className="icon__right">{props.rightIcon}</span>
+          <div className="icon__button">{props.leftIcon}</div>
+          <div style={{ flexGrow: 1 }}>
+            {props.children ? props.children : <>{props.userEmail}</>}
+          </div>
+          <div className="icon__right">{props.rightIcon}</div>
         </div>
       </>
     );
@@ -87,7 +87,7 @@ const DropdownMenu = (props) => {
 
   return (
     <div
-      style={{ height: `${menuHeight} + 10px` }}
+      style={{ height: menuHeight }}
       ref={dropdownRef}
       className="dropdown__"
     >
