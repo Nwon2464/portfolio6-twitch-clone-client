@@ -225,14 +225,7 @@ const Carousel = (props) => {
           const position = "animate absolute image";
           const imgStyle = determineStyle(i, showAnimation);
 
-          {
-            /* const AutoStyle = determineAutoplay(i); */
-          }
-
           const AutoCard = determineCard(i);
-          {
-            /* const AutoWidth = determineWidth(i); */
-          }
           return (
             <div style={imgStyle} key={i} className="slide">
               <iframe

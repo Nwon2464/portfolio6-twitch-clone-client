@@ -22,9 +22,6 @@ const StreamsForm = (props) => {
     props.onSubmit(formValues);
   };
 
-
-  console.log(props);
-
   return (
     <div className="ui container">
       <form className="ui form" onSubmit={props.handleSubmit(onSubmit)}>

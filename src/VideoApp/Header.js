@@ -303,10 +303,6 @@ const loggedInContents = [
     leftIcon: <ExitToAppIcon />,
     logged: true,
   },
-  // {
-  //   content: "Create DashBoard",
-  //   leftIcon: <BoltIcon />
-  // }
 ];
 const languages = [
   {

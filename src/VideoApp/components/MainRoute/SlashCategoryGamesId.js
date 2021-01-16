@@ -8,7 +8,6 @@ import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutline
 import SlashCategoryGamesIdLoading from "./ReuseableUI/SlashCategoryGamesIdLoading";
 
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import { checkViewers, checkFollowers } from "../Body/checkViewers";
 const CategoryGamesId = (props) => {
   const [category, setCategory] = useState([]);

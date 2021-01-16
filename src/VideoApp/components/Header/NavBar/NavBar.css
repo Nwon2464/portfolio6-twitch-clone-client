@@ -105,7 +105,7 @@ nav {
 
 .menu__primary-enter-active {
   transform: translateX(0%);
-  transition: transform 250ms ease 0ms, opacity;
+  transition: transform 500ms ease 0ms, opacity;
 }
 
 .menu__primary-exit {
@@ -116,7 +116,7 @@ nav {
   /* transform: translateX(-110%); */
 
   transform: translateX(-110%);
-  transition: transform 250ms ease 0ms, opacity;
+  transition: transform 500ms ease 0ms, opacity;
 }
 
 .menu__secondary-enter {
@@ -125,7 +125,7 @@ nav {
 
 .menu__secondary-enter-active {
   transform: translateX(0%);
-  transition: transform 250ms ease 0ms, opacity;
+  transition: transform 500ms ease 0ms, opacity;
 }
 
 .menu__secondary-exit {
@@ -133,5 +133,5 @@ nav {
 
 .menu__secondary-exit-active {
   transform: translateX(110%);
-  transition: transform 250ms ease 0ms, opacity;
+  transition: transform 500ms ease 0ms, opacity;
 }
