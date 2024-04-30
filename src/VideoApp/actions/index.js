@@ -22,13 +22,14 @@ import {
   LOGIN_ERROR,
   CHECKOUT_JWT,
 } from "./types";
-const BASE_URL = "http://localhost:5000";
-const DEPLOYMENT_URL = "https://backend-express-video-app.vercel.app";
+const BASE_URL = "https://server-t.vercel.app";
+//server url
+const DEPLOYMENT_URL="https://server-t.vercel.app";
+// const DEPLOYMENT_URL = "video-app.vercel.app";
 export const fetchActiveLiveGameContents = () => async (dispatch) => {
   const responseAll = await axios.get(
     // "/api/v1/twitch/streams/contents"
-
-    `${DEPLOYMENT_URL}/api/v1/twitch/streams/contents`
+    `https://server-t.vercel.app/api/v1/twitch/streams/contents`
   );
   let dataFallGuy = responseAll.data.frontPage.fallGuy;
   dataFallGuy.map((game) => {
@@ -72,7 +73,7 @@ export const fetchActiveLiveTwitch = () => async (dispatch) => {
     `${DEPLOYMENT_URL}/api/v1/twitch/streams`
     // "/api/v1/twitch/streams"
   );
-
+  console.log(responseAll,"sdffffff");
   let dataStreams = responseAll.data.frontPage.allStreams;
   dataStreams.map((game) => {
     let newUrl = game.thumbnail_url

@@ -16,7 +16,8 @@ const SlashIdVideosAll = (props) => {
         return null;
       }
       const { data } = await axios.get(
-        `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/user/${props.location.state.data.user_id}`
+        `https://server-t.vercel.app/api/v1/twitch/streams/user/${props.location.state.data.user_id}`
+        // `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/user/${props.location.state.data.user_id}`
       );
 
       let dataArray = data.streams;
@@ -45,7 +46,8 @@ const SlashIdVideosAll = (props) => {
   useEffect(() => {
     const fetch = async () => {
       const { data } = await axios.get(
-        `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/${props.location.state.data.game_id}`
+        `https://server-t.vercel.app/api/v1/twitch/streams/${props.location.state.data.game_id}`
+        // `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/${props.location.state.data.game_id}`
       );
       setTotalViews(data.totalViews);
     };

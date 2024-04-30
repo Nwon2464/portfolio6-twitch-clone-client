@@ -16,12 +16,16 @@ const Carousel = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        "https://backend-express-video-app.vercel.app/api/v1/twitch"
+        // "https://backend-express-video-app.vercel.app/api/v1/twitch"
+        "https://server-t.vercel.app/api/v1/twitch"
       );
       setGetTwitchLiveStream(data);
     };
     fetchData();
   }, []);
+
+
+  console.log(getTwitchLiveStream,"-----------------------------");
 
   const [width, setWidth] = useState([
     { widthSize: "100%" },
@@ -158,34 +162,20 @@ const Carousel = (props) => {
   };
 
   const checkTags = (streams, i) => {
-    if (streams.localization_names.length !== 1) {
-      let a = _.mapKeys(streams.localization_names, "en-us");
-      let b = Object.keys(a);
-      return (
-        <>
-          {b.map((e, i) => {
-            return (
-              <Link
-                to="/"
-                style={{ marginLeft: 2, maxWidth: 90 }}
-                className="channel__tag__anchor"
-                key={i}
-              >
-                {e}
-              </Link>
-            );
-          })}
-        </>
-      );
-    }
     return (
-      <Link
-        to="/"
-        style={{ marginLeft: 2, maxWidth: 90 }}
-        className="channel__tag__anchor"
-      >
-        {streams.localization_names[0]["en-us"]}
-      </Link>
+      <>
+        {streams.tags.map((e,i)=>{
+          return (
+            <Link
+              to="/"
+              style={{ marginLeft: 2, maxWidth: 90 }}
+              className="channel__tag__anchor"
+            >
+              {e}
+            </Link>
+          )
+        })}
+      </>     
     );
   };
 
@@ -235,7 +225,9 @@ const Carousel = (props) => {
                 // width="100%" &autoplay=${AutoStyle}
                 // width={`${AutoWidth}`}
                 height="300px"
-                src={`https://player.twitch.tv/?channel=${streams.user_name}&muted=true&parent=frontend-react-video-app-vercel-app&parent=frontend-react-video-app.vercel.app`}
+               //*switch to backend url
+                src={`https://player.twitch.tv/?channel=${streams.user_name}&muted=true&parent=server-t.vercel.app`}
+                // src={`https://player.twitch.tv/?channel=${streams.user_name}&muted=true&parent=localhost:3000&parent=localhost:3000`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -309,7 +301,7 @@ const Carousel = (props) => {
                     <div className="channel__tag__3">{checkTags(streams)}</div>
                   </div>
                   <div className="app-word-wrap app__order__3 app-overflow-hidden">
-                    {streams.description}
+                    {streams.title}
                   </div>
                   <div className="app-carousel-metadata"></div>
                 </div>

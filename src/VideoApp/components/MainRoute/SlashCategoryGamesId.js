@@ -21,10 +21,15 @@ const CategoryGamesId = (props) => {
         return null;
       }
       const { data } = await axios.get(
-        `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/${
+        // `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/${
+        //   props.location.state.data.game_id || props.location.state.data.id
+        // }`
+        `https://server-t.vercel.app/api/v1/twitch/streams/${
           props.location.state.data.game_id || props.location.state.data.id
         }`
       );
+
+      console.log(data, "*****");
      
       let dataArray = data.selectedGame;
       dataArray.map((game) => {
@@ -235,6 +240,7 @@ const CategoryGamesId = (props) => {
                                             <div className="channel__tag__2">
                                               <div className="channel__tag__3">
                                                 {checkTags(e)}
+                                                {/* {'e'} */}
                                               </div>
                                             </div>
                                           </div>

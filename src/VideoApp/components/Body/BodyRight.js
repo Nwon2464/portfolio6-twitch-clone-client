@@ -17,7 +17,6 @@ const BodyRight = (props) => {
     e.preventDefault();
     setVisible(visible + 4);
   };
-
   const renderCreate = () => {
     // if (props.auth) {
     return (

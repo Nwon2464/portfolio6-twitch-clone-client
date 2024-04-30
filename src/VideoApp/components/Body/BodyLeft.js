@@ -3,6 +3,8 @@ import "./BodyLeft.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 const BodyLeft = (props) => {
+  console.log(props);
+  console.log("Wwwwwwwww");
   const checkViewers = (views) => {
     if (views <= 999) {
       return <>{`${views} viewers`}</>;

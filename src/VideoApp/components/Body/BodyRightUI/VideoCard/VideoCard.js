@@ -14,7 +14,7 @@ const VideoCard = (props) => {
           }}
         >
           {props.recommend ? "  Recommended " : ""}
-          {props.categories === "Live Channel" ? "Live Channel " : ""}
+          {/* {props.categories === "Live Channel" ? "Live Channel " : ""} */}
           <Link
             to={{
               pathname: `/category/games/${props.categories
@@ -31,7 +31,7 @@ const VideoCard = (props) => {
               },
             }}
           >
-            {props.categories !== "Live Channel" && (
+            {/* {props.categories !== "Live Channel" && ( */}
               <strong
                 style={{
                   color: "#00b5ad",
@@ -41,7 +41,7 @@ const VideoCard = (props) => {
               >
                 {props.categories}{" "}
               </strong>
-            )}
+            {/* )} */}
           </Link>
           we think you'll like
         </h3>
