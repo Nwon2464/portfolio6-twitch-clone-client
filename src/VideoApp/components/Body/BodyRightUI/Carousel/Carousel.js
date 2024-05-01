@@ -225,8 +225,8 @@ const Carousel = (props) => {
                 // width={`${AutoWidth}`}
                 height="300px"
                //*switch to backend url
-                src={`https://player.twitch.tv/?channel=${streams.user_name}&muted=true&parent=server-t.vercel.app`}
-                // src={`https://player.twitch.tv/?channel=${streams.user_name}&muted=true&parent=localhost:3000&parent=localhost:3000`}
+                // src={`https://player.twitch.tv/?channel=${streams.user_name}&muted=true&parent=server-t.vercel.app`}
+                src={`https://player.twitch.tv/?channel=${streams.user_name}&muted=true&parent=videoappclient.vercel.app`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
