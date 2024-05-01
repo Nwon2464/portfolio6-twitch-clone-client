@@ -40,7 +40,10 @@ const App = (props) => {
   //   props.fetchStreams();
   // }, []);
   useEffect(() => {
-    props.fetchAuth();
+    //
+    // props.fetchAuth();
+    // when you need auth function
+    
     // props.fetchJWT();
   }, []);
 
