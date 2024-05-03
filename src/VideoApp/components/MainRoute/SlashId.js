@@ -21,7 +21,7 @@ const SlashId = (props) => {
             <div>
               <iframe
                 style={{ height: "40rem", width: "100%" }}
-                src={`https://player.twitch.tv/?channel=${props.location.state.data.user_name}&muted=true&parent=videoappclient.vercel.app`}
+                src={`https://player.twitch.tv/?channel=${props.location.state.data.user_name}&muted=true&parent=videoappclient.vercel.app&parent=videoappclient-vercel-app`}
                 frameBorder="0"
                 scrolling="<scrolling>"
                 allowFullScreen
