@@ -22,16 +22,20 @@ import {
   LOGIN_ERROR,
   CHECKOUT_JWT,
 } from "./types";
+import {dataStreams} from "./dataStreams";
+import {dataStreams2} from "./dataStreams2";
 const BASE_URL = "https://server-t.vercel.app";
 //server url
 const DEPLOYMENT_URL="https://server-t.vercel.app";
 // const DEPLOYMENT_URL = "video-app.vercel.app";
 export const fetchActiveLiveGameContents = () => async (dispatch) => {
-  const responseAll = await axios.get(
-    // "/api/v1/twitch/streams/contents"
-    `https://server-t.vercel.app/api/v1/twitch/streams/contents`
-  );
-  let dataFallGuy = responseAll.data.frontPage.fallGuy;
+  // const responseAll = await axios.get(
+  //   // "/api/v1/twitch/streams/contents"
+  //   `https://server-t.vercel.app/api/v1/twitch/streams/contents`
+  // );
+  const data=dataStreams2;
+  
+  let dataFallGuy = data.frontPage.fallGuy;
   dataFallGuy.map((game) => {
     let newUrl = game.thumbnail_url
       .replace("{width}", "440")
@@ -40,7 +44,7 @@ export const fetchActiveLiveGameContents = () => async (dispatch) => {
   });
   dispatch({ type: "ACTION_FALLGUY", payload: dataFallGuy });
 
-  let dataJustChat = responseAll.data.frontPage.justChat;
+  let dataJustChat = data.frontPage.justChat;
   dataJustChat.map((game) => {
     let newUrl = game.thumbnail_url
       .replace("{width}", "440")
@@ -49,7 +53,7 @@ export const fetchActiveLiveGameContents = () => async (dispatch) => {
   });
   dispatch({ type: "ACTION_JUSTCHAT", payload: dataJustChat });
 
-  let dataFortNite = responseAll.data.frontPage.fortNite;
+  let dataFortNite = data.frontPage.fortNite;
   dataFortNite.map((game) => {
     let newUrl = game.thumbnail_url
       .replace("{width}", "440")
@@ -58,40 +62,52 @@ export const fetchActiveLiveGameContents = () => async (dispatch) => {
   });
   dispatch({ type: "ACTION_FORTNITE", payload: dataFortNite });
 
-  let dataMineCraft = responseAll.data.frontPage.mineCraft;
+  let dataMineCraft = data.frontPage.mineCraft;
   dataMineCraft.map((game) => {
     let newUrl = game.thumbnail_url
       .replace("{width}", "440")
       .replace("{height}", "248");
     game.thumbnail_url = newUrl;
   });
+  
   dispatch({ type: "ACTION_MINECRAFT", payload: dataMineCraft });
 };
 
 export const fetchActiveLiveTwitch = () => async (dispatch) => {
-  const responseAll = await axios.get(
-    `${DEPLOYMENT_URL}/api/v1/twitch/streams`
-    // "/api/v1/twitch/streams"
-  );
-  console.log(responseAll,"sdffffff");
-  let dataStreams = responseAll.data.frontPage.allStreams;
-  dataStreams.map((game) => {
+ 
+  // const responseAll = await axios.get(
+  //   `${DEPLOYMENT_URL}/api/v1/twitch/streams`
+  //   // "/api/v1/twitch/streams"
+  // );
+
+  // let dataStreams = responseAll.data.frontPage.allStreams;
+  // console.log(dataStreams,"sss??");
+
+  
+  
+  let dataStream_data= dataStreams.frontPage.allStreams;
+  dataStream_data.map((game) => {
     let newUrl = game.thumbnail_url
       .replace("{width}", "440")
       .replace("{height}", "248");
     game.thumbnail_url = newUrl;
   });
-  dispatch({ type: "ACTION_LIVE_STREAMS", payload: dataStreams });
+  
+  // // console.log(dataStreams);
+  dispatch({ type: "ACTION_LIVE_STREAMS", payload: dataStream_data });
 
-  let dataTopGames = responseAll.data.frontPage.topGames;
+  let dataTopGames = dataStreams.frontPage.topGames;
+
   dataTopGames.map((game) => {
+    console.log(game,"game?");
     let newUrl = game.box_art_url
-
       .replace("{width}", "188")
       .replace("{height}", "250");
     game.box_art_url = newUrl;
+  
   });
   dispatch({ type: "ACTION_TOP_GAMES", payload: dataTopGames });
+
 };
 
 export const logIn = (formValues) => (dispatch, getState) => {

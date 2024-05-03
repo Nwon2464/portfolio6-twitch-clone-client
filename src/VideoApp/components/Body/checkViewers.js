@@ -35,13 +35,13 @@ export const checkFollowers = (views) => {
   }
 };
 export const checkTags = (streams, i) => {
-  return streams.localization_names.map((e, i) => {
+  return streams.tags.map((e, i) => {
     return (
       <Link
         className="channel__tag__anchor"
         key={i}
         style={{ marginLeft: 2, maxWidth: 90 }}
-        to={`/category/all/tags/${streams.tag_ids[i]}`}
+        to={`/category/all/tags/${e}`}
       >
         {e}
       </Link>
