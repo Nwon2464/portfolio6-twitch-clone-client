@@ -50,6 +50,7 @@ const App = (props) => {
   // FETCH TWITCH LIVE CHANNEL
   useEffect(() => {
     props.fetchActiveLiveTwitch();
+    // console.log(props,"SSSS",props.twitch);
   }, []);
   useEffect(() => {
     props.fetchActiveLiveGameContents();
@@ -70,7 +71,7 @@ const App = (props) => {
               component={SlashCategoryGamesId}
             />
             <Route exact path="/:id/videos/all" component={SlashIdVideosAll} />
-            {/* <Route exact path="/category/all" component={SlashCategoryAll} /> */}
+            <Route exact path="/category/all" component={SlashCategoryAll} />
             <Route exact path="/category/all/tags/:id">
               <div className="app-flex app-flex-nowrap app-relative app-full-height">
                 <div className="side-nav app-flex-shrink-0 app-full-height app-z-above">
