@@ -16,7 +16,7 @@ const Carousel = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        "https://server-t.vercel.app/api/v1/twitch"
+        "server-t.vercel.app/api/v1/twitch"
       );
       setGetTwitchLiveStream(data);
     };
