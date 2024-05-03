@@ -20,37 +20,39 @@ const CategoryGamesId = (props) => {
       if (!props.location.state) {
         return null;
       }
-      const { data } = await axios.get(
-        // `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/${
-        //   props.location.state.data.game_id || props.location.state.data.id
-        // }`
-        `https://server-t.vercel.app/api/v1/twitch/streams/${
-          props.location.state.data.game_id || props.location.state.data.id
-        }`
-      );
 
-      console.log(data, "*****");
-     
-      let dataArray = data.selectedGame;
-      dataArray.map((game) => {
-        let newUrl = game.box_art_url
-          .replace("{width}", "180")
-          .replace("{height}", "240");
-        game.box_art_url = newUrl;
-      });
 
-      let dataArray2 = data.streams;
-      dataArray2.map((game) => {
-        let newUrl = game.thumbnail_url
-          .replace("{width}", "440")
-          .replace("{height}", "248");
-        game.thumbnail_url = newUrl;
-      });
-
-      setCategory(data.streams);
-      setTopGamesImage(data.selectedGame);
-      setTotalViews(data.totalCurrentWatching);
-      setSumFollowers(data.totalFollowers);
+      try {    
+        const { data } = await axios.get(
+          `https://server-t.vercel.app/api/v1/twitch/streams/${
+            props.location.state.data.game_id || props.location.state.data.id
+          }`
+        );
+  
+       
+        let dataArray = data.selectedGame;
+        dataArray.map((game) => {
+          let newUrl = game.box_art_url
+            .replace("{width}", "180")
+            .replace("{height}", "240");
+          game.box_art_url = newUrl;
+        });
+  
+        let dataArray2 = data.streams;
+        dataArray2.map((game) => {
+          let newUrl = game.thumbnail_url
+            .replace("{width}", "440")
+            .replace("{height}", "248");
+          game.thumbnail_url = newUrl;
+        });
+  
+        setCategory(data.streams);
+        setTopGamesImage(data.selectedGame);
+        setTotalViews(data.totalCurrentWatching);
+        setSumFollowers(data.totalFollowers);
+      } catch (err) {
+        console.error(err);
+      }
     };
     fecthLive();
   }, []);

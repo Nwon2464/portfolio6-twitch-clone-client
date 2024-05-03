@@ -11,23 +11,30 @@ const SlashCategoryAll = (props) => {
 
   useEffect(() => {
     const fetchTopGames = async () => {
-      const { data } = await axios.get(
-        // "https://backend-express-video-app.vercel.app/api/v1/twitch/categories/all"
-        "https://server-t.vercel.app/api/v1/twitch/categories/all"
-      );
-      let dataArray = data.topGames;
+
+      try {
       
-      dataArray.map((game) => {
-        let newUrl = game.box_art_url
-          .replace("{width}", "285")
-          .replace("{height}", "385");
-        game.box_art_url = newUrl;
-      });
-      setCategories(data);
+        const { data } = await axios.get(
+          // "https://backend-express-video-app.vercel.app/api/v1/twitch/categories/all"
+          "https://server-t.vercel.app/api/v1/twitch/categories/all"
+        );
+        let dataArray = data.topGames;
+        
+        dataArray.map((game) => {
+          let newUrl = game.box_art_url
+            .replace("{width}", "285")
+            .replace("{height}", "385");
+          game.box_art_url = newUrl;
+        });
+        setCategories(data);
+      } catch (err) {
+        console.log("ERRRORR?R??");
+        console.error(err);
+      }
     };
     fetchTopGames();
   }, []);
-    console.log(categories);
+    // console.log(categories);
   return (
     <>
       <div className="app-flex app-flex-nowrap app-relative app-full-height app-overflow-hidden">

@@ -15,41 +15,44 @@ const SlashIdVideosAll = (props) => {
       if (!props.location.state) {
         return null;
       }
-      const { data } = await axios.get(
-        `https://server-t.vercel.app/api/v1/twitch/streams/user/${props.location.state.data.user_id}`
-        // `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/user/${props.location.state.data.user_id}`
-      );
+      
 
-      let dataArray = data.streams;
-      dataArray.map((game) => {
-        let newUrl = game.thumbnail_url
-          .replace("%{width}", "320")
-          .replace("%{height}", "180");
-        game.thumbnail_url = newUrl;
-      });
-      setStreams(data.streams);
-      setTotalFollowers(data.totalFollowers);
-      //       let dataArray2 = data.streams;
-      //       dataArray2.map((game) => {
-      //         let newUrl = game.thumbnail_url
-      //           .replace("{width}", "440")
-      //           .replace("{height}", "248");
-      //         game.thumbnail_url = newUrl;
-      //       });
-
-      //       setCategory(data.streams);
-      //       setTopGamesImage(data.selectedGame);
-      //       setTotalViews(data.totalViews);
+      try {
+        const { data } = await axios.get(
+          `https://server-t.vercel.app/api/v1/twitch/streams/user/${props.location.state.data.user_id}`
+          // `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/user/${props.location.state.data.user_id}`
+        );
+  
+        let dataArray = data.streams;
+        dataArray.map((game) => {
+          let newUrl = game.thumbnail_url
+            .replace("%{width}", "320")
+            .replace("%{height}", "180");
+          game.thumbnail_url = newUrl;
+        });
+        setStreams(data.streams);
+        setTotalFollowers(data.totalFollowers);
+      
+      } catch (err) {
+        console.error(err);
+      }
+      
     };
     fecthLive();
   }, []);
   useEffect(() => {
     const fetch = async () => {
-      const { data } = await axios.get(
-        `https://server-t.vercel.app/api/v1/twitch/streams/${props.location.state.data.game_id}`
-        // `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/${props.location.state.data.game_id}`
-      );
-      setTotalViews(data.totalViews);
+      try {
+        const { data } = await axios.get(
+          `https://server-t.vercel.app/api/v1/twitch/streams/${props.location.state.data.game_id}`
+          // `https://backend-express-video-app.vercel.app/api/v1/twitch/streams/${props.location.state.data.game_id}`
+        );
+        setTotalViews(data.totalViews);  
+      }
+      catch (error){
+        console.log(error);
+
+      }
     };
     fetch();
   }, []);
