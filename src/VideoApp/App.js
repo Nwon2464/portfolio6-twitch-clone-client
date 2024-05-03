@@ -58,6 +58,8 @@ const App = (props) => {
   return (
     <div className="app-flex app-flex-column app-flex-nowrap app-bottom-0 app-left-0 app-right-0 app-top-0 app-absolute">
       <Router history={history}>
+      {/* <Router> */}
+
         <div className="app-flex app-flex-column app-flex-nowrap app-full-height">
           <Header />
           {props.modal ? <Modal /> : null}
