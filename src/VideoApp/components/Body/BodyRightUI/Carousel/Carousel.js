@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./Carousel.css";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import _ from "lodash";
+
+import "./Carousel.css";
+import {dataStreams} from "../../../../actions/dataStreams";
+
 const Carousel = (props) => {
   const iframeRef = useRef();
 
@@ -11,22 +14,30 @@ const Carousel = (props) => {
   const [direction, setDirection] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const [getTwitchLiveStream, setGetTwitchLiveStream] = useState([]);
+  const data=dataStreams.frontPage.allStreams.slice(0,5);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://server-t.vercel.app/api/v1/twitch"
-        );
-        setGetTwitchLiveStream(data); 
-      } catch (err) {
-        console.error(err);
-      }
+  // useEffect(() => {
+    
+  //   const data= dataStreams.frontPage.allStreams;
+  //   // console.log(data);
+  //   // setGetTwitchLiveStream(data); 
+  //   // console.log(getTwitchLiveStream);
+  //   const fetchData = async () => {
+  //   //   try {
+  //   //     // const { data } = await axios.get(
+  //   //     //   "https://server-t.vercel.app/api/v1/twitch"
+  //   //     // );
+  //   //     const data= dataStreams.frontPage.allStreams;
+  //   //     // console.log(data);
+  //   //     setGetTwitchLiveStream(data); 
+  //   //     console.log(getTwitchLiveStream,"---");
+  //   //   } catch (err) {
+  //   //     console.error(err);
+  //     }
       
-    };
-    fetchData();
-  }, []);
+  //   // };
+  //   fetchData();
+  // }, []);
 
 
   const [width, setWidth] = useState([
@@ -212,7 +223,7 @@ const Carousel = (props) => {
           </button>
         </div>
 
-        {getTwitchLiveStream.map((streams, i) => {
+        {data.map((streams, i) => {
           const showAnimation = direction === "right" || direction === "left";
           const position = "animate absolute image";
           const imgStyle = determineStyle(i, showAnimation);
