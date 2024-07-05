@@ -205,15 +205,15 @@ const Header = (props) => {
           </div>
         </div>
         <div className="app-flex app-align-items-center app-flex-grow-1 app-flex-shrink-1 app-justify-content-end app-full-width">
-          {/* <div className="app-mg-x-05 app-flex-shrink-0 app-flex-grow-0 app-align-self-center app-flex-nowrap">
+          <div className="app-mg-x-05 app-flex-shrink-0 app-flex-grow-0 app-align-self-center app-flex-nowrap">
             <Link to="/streams/new">
-              <VideoCallIcon
+              {/* <VideoCallIcon
                 // style={{ marginRight: "10px" }}
                 className="header__icon"
-              />
+              /> */}
             </Link>
-          </div> */}
-          {/* <LoginSignUpButton /> */}
+          </div>
+          <LoginSignUpButton />
           {/* loading skeleton */}
           {/* <div className="app-mg-r-1 app-pd-y-1 app-flex app-full-height">
             <div className="app-flex app-flex-nowrap">{renderButton()}</div>{" "}

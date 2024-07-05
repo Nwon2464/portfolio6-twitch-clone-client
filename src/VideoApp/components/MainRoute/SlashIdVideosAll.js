@@ -35,6 +35,7 @@ const SlashIdVideosAll = (props) => {
       
       } catch (err) {
         console.error(err);
+        throw new Error();
       }
       
     };
@@ -51,7 +52,7 @@ const SlashIdVideosAll = (props) => {
       }
       catch (error){
         console.log(error);
-
+        throw new Error();
       }
     };
     fetch();

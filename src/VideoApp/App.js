@@ -42,15 +42,13 @@ const App = (props) => {
   useEffect(() => {
     //
     // props.fetchAuth();
-    // when you need auth function
-    
+    // when you need auth    
     // props.fetchJWT();
   }, []);
 
   // FETCH TWITCH LIVE CHANNEL
   useEffect(() => {
     props.fetchActiveLiveTwitch();
-    // console.log(props,"SSSS",props.twitch);
   }, []);
   useEffect(() => {
     props.fetchActiveLiveGameContents();
@@ -62,7 +60,7 @@ const App = (props) => {
 
         <div className="app-flex app-flex-column app-flex-nowrap app-full-height">
           <Header />
-          {props.modal ? <Modal /> : null}
+          {/* {props.modal ? <Modal /> : null} */}
 
           <Switch>
             <Route exact path="/" component={Slash} />

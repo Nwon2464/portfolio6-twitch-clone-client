@@ -28,7 +28,6 @@ const SlashCategoryAll = (props) => {
         });
         setCategories(data);
       } catch (err) {
-        console.log("ERRRORR?R??");
         console.error(err);
       }
     };
