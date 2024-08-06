@@ -73,16 +73,31 @@ export const fetchActiveLiveGameContents = () => async (dispatch) => {
   dispatch({ type: "ACTION_MINECRAFT", payload: dataMineCraft });
 };
 
+//recommended twitch channels 
+//fetching top games from server
+const replaceThumbnailSize = (url, width, height) => {
+  return url.replace("{width}", width).replace("{height}", height);
+};
+
 export const fetchActiveLiveTwitch = () => async (dispatch) => {
  
-  // const responseAll = await axios.get(
-  //   `${DEPLOYMENT_URL}/api/v1/twitch/streams`
-  //   // "/api/v1/twitch/streams"
-  // );
+  const responseAll = await axios.get(
+    `${DEPLOYMENT_URL}/api/v1/tstreams`
+  );
 
-  // let dataStreams = responseAll.data.frontPage.allStreams;
-  // console.log(dataStreams,"sss??");
+  let topGamesData=responseAll.data;
 
+  // console.log(topGamesData,"sss??");
+  // for(const category in topGamesData.categories){
+  //   topGamesData.categories[category] = topGamesData.categories[category].map(stream => {
+  //     stream.thumbnail_url = replaceThumbnailSize(stream.thumbnail_url, 440, 248);
+  //     return stream;
+  //   });
+  // }
+  // for(const games in topGamesData.topGamesCategories){
+  //   topGamesData.topGamesCategories[games][0] = replaceThumbnailSize(topGamesData.topGamesCategories[games][0],188,);
+  //   console.log(topGamesData.topGamesCategories[games]);  
+  // }
   
   
   let dataStream_data= dataStreams.frontPage.allStreams;
@@ -92,20 +107,28 @@ export const fetchActiveLiveTwitch = () => async (dispatch) => {
       .replace("{height}", "248");
     game.thumbnail_url = newUrl;
   });
-  
-  // // console.log(dataStreams);
-  dispatch({ type: "ACTION_LIVE_STREAMS", payload: dataStream_data });
+  let empty_data= [];
+  // console.log(topGamesData.topGames);
+  for(const category in topGamesData.topGames){
+    topGamesData.topGames[category].forEach(stream => {
+      empty_data.push(stream);
+    });
+  }
+  console.log(empty_data);
+  // dispatch({ type: "ACTION_LIVE_STREAMS", payload: dataStream_data });
+  dispatch({ type: "ACTION_LIVE_STREAMS", payload: empty_data });
 
   let dataTopGames = dataStreams.frontPage.topGames;
 
   dataTopGames.map((game) => {
-    console.log(game,"game?");
+    // console.log(game,"game?");
     let newUrl = game.box_art_url
       .replace("{width}", "188")
       .replace("{height}", "250");
     game.box_art_url = newUrl;
   
   });
+
   dispatch({ type: "ACTION_TOP_GAMES", payload: dataTopGames });
 
 };
@@ -245,8 +268,10 @@ export const createStream = (formValues) => async (dispatch, getState) => {
 };
 
 export const fetchStreams = () => async (dispatch) => {
-  // const response = await axios.get(`/streams`);
-  // dispatch({ type: FETCH_STREAMS, payload: response.data });
+  
+  const response = await axios.get(`${BASE_URL}/api/v1/tstreams`);
+
+  dispatch({ type: FETCH_STREAMS, payload: response.data });
 };
 
 export const fetchStream = (id) => async (dispatch) => {

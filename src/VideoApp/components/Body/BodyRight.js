@@ -10,6 +10,7 @@ import GameCard from "./BodyRightUI/GameCard/GameCard";
 import { checkViewers, checkTags } from "./checkViewers";
 import Loading from "./BodyRightUI/VideoCard/Loading";
 import LoadingGameCard from "./BodyRightUI/GameCard/LoadingGameCard";
+// import LazyLoadGameCard from "./BodyRightUI/GameCard/LazyLoadGameCard";
 const BodyRight = (props) => {
   const [visible, setVisible] = useState(4);
 
@@ -26,6 +27,8 @@ const BodyRight = (props) => {
     );
     // }
   };
+  console.log(props.twitch.activeCategoryGames);
+
   return (
     <div className="app-overflow-scroll app-body-right-background app-z-index-default app-flex app-flex-column app-flex-grow-1 app-full-height app-full-width">
       <div className="app-full-width app-relative">
@@ -55,6 +58,11 @@ const BodyRight = (props) => {
             checkViewers={checkViewers}
             categories="Categories"
           />
+        //   <LazyLoadGameCard
+        //   topGames={props.twitch.activeCategoryGames}
+        //   checkViewers={checkViewers}
+        //   categories="Categories"
+        // />
         )}
         {props.twitch.activeJustChat.length === 0 ? (
           <Loading />

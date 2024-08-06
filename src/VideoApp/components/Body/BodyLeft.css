@@ -5,10 +5,22 @@
   width: 15%;
   min-width: 11rem;
 }
-.body__left > hr {
+
+.body__left>hr {
   height: 1px;
   border: 0;
   background-color: lightgray;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.recommended_channels {
+  max-height: 500px;
+  /* Adjust height as needed */
+  overflow-y: auto;
+  /* Adds vertical scrollbar */
+  /* padding-right: 15px; */
+  /* Optional: Adds padding to avoid overlaying scrollbar on content */
+  /* box-sizing: content-box; */
+  /* Ensures padding doesn't affect width */
 }

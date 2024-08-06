@@ -3,7 +3,7 @@ module.exports = function (app) {
   app.use(
     ["/auth/*", "/api/v1/*", "/streams"],
     createProxyMiddleware({
-      target: "http://localhost:3000",
+      target: "http://localhost:5000",
     })
   );
 };
