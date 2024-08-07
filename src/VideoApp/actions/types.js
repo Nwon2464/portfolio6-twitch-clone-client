@@ -21,6 +21,7 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 export const LOGIN_TOKEN = "LOGIN_TOKEN";
 export const LOGOUT_TOKEN = "LOGOUT_TOKEN";
 export const CHECKOUT_JWT = "CHECKOUT_JWT";
+// export const VERIFY_JWT ="VERIFY_JWT";
 //right after const ctrl + D * 4
 //right shift twice
 //ctrl + shift + right shitft

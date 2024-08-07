@@ -1,37 +1,40 @@
-import React, { useRef, useState } from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
-import { signIn, signOut, logOutAuth, jwtlogOut } from "./actions/index";
-import { connect } from "react-redux";
 
-import history from "./history";
-import SearchBar from "./components/Header/SearchBar/SearchBar";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import Brightness2OutlinedIcon from "@material-ui/icons/Brightness2Outlined";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import LanguageIcon from "@material-ui/icons/Language";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
+import SearchIcon from "@material-ui/icons/Search";
+import SettingsApplicationsOutlinedIcon from "@material-ui/icons/SettingsApplicationsOutlined";
+import SubscriptionsOutlinedIcon from "@material-ui/icons/SubscriptionsOutlined";
+import SupervisedUserCircleOutlinedIcon from "@material-ui/icons/SupervisedUserCircleOutlined";
+import ToggleOffOutlinedIcon from "@material-ui/icons/ToggleOffOutlined";
+import VideoCallIcon from "@material-ui/icons/VideoCall";
+import React, {useRef, useState} from "react";
+import Skeleton from "react-loading-skeleton";
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
+
+import {jwtlogOut, logOutAuth, signIn, signOut} from "./actions/index";
 import LoginSignUpButton from "./components/Header/LoginSignUpButton";
+import DropdownMenu from "./components/Header/NavBar/DropdownMenu";
 import NavBar from "./components/Header/NavBar/NavBar";
 import NavItem from "./components/Header/NavBar/NavItem";
-import DropdownMenu from "./components/Header/NavBar/DropdownMenu";
-import Skeleton from "react-loading-skeleton";
-import { ReactComponent as TwitchIcon } from "./components/Header/twitch-seeklogo.com.svg";
+import SearchBar from "./components/Header/SearchBar/SearchBar";
+import {ReactComponent as TwitchIcon} from "./components/Header/twitch-seeklogo.com.svg";
+import history from "./history";
 
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import ToggleOffOutlinedIcon from "@material-ui/icons/ToggleOffOutlined";
-import Brightness2OutlinedIcon from "@material-ui/icons/Brightness2Outlined";
-import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
-import SubscriptionsOutlinedIcon from "@material-ui/icons/SubscriptionsOutlined";
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
-import LanguageIcon from "@material-ui/icons/Language";
-import SupervisedUserCircleOutlinedIcon from "@material-ui/icons/SupervisedUserCircleOutlined";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import SettingsApplicationsOutlinedIcon from "@material-ui/icons/SettingsApplicationsOutlined";
-import VideoCallIcon from "@material-ui/icons/VideoCall";
-import SearchIcon from "@material-ui/icons/Search";
 const Header = (props) => {
   const modalRef = useRef();
   const [open, setOpen] = useState(false);
   const [navIndicatorActive, setNavIndicatorActive] = useState("");
+
+
   const toggleMultipleIndicator = (value) => {
     setNavIndicatorActive(value);
   };
@@ -44,9 +47,14 @@ const Header = (props) => {
       props.logOutAuth();
     } else if (props.auth.jwtToken && props.auth.jwtUsername) {
       props.jwtlogOut();
+    }else{
+      props.jwtlogOut();
     }
   };
   const renderButton = () => {
+    console.log(props, "renderbutton");
+    // branching three states 
+    // signed in with google auth || with signup, newly issues JWT Token || issued localstorage token(session not expired when refresh) 
     if (
       props.auth.googleAuthIsSignedIn === null &&
       props.auth.jwtToken === null
@@ -78,7 +86,7 @@ const Header = (props) => {
               userEmail={
                 props.auth.googleAuthIsSignedIn
                   ? props.auth.googleAuthIsSignedIn.googleEmail.split("@")[0]
-                  : props.auth.jwtToken && props.auth.jwtUsername
+                  : (props.auth.jwtToken && props.auth.jwtUsername)
               }
             ></DropdownMenu>
           </NavItem>
@@ -88,7 +96,6 @@ const Header = (props) => {
       return (
         <>
           <LoginSignUpButton />
-
           <NavBar>
             <NavItem
               notLoggedIcon={
@@ -213,11 +220,10 @@ const Header = (props) => {
               /> */}
             </Link>
           </div>
-          <LoginSignUpButton />
-          {/* loading skeleton */}
-          {/* <div className="app-mg-r-1 app-pd-y-1 app-flex app-full-height">
+          {/* <LoginSignUpButton /> */}
+          <div className="app-mg-r-1 app-pd-y-1 app-flex app-full-height">
             <div className="app-flex app-flex-nowrap">{renderButton()}</div>{" "}
-          </div> */}
+          </div> 
         </div>
       </div>
     </nav>

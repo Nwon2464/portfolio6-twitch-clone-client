@@ -61,6 +61,8 @@ const LoginModalForm = (props) => {
               <div className="app__flex__set">
                 <a
                   id="google__log"
+                  // href="https://server-t.vercel.app/auth/google"
+                  //relative path directs to localhost3000 
                   href="/auth/google"
                   className="ui red labeled icon button"
                 >

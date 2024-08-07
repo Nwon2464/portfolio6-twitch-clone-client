@@ -4,10 +4,11 @@ const INITIAL_STATE = {
   googleAuthIsSignedIn: null,
   jwtToken: null,
   jwtUsername: null,
+  // verifyToken:null,
+  // verifyJwtUserName:null,
 };
 
 export default (state = INITIAL_STATE, action) => {
-  // console.log(action);
   switch (action.type) {
     case FETCH_AUTH:
       return {
@@ -15,6 +16,8 @@ export default (state = INITIAL_STATE, action) => {
         googleAuthIsSignedIn: action.payload || false,
         jwtToken: false,
         jwtUsername: false,
+        // verifyToken:false,
+        // verifyJwtUserName:false,
       };
     case LOGOUT_AUTH:
       return { ...state, googleAuthIsSignedIn: false };
@@ -30,7 +33,19 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         jwtUsername: false,
         jwtToken: false,
+        // verifyToken:false,
+        // verifyJwtUserName:false,
       };
+    // case VERIFY_JWT:
+    //   console.log(action.payload, "PAYLOAD");
+    //   return {
+    //     ...state,
+    //     googleAuthIsSignedIn: false,
+    //     jwtToken: false,
+    //     jwtUsername: false,
+    //     verifyToken: action.payload!=null || false ,
+    //     verifyJwtUserName:action.payload || false,
+    //   };
     default:
       return state;
   }

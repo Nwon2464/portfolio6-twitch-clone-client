@@ -6,17 +6,38 @@ import ClearIcon from "@material-ui/icons/Clear";
 
 import { Tab } from "semantic-ui-react";
 import { panes } from "../SignupReuse";
+import {jwtlogOut} from "../../../actions";
 
 const DropdownMenu = (props) => {
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
   const dropdownRef = useRef(null);
   React.useEffect(() => {
-    setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
-    dropdownRef.current.onclose = () => console.log("CLOSED!");
-    return () => {
-      dropdownRef.current.onclose();
+    // setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
+    // dropdownRef.current.onclose = () => console.log("CLOSED!");
+    // return () => {
+    //   dropdownRef.current.onclose();
+    // };
+
+    if (dropdownRef.current) {
+      setMenuHeight(dropdownRef.current.firstChild.offsetHeight);
+    }
+
+    const handleOnClose = () => {
+      if (dropdownRef.current) {
+        dropdownRef.current.onclose = () => console.log("CLOSED!");
+      }
     };
+
+    handleOnClose();
+
+    return () => {
+      if (dropdownRef.current) {
+        dropdownRef.current.onclose = null;
+      }
+    };
+
+
   }, []);
 
   const calcHeight = (el) => {

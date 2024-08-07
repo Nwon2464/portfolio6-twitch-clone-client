@@ -27,7 +27,7 @@ const BodyRight = (props) => {
     );
     // }
   };
-  console.log(props.twitch.activeCategoryGames);
+  // console.log(props.twitch.activeCategoryGames);
 
   return (
     <div className="app-overflow-scroll app-body-right-background app-z-index-default app-flex app-flex-column app-flex-grow-1 app-full-height app-full-width">

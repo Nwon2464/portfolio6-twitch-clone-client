@@ -4,11 +4,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import {
+  verifyJWT,
   fetchVideos,
   fetchStreams,
   fetchAuth,
   fetchActiveLiveTwitch,
   fetchActiveLiveGameContents,
+  jwtlogOut,
 } from "./actions";
 import { Router, Route, Switch } from "react-router-dom";
 import Header from "./Header";
@@ -40,10 +42,7 @@ const App = (props) => {
   //   props.fetchStreams();
   // }, []);
   useEffect(() => {
-    //
-    // props.fetchAuth();
-    // when you need auth    
-    // props.fetchJWT();
+    props.fetchAuth();
   }, []);
 
   // FETCH TWITCH LIVE CHANNEL
@@ -133,4 +132,5 @@ export default connect(mapStateToProps, {
   fetchActiveLiveTwitch,
   fetchActiveLiveGameContents,
   fetchAuth,
+  jwtlogOut,
 })(App);

@@ -21,12 +21,18 @@ import {
   LOGIN_TOKEN,
   LOGIN_ERROR,
   CHECKOUT_JWT,
+  // VERIFY_JWT,
 } from "./types";
 import {dataStreams} from "./dataStreams";
 import {dataStreams2} from "./dataStreams2";
+import { jwtDecode } from "jwt-decode";
+
+
 const BASE_URL = "https://server-t.vercel.app";
 //server url
-const DEPLOYMENT_URL="https://server-t.vercel.app";
+// const DEPLOYMENT_URL="https://server-t.vercel.app";
+
+const DEPLOYMENT_URL="http://localhost:5000";
 // const DEPLOYMENT_URL = "video-app.vercel.app";
 export const fetchActiveLiveGameContents = () => async (dispatch) => {
   // const responseAll = await axios.get(
@@ -86,19 +92,6 @@ export const fetchActiveLiveTwitch = () => async (dispatch) => {
   );
 
   let topGamesData=responseAll.data;
-
-  // console.log(topGamesData,"sss??");
-  // for(const category in topGamesData.categories){
-  //   topGamesData.categories[category] = topGamesData.categories[category].map(stream => {
-  //     stream.thumbnail_url = replaceThumbnailSize(stream.thumbnail_url, 440, 248);
-  //     return stream;
-  //   });
-  // }
-  // for(const games in topGamesData.topGamesCategories){
-  //   topGamesData.topGamesCategories[games][0] = replaceThumbnailSize(topGamesData.topGamesCategories[games][0],188,);
-  //   console.log(topGamesData.topGamesCategories[games]);  
-  // }
-  
   
   let dataStream_data= dataStreams.frontPage.allStreams;
   dataStream_data.map((game) => {
@@ -108,14 +101,11 @@ export const fetchActiveLiveTwitch = () => async (dispatch) => {
     game.thumbnail_url = newUrl;
   });
   let empty_data= [];
-  // console.log(topGamesData.topGames);
   for(const category in topGamesData.topGames){
     topGamesData.topGames[category].forEach(stream => {
       empty_data.push(stream);
     });
   }
-  console.log(empty_data);
-  // dispatch({ type: "ACTION_LIVE_STREAMS", payload: dataStream_data });
   dispatch({ type: "ACTION_LIVE_STREAMS", payload: empty_data });
 
   let dataTopGames = dataStreams.frontPage.topGames;
@@ -126,12 +116,11 @@ export const fetchActiveLiveTwitch = () => async (dispatch) => {
       .replace("{width}", "188")
       .replace("{height}", "250");
     game.box_art_url = newUrl;
-  
   });
-
   dispatch({ type: "ACTION_TOP_GAMES", payload: dataTopGames });
 
 };
+
 
 export const logIn = (formValues) => (dispatch, getState) => {
   dispatch({ type: LOADING_SPINNER, payload: true });
@@ -141,6 +130,7 @@ export const logIn = (formValues) => (dispatch, getState) => {
     })
     .then((res) => {
       localStorage.token = res.data.token;
+      localStorage.userInfo=res.data.user.username;
       const username = res.data.user.username;
       setTimeout(() => {
         dispatch({ type: "JWT_AUTH", payload: username });
@@ -163,6 +153,7 @@ export const signUpCreate = (formValues) => (dispatch, getState) => {
       ...formValues,
     })
     .then((res) => {
+      console.log("signup aftered",res);
       localStorage.token = res.data.token;
       const username = res.data.user.username;
       setTimeout(() => {
@@ -184,31 +175,71 @@ export const signUpCreate = (formValues) => (dispatch, getState) => {
 export const signUpErrorClose = () => (dispatch) => {
   dispatch({ type: SIGNUP_ERROR_CLOSE });
 };
+// export const verifyJWT = () => (dispatch) => {
+//   console.log(localStorage.token, "finding verify JWT");
+//   if (localStorage.token) {
+//     const user_name= jwtDecode(localStorage.token).username;
+//     dispatch({type:VERIFY_JWT, payload:user_name});
+//   } else {
+//     dispatch({ type: VERIFY_JWT, payload: false });
+//   }
+// };
 export const fetchAuth = () => async (dispatch) => {
-  if (localStorage.token) {
-    const response = await axios.get(`${DEPLOYMENT_URL}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.token}`,
-      },
+  if(localStorage.token){
+    const data= jwtDecode(localStorage.token);
+    localStorage.userInfo = data.username;
+    dispatch({ type: "JWT_AUTH", payload: data.username });
+  }else{
+      await axios.get("/auth/current_user").then((e)=>{
+        dispatch({type:FETCH_AUTH , payload: e.data});
+    }).catch((err)=>{
+      console.log("error from auth current_user");
     });
-    dispatch({ type: "JWT_AUTH", payload: response.data.user.username });
-  } else {
-    const { data } = await axios.get(`${DEPLOYMENT_URL}/auth/current_user`);
-    dispatch({ type: FETCH_AUTH, payload: data });
+    
   }
+  // console.log(localStorage.getItem("token"), "getting item token from local storage ");
+  // if (localStorage.token) {
+  //   console.log(localStorage.token, "INSIDE OF LOCALSTORAGE");
+  //   const response = await axios.get(`${DEPLOYMENT_URL}`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.token}`,
+  //     },
+  //   });
+  //   // console
+  //   dispatch({ type: "JWT_AUTH", payload: response.data.user });
+  // } else {
+  //   console.log("OUTSIDE OF fetchAUTH");
+  // await axios.get(`${DEPLOYMENT_URL}/auth/current_user`,{
+  //   withCredentials: true,
+  // }).then((e)=>{
+  //   console.log("HI");
+  //   console.log(e.data);
+  // }).catch(()=>{
+  //   console.log("error");
+  // })
+
+  //   // dispatch({ type: FETCH_AUTH, payload: data });
+  // }
 };
 export const jwtlogOut = () => async (dispatch) => {
-  localStorage.removeItem("token");
-  dispatch({ type: "JWT_AUTH_LOGOUT" });
+  if(localStorage.token){
+    localStorage.token ="";
+    localStorage.userInfo ="";
+    dispatch({ type: "JWT_AUTH_LOGOUT" });
+    dispatch({ type: "JWT_AUTH" , payload: false});
+    // dispatch({ type: VERIFY_JWT , payload: false});
+  }
   history.push("/");
 
   // history.go(0);
 };
 
 export const logOutAuth = () => async (dispatch) => {
-  const response = await axios.get(`${DEPLOYMENT_URL}/auth/logout`);
+  const response = await axios.get(`${DEPLOYMENT_URL}/auth/logout`).then(()=>{
+    dispatch({ type: LOGOUT_AUTH });
+  });
 
-  dispatch({ type: LOGOUT_AUTH });
+    
   history.push("/");
   // history.go(0);
 };
