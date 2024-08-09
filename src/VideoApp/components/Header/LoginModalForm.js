@@ -62,7 +62,7 @@ const LoginModalForm = (props) => {
                 <a
                   id="google__log"
                   // href="https://server-t.vercel.app/auth/google"
-                  //relative path directs to localhost3000 
+                  //relative path directs to localhost3000, needs proxy setup 
                   href="/auth/google"
                   className="ui red labeled icon button"
                 >

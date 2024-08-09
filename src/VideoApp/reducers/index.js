@@ -10,6 +10,7 @@ import carouselReducers from "./carouselReducers";
 import loadingReducers from "./loadingReducers";
 import twitchReducers from "./twitchReducers";
 import signupLoginReducers from "./signupLoginReducers";
+
 export default combineReducers({
   // carousel: carouselReducers,
   error: errorReducers,

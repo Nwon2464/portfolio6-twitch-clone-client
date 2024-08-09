@@ -6,7 +6,6 @@ import ClearIcon from "@material-ui/icons/Clear";
 
 import { Tab } from "semantic-ui-react";
 import { panes } from "../SignupReuse";
-import {jwtlogOut} from "../../../actions";
 
 const DropdownMenu = (props) => {
   const [activeMenu, setActiveMenu] = useState("main");

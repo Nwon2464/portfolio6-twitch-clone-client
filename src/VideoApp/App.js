@@ -42,12 +42,21 @@ const App = (props) => {
   //   props.fetchStreams();
   // }, []);
   useEffect(() => {
+<<<<<<< HEAD
     props.fetchAuth();
+=======
+    //
+    // props.fetchAuth();
+    // when you need auth function
+    
+    // props.fetchJWT();
+>>>>>>> parent of f61ffcb (login in/sign up form)
   }, []);
 
   // FETCH TWITCH LIVE CHANNEL
   useEffect(() => {
     props.fetchActiveLiveTwitch();
+    // console.log(props,"SSSS",props.twitch);
   }, []);
   useEffect(() => {
     props.fetchActiveLiveGameContents();
@@ -59,7 +68,7 @@ const App = (props) => {
 
         <div className="app-flex app-flex-column app-flex-nowrap app-full-height">
           <Header />
-          {/* {props.modal ? <Modal /> : null} */}
+          {props.modal ? <Modal /> : null}
 
           <Switch>
             <Route exact path="/" component={Slash} />

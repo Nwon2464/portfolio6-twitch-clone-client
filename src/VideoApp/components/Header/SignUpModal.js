@@ -15,7 +15,7 @@ const SignUpModal = forwardRef((props, ref) => {
   };
   const close = () => {
     setDisplay(false);
-    //to get rid of Error message that is being receieved from server
+    //to get rid of Error message from server
     props.signUpErrorClose();
   };
   if (display) {
