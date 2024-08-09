@@ -214,7 +214,7 @@ const SlashIdVideosAll = (props) => {
             <iframe
               style={{ width: "100rem", height: "50rem" }}
               // https://player.twitch.tv/?channel=juansguarnizo&muted=true&parent=frontend-react-video-app-vercel-app&parent=frontend-react-video-app.vercel.app
-              src={`https://player.twitch.tv/?channel=${props.location.state.data.user_name}&muted=true&parent=videoappclient.vercel.app`}
+              src={`https://player.twitch.tv/?channel=${props.location.state.data.user_name}&muted=true&parent=videoappclient-4h499ir9c-dnjsskarb7s-projects.vercel.app`}
               frameBorder="0"
               scrolling="<scrolling>"
               allowFullScreen
